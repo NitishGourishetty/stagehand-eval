@@ -24,28 +24,106 @@ import json
 import requests
 import ast
 import random
+import argparse
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
 
 # Configuration
-LOG_FILE = os.path.join(os.path.dirname(__file__), 'log.txt')
-RESULTS_FILE = os.path.join(os.path.dirname(__file__), 'final.json')
+RESULTS_DIR = os.path.join(os.path.dirname(__file__), 'results')
+LOG_DIR = os.path.join(RESULTS_DIR, 'logs')
 TIMEOUT_SECONDS = 90  # Timeout in seconds
 RATE_LIMIT_ERROR = "rate_limit_error"
 RETRY_ERROR = "RetryError"
-SPREADSHEET_PATH = "mind2web_train_filtered.xlsx"  # Path to your spreadsheet
+
+# Dataset paths
+MIND2WEB_PATH = "mind2web_train_filtered.xlsx"
+WEBARENA_PATH = "webarena.json"
+WEBVOYAGER_PATH = "webvoyager.jsonl"
 
 # Use OpenAI API key
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 
-# Initialize results file if it doesn't exist
-def initialize_results_file():
-    if not os.path.exists(RESULTS_FILE):
-        with open(RESULTS_FILE, 'w') as f:
-            json.dump([], f, indent=2)
-        print(f"Created new evaluation results file: {RESULTS_FILE}")
+def load_mind2web_tasks():
+    """Load tasks from Mind2Web Excel spreadsheet"""
+    print("Loading tasks from Mind2Web spreadsheet")
+    try:
+        df = pd.read_excel(MIND2WEB_PATH)
+        tasks = []
+        for _, row in df.iterrows():
+            task_id = int(row['id'])  # Ensure integer
+            website = row['website_id'] if 'website_id' in row else row['website']
+            task = row['task'] if 'task' in row else row['confirmed_task']
+            tasks.append({
+                'id': task_id,
+                'website': website,
+                'task': task
+            })
+        return tasks
+    except Exception as e:
+        print(f"Error loading Mind2Web spreadsheet: {str(e)}")
+        sys.exit(1)
+
+def load_webarena_tasks():
+    """Load tasks from WebArena JSON file"""
+    print("Loading tasks from WebArena JSON")
+    try:
+        with open(WEBARENA_PATH, 'r') as f:
+            data = json.load(f)
+            tasks = []
+            for item in data:
+                tasks.append({
+                    'id': int(item['task_id']),  # Convert to integer
+                    'website': item['sites'][0] if item['sites'] else 'unknown',
+                    'task': item['intent']
+                })
+            return tasks
+    except Exception as e:
+        print(f"Error loading WebArena JSON: {str(e)}")
+        sys.exit(1)
+
+def load_webvoyager_tasks():
+    """Load tasks from WebVoyager JSONL file"""
+    print("Loading tasks from WebVoyager JSONL")
+    try:
+        tasks = []
+        with open(WEBVOYAGER_PATH, 'r') as f:
+            for line in f:
+                item = json.loads(line)
+                tasks.append({
+                    'id': item['task_id'],  # Keep as string/UUID
+                    'website': item['web'],
+                    'task': item['ques']
+                })
+        return tasks
+    except Exception as e:
+        print(f"Error loading WebVoyager JSONL: {str(e)}")
+        sys.exit(1)
+
+def load_tasks(dataset):
+    """Load tasks based on selected dataset"""
+    if dataset == 'mind2web':
+        return load_mind2web_tasks()
+    elif dataset == 'webarena':
+        return load_webarena_tasks()
+    elif dataset == 'webvoyager':
+        return load_webvoyager_tasks()
+    else:
+        print(f"Unknown dataset: {dataset}")
+        sys.exit(1)
+
+def get_dataset_paths(dataset):
+    """Get dataset-specific file paths"""
+    # Create results and log directories if they don't exist
+    os.makedirs(RESULTS_DIR, exist_ok=True)
+    os.makedirs(LOG_DIR, exist_ok=True)
+    
+    # Dataset-specific paths
+    results_file = os.path.join(RESULTS_DIR, f"{dataset}_results.json")
+    log_file = os.path.join(LOG_DIR, f"{dataset}_log.txt")
+    
+    return results_file, log_file
 
 # Extract stagehand actions from log file
 def extract_stagehand_actions(log_content):
@@ -204,54 +282,49 @@ def evaluate_with_llm(stagehand_actions, ground_truth_actions, website, task):
             "steps_percentage": steps_percentage,
             "explanation": f"Error: {str(e)}"
         }
-def save_evaluation_result(task_id, website, task, ground_truth_actions, stagehand_actions, 
-                          evaluation_result, total_time, status, extract_content):
+
+def get_ground_truth_actions(task_id, dataset):
+    """Get ground truth actions based on dataset type"""
     try:
-        result = {
-            'task_id': task_id,
-            'website': website,
-            'task': task,
-            'ground_truth_actions': ground_truth_actions,
-            'stagehand_actions': stagehand_actions,
-            'extract_content': extract_content,
-            'accuracy_score': evaluation_result['accuracy_score'],
-            'similarity_score': evaluation_result['similarity_score'],
-            'steps_percentage': evaluation_result['steps_percentage'],
-            'explanation': evaluation_result['explanation'],
-            'total_time_seconds': total_time,
-            'status': status,
-            'timestamp': datetime.datetime.now().isoformat()
-        }
-        
-        # Read existing results
-        results = []
-        if os.path.exists(RESULTS_FILE) and os.path.getsize(RESULTS_FILE) > 0:
-            with open(RESULTS_FILE, 'r') as f:
-                try:
-                    results = json.load(f)
-                except json.JSONDecodeError:
-                    print(f"Error reading results file. Creating new file.")
-                    results = []
-    
-        results.append(result)
-
-        with open(RESULTS_FILE, 'w') as f:
-            json.dump(results, f, indent=2)
-            
-        print(f"Saved evaluation result for task ID {task_id} to {RESULTS_FILE}")
+        if dataset == 'mind2web':
+            df = pd.read_excel(MIND2WEB_PATH)
+            task_row = df[df['id'] == task_id]
+            if task_row.empty:
+                return []
+            return ast.literal_eval(task_row.iloc[0]['action_reprs'])
+        elif dataset == 'webarena':
+            with open(WEBARENA_PATH, 'r') as f:
+                data = json.load(f)
+                for item in data:
+                    if int(item['task_id']) == task_id:  # Convert to int for comparison
+                        # WebArena has evaluation info in 'eval' field
+                        if 'eval' in item and 'reference_answers' in item['eval']:
+                            if item['eval']['reference_answers']:
+                                # Return as list of actions for consistency
+                                if 'fuzzy_match' in item['eval']['reference_answers']:
+                                    return [str(x) for x in item['eval']['reference_answers']['fuzzy_match']]
+                                elif 'must_include' in item['eval']['reference_answers']:
+                                    return [str(x) for x in item['eval']['reference_answers']['must_include']]
+                        return []
+            return []
+        elif dataset == 'webvoyager':
+            with open(WEBVOYAGER_PATH, 'r') as f:
+                for line in f:
+                    item = json.loads(line)
+                    if item['task_id'] == task_id:  # Direct string comparison
+                        # WebVoyager has final answer in 'Final answer' field
+                        return [str(item.get('Final answer', ''))]
+            return []
+        return []
     except Exception as e:
-        print(f"Error saving evaluation result: {str(e)}")
+        print(f"Error getting ground truth actions: {str(e)}")
+        return []
 
-def evaluate_task_results(task_id, website, task_description, start_time, status, log_content):
+def evaluate_task_results(task_id, website, task_description, start_time, status, log_content, dataset, results_file):
     try:
         elapsed_time = time.time() - start_time
         
-        df = pd.read_excel(SPREADSHEET_PATH)
-        task_row = df[df['id'] == task_id]
-        if task_row.empty:
-            ground_truth_actions = []
-        else:
-            ground_truth_actions = ast.literal_eval(task_row.iloc[0]['action_reprs'])
+        ground_truth_actions = get_ground_truth_actions(task_id, dataset)
         
         print("\nExtracting stagehand actions from log file...")
         stagehand_actions = extract_stagehand_actions(log_content)
@@ -272,7 +345,7 @@ def evaluate_task_results(task_id, website, task_description, start_time, status
         print("\nSaving evaluation result to JSON...")
         save_evaluation_result(
             task_id, website, task_description, ground_truth_actions, stagehand_actions,
-            evaluation_result, elapsed_time, status, extract_content
+            evaluation_result, elapsed_time, status, extract_content, results_file
         )
         
         return True
@@ -280,28 +353,45 @@ def evaluate_task_results(task_id, website, task_description, start_time, status
         print(f"Error during evaluation: {str(e)}")
         return False
 
-def load_tasks_from_spreadsheet():
-    print("Loading tasks from spreadsheet")
+def save_evaluation_result(task_id, website, task, ground_truth_actions, stagehand_actions, 
+                          evaluation_result, total_time, status, extract_content, results_file):
     try:
-        df = pd.read_excel(SPREADSHEET_PATH)
-        tasks = []
-        for _, row in df.iterrows():
-            task_id = row['id']
-            website = row['website_id'] if 'website_id' in row else row['website']
-            task = row['task'] if 'task' in row else row['confirmed_task']
-            tasks.append({
-                'id': task_id,
-                'website': website,
-                'task': task
-            })
-        return tasks
-    except Exception as e:
-        print(f"Error loading spreadsheet: {str(e)}")
-        sys.exit(1)
-
-def run_task(task_index=0, tasks=None):
-    initialize_results_file()
+        result = {
+            'task_id': task_id,
+            'website': website,
+            'task': task,
+            'ground_truth_actions': ground_truth_actions,
+            'stagehand_actions': stagehand_actions,
+            'extract_content': extract_content,
+            'accuracy_score': evaluation_result['accuracy_score'],
+            'similarity_score': evaluation_result['similarity_score'],
+            'steps_percentage': evaluation_result['steps_percentage'],
+            'explanation': evaluation_result['explanation'],
+            'total_time_seconds': total_time,
+            'status': status,
+            'timestamp': datetime.datetime.now().isoformat()
+        }
+        
+        # Read existing results
+        results = []
+        if os.path.exists(results_file) and os.path.getsize(results_file) > 0:
+            with open(results_file, 'r') as f:
+                try:
+                    results = json.load(f)
+                except json.JSONDecodeError:
+                    print(f"Error reading results file. Creating new file.")
+                    results = []
     
+        results.append(result)
+
+        with open(results_file, 'w') as f:
+            json.dump(results, f, indent=2)
+            
+        print(f"Saved evaluation result for task ID {task_id} to {results_file}")
+    except Exception as e:
+        print(f"Error saving evaluation result: {str(e)}")
+
+def run_task(task_index=0, tasks=None, dataset=None, results_file=None, log_file=None):
     if task_index >= len(tasks):
         print("All tasks processed!")
         return
@@ -312,20 +402,20 @@ def run_task(task_index=0, tasks=None):
     task_description = current_task['task']
     
     # Check if this task has already been processed
-    if os.path.exists(RESULTS_FILE) and os.path.getsize(RESULTS_FILE) > 0:
-        with open(RESULTS_FILE, 'r') as f:
+    if os.path.exists(results_file) and os.path.getsize(results_file) > 0:
+        with open(results_file, 'r') as f:
             try:
                 results = json.load(f)
                 if any(result.get('task_id') == task_id for result in results):
                     print(f"Task ID {task_id} already processed. Skipping...")
-                    return run_task(task_index + 1, tasks)
+                    return run_task(task_index + 1, tasks, dataset, results_file, log_file)
             except:
                 pass
     
     # Skip to ID 3 or higher as requested
-    if task_id < 120:
+    if dataset == 'mind2web' and task_id < 120:
         print(f"Skipping task ID {task_id} as requested to start from ID 3...")
-        return run_task(task_index + 120, tasks)
+        return run_task(task_index + 120, tasks, dataset, results_file, log_file)
     
     # Format the query as requested
     current_query = f"USE {website} to do this task: {task_description}"
@@ -336,7 +426,7 @@ def run_task(task_index=0, tasks=None):
     print(f"================================================================================\n")
     
     # Clear the log file
-    with open(LOG_FILE, 'w') as f:
+    with open(log_file, 'w') as f:
         pass
     
     # Keep the log content
@@ -347,7 +437,7 @@ def run_task(task_index=0, tasks=None):
         log_line = f'\n\n{timestamp} - TASK {task_index+1}, ID={task_id}: "{current_query}"\n'
         log_content += log_line
         
-        with open(LOG_FILE, 'a') as f:
+        with open(log_file, 'a') as f:
             f.write(log_line)
         
         # Start timing the query
@@ -382,7 +472,7 @@ def run_task(task_index=0, tasks=None):
                 log_content += rate_limit_msg
                 print(f"RATE LIMIT ERROR after {elapsed_time:.2f} seconds, moving to next query")
                 
-                with open(LOG_FILE, 'a') as f:
+                with open(log_file, 'a') as f:
                     f.write(line)
                     f.write(rate_limit_msg)
                 
@@ -394,14 +484,14 @@ def run_task(task_index=0, tasks=None):
                     npm_process.kill()
                 
                 # Evaluate and save results
-                evaluate_task_results(task_id, website, task_description, start_time, "rate_limit_error", log_content)
+                evaluate_task_results(task_id, website, task_description, start_time, "rate_limit_error", log_content, dataset, results_file)
                 
                 # Add sleep to allow rate limits to reset
                 wait_time = 60  # Wait 60 seconds before next query to help with rate limits
                 print(f"Waiting {wait_time} seconds before next query...")
                 time.sleep(wait_time)
                 
-                return run_task(task_index + 1, tasks)
+                return run_task(task_index + 1, tasks, dataset, results_file, log_file)
             
             # Check if we've exceeded our timeout
             current_time = time.time()
@@ -411,7 +501,7 @@ def run_task(task_index=0, tasks=None):
                 log_content += timeout_msg
                 print(f"TIMEOUT after {elapsed_time:.2f} seconds, moving to next query")
                 
-                with open(LOG_FILE, 'a') as f:
+                with open(log_file, 'a') as f:
                     f.write(line)
                     f.write(timeout_msg)
                 
@@ -423,14 +513,14 @@ def run_task(task_index=0, tasks=None):
                     npm_process.kill()
                 
                 # Evaluate and save results
-                evaluate_task_results(task_id, website, task_description, start_time, "timeout", log_content)
+                evaluate_task_results(task_id, website, task_description, start_time, "timeout", log_content, dataset, results_file)
                 
                 time.sleep(5)
                 
-                return run_task(task_index + 1, tasks)
+                return run_task(task_index + 1, tasks, dataset, results_file, log_file)
             
             # Write to log file and stdout
-            with open(LOG_FILE, 'a') as f:
+            with open(log_file, 'a') as f:
                 f.write(line)
             sys.stdout.write(line)
             sys.stdout.flush()
@@ -444,7 +534,7 @@ def run_task(task_index=0, tasks=None):
                 log_content += completion_msg
                 print(f"Finished query in {elapsed_time:.2f} seconds, moving to next query")
                 
-                with open(LOG_FILE, 'a') as f:
+                with open(log_file, 'a') as f:
                     f.write(completion_msg)
                 
                 killed = True
@@ -455,11 +545,11 @@ def run_task(task_index=0, tasks=None):
                     npm_process.kill()
                 
                 # Evaluate and save results
-                evaluate_task_results(task_id, website, task_description, start_time, "completed", log_content)
+                evaluate_task_results(task_id, website, task_description, start_time, "completed", log_content, dataset, results_file)
                 
                 time.sleep(5)
                 
-                return run_task(task_index + 1, tasks)
+                return run_task(task_index + 1, tasks, dataset, results_file, log_file)
 
             if "[AI_RETRYError]" in line:
                 end_time = time.time()
@@ -469,7 +559,7 @@ def run_task(task_index=0, tasks=None):
                 log_content += error_msg
                 print(f"GOT AN ERROR in {elapsed_time:.2f} seconds, moving to next query")
                 
-                with open(LOG_FILE, 'a') as f:
+                with open(log_file, 'a') as f:
                     f.write(error_msg)
                 
                 killed = True
@@ -480,11 +570,11 @@ def run_task(task_index=0, tasks=None):
                     npm_process.kill()
                 
                 # Evaluate and save results
-                evaluate_task_results(task_id, website, task_description, start_time, "ai_retry_error", log_content)
+                evaluate_task_results(task_id, website, task_description, start_time, "ai_retry_error", log_content, dataset, results_file)
                 
                 time.sleep(5)
                 
-                return run_task(task_index + 1, tasks)
+                return run_task(task_index + 1, tasks, dataset, results_file, log_file)
 
         # If we get here, the process exited without any explicit trigger
         exit_code = npm_process.wait()
@@ -492,18 +582,18 @@ def run_task(task_index=0, tasks=None):
         log_content += exit_msg
         print(exit_msg)
         
-        with open(LOG_FILE, 'a') as f:
+        with open(log_file, 'a') as f:
             f.write(exit_msg)
         
         # Always evaluate and save results
-        evaluate_task_results(task_id, website, task_description, start_time, f"unexpected_exit_code_{exit_code}", log_content)
+        evaluate_task_results(task_id, website, task_description, start_time, f"unexpected_exit_code_{exit_code}", log_content, dataset, results_file)
         
         time.sleep(5)
-        return run_task(task_index + 1, tasks)
+        return run_task(task_index + 1, tasks, dataset, results_file, log_file)
         
     except KeyboardInterrupt:
         print('\nReceived KeyboardInterrupt. Cleaning up and exiting...')
-        with open(LOG_FILE, 'a') as f:
+        with open(log_file, 'a') as f:
             f.write('\nScript terminated by user\n')
         if 'npm_process' in locals():
             npm_process.terminate()
@@ -511,36 +601,49 @@ def run_task(task_index=0, tasks=None):
     except Exception as e:
         error_msg = f"Error running npm start for task ID {task_id}: {str(e)}"
         print(error_msg)
-        with open(LOG_FILE, 'a') as f:
+        with open(log_file, 'a') as f:
             f.write(f"{error_msg}\n")
         
         # Evaluate and save results
-        evaluate_task_results(task_id, website, task_description, start_time, "script_error", log_content)
+        evaluate_task_results(task_id, website, task_description, start_time, "script_error", log_content, dataset, results_file)
         
         time.sleep(5)
-        return run_task(task_index + 1, tasks)
+        return run_task(task_index + 1, tasks, dataset, results_file, log_file)
 
 def main():
-    if not os.path.exists(LOG_FILE):
-        open(LOG_FILE, 'w').close()
+    # Add command line argument parsing
+    parser = argparse.ArgumentParser(description='Run Stagehand evaluation on different datasets')
+    parser.add_argument('dataset', choices=['mind2web', 'webarena', 'webvoyager'],
+                      help='Dataset to evaluate (mind2web, webarena, or webvoyager)')
+    args = parser.parse_args()
+
+    # Get dataset-specific file paths
+    results_file, log_file = get_dataset_paths(args.dataset)
     
     # Initialize results file
-    initialize_results_file()
+    if not os.path.exists(results_file):
+        with open(results_file, 'w') as f:
+            json.dump([], f, indent=2)
+        print(f"Created new evaluation results file: {results_file}")
+    
+    # Initialize log file
+    if not os.path.exists(log_file):
+        open(log_file, 'w').close()
     
     # Signal handler for CTRL+C
     def signal_handler(sig, frame):
         print('\nReceived SIGINT. Cleaning up and exiting...')
-        with open(LOG_FILE, 'a') as f:
+        with open(log_file, 'a') as f:
             f.write('\nScript terminated by user\n')
         sys.exit(0)
     
     signal.signal(signal.SIGINT, signal_handler)
     
-    # Load tasks
-    tasks = load_tasks_from_spreadsheet()
+    # Load tasks from selected dataset
+    tasks = load_tasks(args.dataset)
     
-    # Run tasks
-    run_task(0, tasks)
+    # Run tasks with dataset-specific paths
+    run_task(0, tasks, args.dataset, results_file=results_file, log_file=log_file)
     
     print("All tasks completed!")
 

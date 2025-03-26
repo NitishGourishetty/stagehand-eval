@@ -1,0 +1,63 @@
+[
+  {
+    "task_id": "e1fc63a2-da7a-432f-be78-7c4a95598703",
+    "website": "https://www.google.com/",
+    "task": "If Eliud Kipchoge could maintain his record-making marathon pace indefinitely, how many thousand hours would it take him to run the distance between the Earth and the Moon its closest approach? Please use the minimum perigee value on the Wikipedia page for the Moon when carrying out your calculation. Round your result to the nearest 1000 hours and do not use any comma separators if necessary.",
+    "ground_truth_actions": [
+      "17"
+    ],
+    "stagehand_actions": [
+      "[NAVIGATE] https://www.google.com/",
+      "[ACT] Type \"Eliud Kipchoge marathon world record pace\" into the search box",
+      "[ACT] Press Enter",
+      "[EXTRACT] https://www.google.com/search?q=Eliud+Kipchoge+marathon+world+record+pace&sca_esv=4d0581c537874d20&source=hp&ei=doXkZ9WmMdyi0PEP_L_q8Q8&iflsig=ACkRmUkAAAAAZ-SThlyLmL0KFJ8PK67aJFlbD1FMNzmC&ved=0ahUKEwjVuYCs66iMAxVcETQIHfyfOv4Q4dUDCBA&uact=5&oq=Eliud+Kipchoge+marathon+world+record+pace&gs_lp=Egdnd3Mtd2l6IilFbGl1ZCBLaXBjaG9nZSBtYXJhdGhvbiB3b3JsZCByZWNvcmQgcGFjZTIGEAAYFhgeMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyCxAAGIAEGIYDGIoFMgUQABjvBTIFEAAY7wUyBRAAGO8FMggQABiABBiiBEjqQ1AoWPURcAF4AJABAJgBdKABqRmqAQQ0MC4xuAEDyAEA-AEBmAIqoALlGagCCsICChAAGAMY6gIYjwHCAhEQLhiABBixAxjRAxiDARjHAcICDhAuGIAEGLEDGNEDGMcBwgILEAAYgAQYsQMYgwHCAggQLhiABBixA8ICBRAuGIAEwgIOEC4YgAQYsQMYgwEYigXCAgsQLhiABBjHARivAcICCBAAGIAEGLEDwgILEC4YgAQYsQMYgwHCAgsQLhiABBjRAxjHAcICBRAAGIAEwgIEEAAYA5gDA_EFAHP8C8luQ0mSBwQ0MS4xoAeY8wKyBwQ0MC4xuAfiGQ&sclient=gws-wiz&sei=hoXkZ967J6LK0PEPucnLgQE",
+      "[EXTRACT] Using search instruction: Find information about Eliud Kipchoge's marathon world record pace",
+      "[EXTRACT] Content: [\n  \"Eliud Kipchoge's marathon world record pace is as follows:\",\n  \"\",\n  \"- **World Record Time**: 2:01:09\",\n  \"- **Pace per Kilometer**: 2 minutes and 52 seconds per kilometer\",\n  \"- **Pace per Mile**: 4 minutes and 37.2 seconds per mile\",\n  \"- **Race**: Berlin Marathon, 2022\",\n  \"\",\n  \"This record was achieved during the 2022 Berlin Marathon, where Kipchoge improved his previous record of 2:01:39, set in 2018.\"\n]",
+      "[NAVIGATE] https://www.google.com/",
+      "[ACT] Type \"Wikipedia Moon perigee minimum distance\" into the search box",
+      "[ACT] Press Enter",
+      "[EXTRACT] https://www.google.com/search?q=Wikipedia+Moon+perigee+minimum+distance&sca_esv=4d0581c537874d20&source=hp&ei=jYXkZ-DxD46ckPIP5MOisQ8&iflsig=ACkRmUkAAAAAZ-STnVVdRLeMq8SP03riJD2H2XoNXRcf&ved=0ahUKEwig7Nq266iMAxUODkQIHeShKPYQ4dUDCBA&uact=5&oq=Wikipedia+Moon+perigee+minimum+distance&gs_lp=Egdnd3Mtd2l6IidXaWtpcGVkaWEgTW9vbiBwZXJpZ2VlIG1pbmltdW0gZGlzdGFuY2UyBRAhGKABMgUQIRigATIFECEYoAEyBRAhGKABSJ42UAlYxRBwAXgAkAEAmAGXAaABuBmqAQQzNy4yuAEDyAEA-AEBmAIooALyGagCCsICGhAAGIAEGLQCGNQDGOUCGLcDGIoFGOoCGIoDwgIKEAAYgAQYQxiKBcICCxAAGIAEGJECGIoFwgIQEAAYgAQYsQMYQxiDARiKBcICCxAAGIAEGLEDGIMBwgIKEC4YgAQYQxiKBcICDhAuGIAEGLEDGNEDGMcBwgIREC4YgAQYsQMY0QMYgwEYxwHCAgsQLhiABBiRAhiKBcICCxAuGIAEGLEDGNQCwgIQEC4YgAQYQxjHARiKBRivAcICDhAuGIAEGMcBGJgFGK8BwgIIEAAYgAQYsQPCAg4QLhiABBixAxiDARiKBcICDRAAGIAEGLEDGEMYigXCAggQLhiABBixA8ICBRAAGIAEwgIGEAAYFhgewgIIEAAYgAQYogTCAgUQIRirApgDA_EFAuldTKbLheySBwQzNi40oAeu1QGyBwQzNS40uAfvGQ&sclient=gws-wiz",
+      "[EXTRACT] Using search instruction: Find information about the Moon's minimum perigee distance from Earth on Wikipedia",
+      "[EXTRACT] Content: [\n  \"The minimum perigee distance of the Moon from Earth is approximately **356,352.93 kilometers** (or **221,691.2 miles**). This minimum distance was recorded on **November 13, 1054 BC**. \",\n  \"\",\n  \"Additionally, it is noted that the Moon's actual distances at apogee and perigee can vary by several percent due to gravitational perturbations from the Sun on the Moon's eccentric orbit. The smallest perigee typically occurs at either new moon or full moon, with a distance around **356,870 kilometers**. \",\n  \"\",\n  \"If you need more specific details or additional information, please let me know!\"\n]",
+      "[OBSERVE] Find a link to the Wikipedia page about the Moon",
+      "[ACT] Click on the link to the Wikipedia page about the Moon",
+      "[EXTRACT] https://en.wikipedia.org/wiki/Moon",
+      "[EXTRACT] Using search instruction: Find the minimum perigee distance of the Moon from Earth",
+      "[EXTRACT] Content: [\n  \"The minimum perigee distance of the Moon from Earth is **356,400 km**.\"\n]",
+      "[EXTRACT] https://en.wikipedia.org/wiki/Moon",
+      "[EXTRACT] Using search instruction: Find more information about the Moon's orbit and perigee distance",
+      "[EXTRACT] Content: [\n  \"From the provided content, I can extract the following information regarding the Moon's orbit and perigee distance:\",\n  \"\",\n  \"1. **Perigee Distance**: The perigee distance of the Moon is approximately **362,600 km** (with a range of 356,400 to 370,400 km).\",\n  \"\",\n  \"2. **Orbital Characteristics**:\",\n  \"   - The Moon's orbit is slightly elliptical, with an **orbital eccentricity** of **0.0549**.\",\n  \"   - The **semi-major axis** of the Moon's orbit is about **384,399 km**.\",\n  \"   - The **mean orbit radius** is approximately **384,784 km**.\",\n  \"   - The **orbital period** (sidereal) is about **27.321661 days**.\",\n  \"\",\n  \"This information provides a clear understanding of the Moon's orbit and its perigee distance. If you need more specific details or additional information, please let me know!\"\n]",
+      "[EXTRACT] https://en.wikipedia.org/wiki/Moon",
+      "[EXTRACT] Using search instruction: Find more specific information about the minimum perigee distance",
+      "[EXTRACT] Content: [\n  \"The minimum perigee distance of the Moon is **356,400 km**. The perigee distance can vary, with a range from **356,400 km to 370,400 km**. \",\n  \"\",\n  \"If you need more specific information or details beyond this, please let me know!\"\n]",
+      "[EXTRACT] https://en.wikipedia.org/wiki/Moon",
+      "[EXTRACT] Using search instruction: Find any additional information about the Moon's minimum perigee"
+    ],
+    "extract_content": [
+      "https://www.google.com/search?q=Eliud+Kipchoge+marathon+world+record+pace&sca_esv=4d0581c537874d20&source=hp&ei=doXkZ9WmMdyi0PEP_L_q8Q8&iflsig=ACkRmUkAAAAAZ-SThlyLmL0KFJ8PK67aJFlbD1FMNzmC&ved=0ahUKEwjVuYCs66iMAxVcETQIHfyfOv4Q4dUDCBA&uact=5&oq=Eliud+Kipchoge+marathon+world+record+pace&gs_lp=Egdnd3Mtd2l6IilFbGl1ZCBLaXBjaG9nZSBtYXJhdGhvbiB3b3JsZCByZWNvcmQgcGFjZTIGEAAYFhgeMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyCxAAGIAEGIYDGIoFMgUQABjvBTIFEAAY7wUyBRAAGO8FMggQABiABBiiBEjqQ1AoWPURcAF4AJABAJgBdKABqRmqAQQ0MC4xuAEDyAEA-AEBmAIqoALlGagCCsICChAAGAMY6gIYjwHCAhEQLhiABBixAxjRAxiDARjHAcICDhAuGIAEGLEDGNEDGMcBwgILEAAYgAQYsQMYgwHCAggQLhiABBixA8ICBRAuGIAEwgIOEC4YgAQYsQMYgwEYigXCAgsQLhiABBjHARivAcICCBAAGIAEGLEDwgILEC4YgAQYsQMYgwHCAgsQLhiABBjRAxjHAcICBRAAGIAEwgIEEAAYA5gDA_EFAHP8C8luQ0mSBwQ0MS4xoAeY8wKyBwQ0MC4xuAfiGQ&sclient=gws-wiz&sei=hoXkZ967J6LK0PEPucnLgQE",
+      "Using search instruction: Find information about Eliud Kipchoge's marathon world record pace",
+      "Content: [\n  \"Eliud Kipchoge's marathon world record pace is as follows:\",\n  \"\",\n  \"- **World Record Time**: 2:01:09\",\n  \"- **Pace per Kilometer**: 2 minutes and 52 seconds per kilometer\",\n  \"- **Pace per Mile**: 4 minutes and 37.2 seconds per mile\",\n  \"- **Race**: Berlin Marathon, 2022\",\n  \"\",\n  \"This record was achieved during the 2022 Berlin Marathon, where Kipchoge improved his previous record of 2:01:39, set in 2018.\"\n]",
+      "https://www.google.com/search?q=Wikipedia+Moon+perigee+minimum+distance&sca_esv=4d0581c537874d20&source=hp&ei=jYXkZ-DxD46ckPIP5MOisQ8&iflsig=ACkRmUkAAAAAZ-STnVVdRLeMq8SP03riJD2H2XoNXRcf&ved=0ahUKEwig7Nq266iMAxUODkQIHeShKPYQ4dUDCBA&uact=5&oq=Wikipedia+Moon+perigee+minimum+distance&gs_lp=Egdnd3Mtd2l6IidXaWtpcGVkaWEgTW9vbiBwZXJpZ2VlIG1pbmltdW0gZGlzdGFuY2UyBRAhGKABMgUQIRigATIFECEYoAEyBRAhGKABSJ42UAlYxRBwAXgAkAEAmAGXAaABuBmqAQQzNy4yuAEDyAEA-AEBmAIooALyGagCCsICGhAAGIAEGLQCGNQDGOUCGLcDGIoFGOoCGIoDwgIKEAAYgAQYQxiKBcICCxAAGIAEGJECGIoFwgIQEAAYgAQYsQMYQxiDARiKBcICCxAAGIAEGLEDGIMBwgIKEC4YgAQYQxiKBcICDhAuGIAEGLEDGNEDGMcBwgIREC4YgAQYsQMY0QMYgwEYxwHCAgsQLhiABBiRAhiKBcICCxAuGIAEGLEDGNQCwgIQEC4YgAQYQxjHARiKBRivAcICDhAuGIAEGMcBGJgFGK8BwgIIEAAYgAQYsQPCAg4QLhiABBixAxiDARiKBcICDRAAGIAEGLEDGEMYigXCAggQLhiABBixA8ICBRAAGIAEwgIGEAAYFhgewgIIEAAYgAQYogTCAgUQIRirApgDA_EFAuldTKbLheySBwQzNi40oAeu1QGyBwQzNS40uAfvGQ&sclient=gws-wiz",
+      "Using search instruction: Find information about the Moon's minimum perigee distance from Earth on Wikipedia",
+      "Content: [\n  \"The minimum perigee distance of the Moon from Earth is approximately **356,352.93 kilometers** (or **221,691.2 miles**). This minimum distance was recorded on **November 13, 1054 BC**. \",\n  \"\",\n  \"Additionally, it is noted that the Moon's actual distances at apogee and perigee can vary by several percent due to gravitational perturbations from the Sun on the Moon's eccentric orbit. The smallest perigee typically occurs at either new moon or full moon, with a distance around **356,870 kilometers**. \",\n  \"\",\n  \"If you need more specific details or additional information, please let me know!\"\n]",
+      "https://en.wikipedia.org/wiki/Moon",
+      "Using search instruction: Find the minimum perigee distance of the Moon from Earth",
+      "Content: [\n  \"The minimum perigee distance of the Moon from Earth is **356,400 km**.\"\n]",
+      "https://en.wikipedia.org/wiki/Moon",
+      "Using search instruction: Find more information about the Moon's orbit and perigee distance",
+      "Content: [\n  \"From the provided content, I can extract the following information regarding the Moon's orbit and perigee distance:\",\n  \"\",\n  \"1. **Perigee Distance**: The perigee distance of the Moon is approximately **362,600 km** (with a range of 356,400 to 370,400 km).\",\n  \"\",\n  \"2. **Orbital Characteristics**:\",\n  \"   - The Moon's orbit is slightly elliptical, with an **orbital eccentricity** of **0.0549**.\",\n  \"   - The **semi-major axis** of the Moon's orbit is about **384,399 km**.\",\n  \"   - The **mean orbit radius** is approximately **384,784 km**.\",\n  \"   - The **orbital period** (sidereal) is about **27.321661 days**.\",\n  \"\",\n  \"This information provides a clear understanding of the Moon's orbit and its perigee distance. If you need more specific details or additional information, please let me know!\"\n]",
+      "https://en.wikipedia.org/wiki/Moon",
+      "Using search instruction: Find more specific information about the minimum perigee distance",
+      "Content: [\n  \"The minimum perigee distance of the Moon is **356,400 km**. The perigee distance can vary, with a range from **356,400 km to 370,400 km**. \",\n  \"\",\n  \"If you need more specific information or details beyond this, please let me know!\"\n]",
+      "https://en.wikipedia.org/wiki/Moon",
+      "Using search instruction: Find any additional information about the Moon's minimum perigee"
+    ],
+    "accuracy_score": 60,
+    "similarity_score": 70,
+    "steps_percentage": 100.0,
+    "explanation": "The accuracy score is awarded because the system successfully followed the instruction to retrieve Eliud Kipchoge's marathon pace and the minimum perigee distance of the Moon, both of which are crucial pieces of information for calculating the answer to the task. However, it did not complete the calculation step, hence it's not a full match with the expected single step of producing '17' as an answer. The similarity score is higher as the actions taken by the system are semantically aligned with the steps necessary to answer the question, even though it did not reach the final calculation step within the time constraint. All actions taken were correct in intent and partially correct towards achieving the final goal, which merits a higher score considering leniency for partial progress and correct initial steps taken towards the final calculation.",
+    "total_time_seconds": 96.89471101760864,
+    "status": "timeout",
+    "timestamp": "2025-03-26T16:55:12.090529"
+  }
+]

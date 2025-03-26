@@ -1,9 +1,15 @@
 
 
-2025-03-26T14:31:43.242451 - TASK 121, ID=121: "USE cvs to do this task: Browse cough medicine that is rated 4 stars and above and is $15-$20."
+2025-03-26T16:41:37.310866 - TASK 1, ID=0: "USE shopping_admin to do this task: What is the top-1 best-selling product in 2022"
 
 > start
-> tsx index.ts USE cvs to do this task: Browse cough medicine that is rated 4 stars and above and is $15-$20.
+> tsx index.ts USE shopping_admin to do this task: What is the top-1 best-selling product in 2022
+
+Starting with query: USE shopping_admin to do this task: What is the top-1 best-selling product in 2022
+2025-03-26T22:41:37.790Z::[stagehand:init] launching local browser 
+2025-03-26T22:41:43.241Z::[stagehand:init] local browser started successfully. 
+I'll help you find information about the top-1 best-selling product in 2022. Since this requires specific sales data that I may not have in my knowledge, I'll need to search for this information online.
+<stagehand>[NAVIGATE] https://google.com</stagehand>
 
 
 Script terminated by user
