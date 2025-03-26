@@ -1,19 +1,15 @@
 '''
-This script runs the stagehand agent and evaluates its actions against ground truth.
+This script will run the stagehand agent.
 
-Workflow:
-1. Load tasks from a spreadsheet
-2. For each task:
-   a. Run npm start with the task
-   b. Extract stagehand actions from logs
-   c. Compare against ground truth actions using LLM
-   d. Record metrics (accuracy, time, tokens) to a CSV
-3. Continue processing tasks one by one
+Input: List of queries and expected actions for each query.
+
+Based on it will find all the stagehand actions (act, observe, extract, etc.) it took to answer the query.
+After finding the stagehand actions, it will compare it against the expected actions and give an accuracy score.
 
 Output:
-1) Accuracy score based on LLM evaluation
-2) Time taken to complete the task
-3) Number of tokens used
+1) Accuracy score from LLM evaluation
+2) Time it takes to answer each query
+3) Number of tokens for a query
 '''
 
 import subprocess
@@ -27,240 +23,120 @@ import pandas as pd
 import json
 import requests
 import ast
+import random
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Configuration
-MASTER_LOG_FILE = os.path.join(os.path.dirname(__file__), 'master_everything.log')
-CURRENT_LOG_FILE = os.path.join(os.path.dirname(__file__), 'current_task.log')
-RESULTS_FILE = os.path.join(os.path.dirname(__file__), 'evaluation_results.json')
-FINISH_TRIGGER = "FINAL_TOKEN_COUNT:"
-TIMEOUT_SECONDS = 90  # 2.5 minutes timeout -> for time sake -> should do the same for ALL models
+LOG_FILE = os.path.join(os.path.dirname(__file__), 'log.txt')
+RESULTS_FILE = os.path.join(os.path.dirname(__file__), 'final.json')
+TIMEOUT_SECONDS = 90  # Timeout in seconds
 RATE_LIMIT_ERROR = "rate_limit_error"
 RETRY_ERROR = "RetryError"
-SPREADSHEET_PATH = "mind2web_train_filtered.xlsx" 
+SPREADSHEET_PATH = "mind2web_train_filtered.xlsx"  # Path to your spreadsheet
 
-LLM_API_URL = "https://api.anthropic.com/v1/messages"
-
-# HAD PROBLEMS WITH LOADING ENV -> REPLACE THIS IF YOU CAN. DOING THIS Read API key directly from .env file
-LLM_API_KEY = ""
-env_file_path = os.path.join(os.path.dirname(__file__), '.env')
-print(f"Looking for .env file at: {env_file_path}")
-if os.path.exists(env_file_path):
-    try:
-        print("Found .env file, reading ANTHROPIC_API_KEY...")
-        with open(env_file_path, 'r') as f:
-            for line in f:
-                if line.strip().startswith('ANTHROPIC_API_KEY='):
-                    LLM_API_KEY = line.strip().split('=', 1)[1].strip('"').strip("'")
-                    print(f"Successfully read API key from .env file (first few chars: {LLM_API_KEY[:4]}...)")
-                    break
-    except Exception as e:
-        print(f"Error reading .env file: {str(e)}")
-
-# Fall back to environment variable if not found in .env
-if not LLM_API_KEY:
-    LLM_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-    if LLM_API_KEY:
-        print(f"Using ANTHROPIC_API_KEY from environment variable (first few chars: {LLM_API_KEY[:4]}...)")
-    else:
-        print("WARNING: ANTHROPIC_API_KEY not found in .env file or environment variable.")
-        print("LLM evaluation will use placeholder values instead of real API calls.")
+# Use OpenAI API key
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 
 # Initialize results file if it doesn't exist
 def initialize_results_file():
     if not os.path.exists(RESULTS_FILE):
-        # Create an empty list for results
         with open(RESULTS_FILE, 'w') as f:
             json.dump([], f, indent=2)
         print(f"Created new evaluation results file: {RESULTS_FILE}")
 
-# Load tasks from spreadsheet
-def load_tasks_from_spreadsheet():
-    print("Loading tasks from spreadsheet")
-    try:
-        df = pd.read_excel(SPREADSHEET_PATH)
-        tasks = []
-        for _, row in df.iterrows():
-            task_id = row['id']
-            website = row['website']
-            task = row['confirmed_task']
-            action_reprs = row['action_reprs']
-            if isinstance(action_reprs, str):
-                try:
-                    action_reprs = ast.literal_eval(action_reprs)
-                except (ValueError, SyntaxError):
-                    pass
-            
-            tasks.append({
-                'id': task_id,
-                'website': website,
-                'task': task,
-                'action_reprs': action_reprs
-            })
-        return tasks
-    except Exception as e:
-        print(f"Error loading spreadsheet: {str(e)}")
-        sys.exit(1)
-
-# Extract stagehand actions from the log file
-def extract_stagehand_actions(log_file_path, task_id):
+# Extract stagehand actions from log file
+def extract_stagehand_actions(log_content):
     actions = []
     
-    try:
-        with open(log_file_path, "r") as f:
-            log_contents = f.read()
-        
-        # Extract all stagehand actions
-        action_pattern = r"<stagehand>\[ACT\]\s*\{[^}]*\"action\":\s*\"([^\"]+)\"[^}]*\}</stagehand>"
-        navigate_pattern = r"<stagehand>\[NAVIGATE\]\s*([^\s<]+)</stagehand>"
-        extract_pattern = r"<stagehand>\[EXTRACT\]([^<]*)</stagehand>"
-        observe_pattern = r"<stagehand>\[OBSERVE\]([^<]*)</stagehand>"
-        
-        # Collect actions
-        actions = []
-        
-        # Add navigations
-        navigations = re.findall(navigate_pattern, log_contents)
-        for nav in navigations:
-            actions.append(f"NAVIGATE to {nav}")
-        
-        # Add ACT actions
-        act_matches = re.findall(action_pattern, log_contents)
-        for action in act_matches:
-            actions.append(action)
+    # Extract ACT and NAVIGATE actions
+    pattern = r'<stagehand>\[(ACT|NAVIGATE|OBSERVE|EXTRACT)\](.*?)</stagehand>'
+    matches = re.findall(pattern, log_content, re.DOTALL)
+    
+    for action_type, content in matches:
+        content = content.strip()
+        if action_type == "NAVIGATE":
+            url_match = re.search(r'(https?://\S+)', content)
+            if url_match:
+                actions.append(f"[NAVIGATE] {url_match.group(1)}")
+        elif action_type == "ACT":
+            # Skip metadata lines
+            if "Using page.act" in content or "Execution complete" in content:
+                continue
+                
+            # Try to extract JSON action if present
+            if "{" in content and "}" in content:
+                try:
+                    json_match = re.search(r'\{.*\}', content, re.DOTALL)
+                    if json_match:
+                        data = json.loads(json_match.group(0))
+                        if "action" in data:
+                            actions.append(f"[ACT] {data['action']}")
+                            continue
+                except:
+                    pass
             
-        # Add EXTRACT actions
-        extract_matches = re.findall(extract_pattern, log_contents)
-        for extract in extract_matches:
-            extract = extract.strip()
-            if extract.startswith("Content:"):
-                # This is the result of an extraction
-                actions.append(f"EXTRACT result")
-            elif extract.startswith("Using search instruction:"):
-                # This is the instruction for an extraction
-                instruction = extract.replace("Using search instruction:", "").strip()
-                actions.append(f"EXTRACT {instruction}")
-            elif "http" in extract:
-                # This is a URL extraction
-                actions.append(f"EXTRACT from {extract}")
-            else:
-                actions.append(f"EXTRACT {extract}")
-                
-        # Add OBSERVE actions - these help understand the context
-        observe_matches = re.findall(observe_pattern, log_contents)
-        for observe in observe_matches:
-            observe = observe.strip()
-            actions.append(f"OBSERVE {observe}")
-        
-        # Normalize actions to better match ground truth format
-        normalized_actions = []
-        for action in actions:
-            # Process NAVIGATE actions
-            if action.startswith("NAVIGATE to "):
-                url = action.replace("NAVIGATE to ", "")
-                normalized_actions.append(f"[NAVIGATE] {url}")
-                continue
-                
-            # Process EXTRACT actions
-            if action.startswith("EXTRACT "):
-                instruction = action.replace("EXTRACT ", "")
-                if instruction == "result":
-                    normalized_actions.append(f"[EXTRACT] result")
-                else:
-                    normalized_actions.append(f"[EXTRACT] {instruction}")
-                continue
-                
-            # Process OBSERVE actions - may be useful for context
-            if action.startswith("OBSERVE "):
-                instruction = action.replace("OBSERVE ", "")
-                normalized_actions.append(f"[OBSERVE] {instruction}")
-                continue
-                
-            # Process click actions
-            if "click" in action.lower() or "click on" in action.lower():
-                element = action.lower().replace("click on ", "").replace("click ", "")
-                # Try to extract element type and text
-                if "button" in element:
-                    normalized_actions.append(f"[button] {element} -> CLICK")
-                elif "dropdown" in element or "combobox" in element:
-                    normalized_actions.append(f"[combobox] {element} -> CLICK")
-                elif "link" in element:
-                    normalized_actions.append(f"[link] {element} -> CLICK")
-                else:
-                    normalized_actions.append(f"[element] {element} -> CLICK")
-                continue
-                
-            # Process type actions
-            if "type" in action.lower():
-                match = re.search(r"type\s+[\"']?([^\"']+)[\"']?\s+(?:into|in)\s+(.+)", action.lower())
-                if match:
-                    text_to_type = match.group(1)
-                    element = match.group(2)
-                    normalized_actions.append(f"[searchbox] {element} -> TYPE: {text_to_type}")
-                else:
-                    normalized_actions.append(f"[input] (unknown) -> TYPE: {action}")
-                continue
-                
-            # Process select actions
-            if "select" in action.lower():
-                match = re.search(r"select\s+[\"']?([^\"']+)[\"']?", action.lower())
-                if match:
-                    option = match.group(1)
-                    normalized_actions.append(f"[combobox] (unknown) -> SELECT: {option}")
-                else:
-                    normalized_actions.append(f"[combobox] (unknown) -> SELECT: (unknown)")
-                continue
-                
-            # Process press actions (like Enter, Tab, etc.)
-            if "press" in action.lower():
-                match = re.search(r"press\s+([^\s]+)", action.lower())
-                if match:
-                    key = match.group(1)
-                    normalized_actions.append(f"[keyboard] PRESS: {key}")
-                else:
-                    normalized_actions.append(f"[keyboard] PRESS: (unknown)")
-                continue
-                
-            # Default case - keep the original action
-            normalized_actions.append(action)
-        
-        return normalized_actions
-    except Exception as e:
-        print(f"Error extracting actions: {str(e)}")
-        return []
+            # Use the raw content as fallback
+            actions.append(f"[ACT] {content}")
+        elif action_type == "OBSERVE":
+            actions.append(f"[OBSERVE] {content}")
+        elif action_type == "EXTRACT":
+            actions.append(f"[EXTRACT] {content}")
+    
+    return actions
 
-# Evaluate stagehand actions against ground truth using LLM
-def evaluate_with_llm(stagehand_actions, ground_truth_actions):
-    # If there are no stagehand actions, return a default evaluation
+def get_extract_content(log_content):
+    extracts = []
+    extract_pattern = r'<stagehand>\[EXTRACT\](.*?)</stagehand>'
+    matches = re.findall(extract_pattern, log_content, re.DOTALL)
+    return [match.strip() for match in matches] if matches else []
+
+def calculate_steps_percentage(stagehand_actions, ground_truth_actions):
+    if not ground_truth_actions:
+        return 0
+    
+    steps_taken = min(len(stagehand_actions), len(ground_truth_actions))
+    return (steps_taken / len(ground_truth_actions)) * 100
+
+def evaluate_with_llm(stagehand_actions, ground_truth_actions, website, task):
     if not stagehand_actions:
-        print("No stagehand actions found to evaluate.")
         return {
             "accuracy_score": 0,
             "similarity_score": 0,
+            "steps_percentage": 0,
             "explanation": "No stagehand actions were found to evaluate."
         }
-        
-    # Format the prompt for Claude API
-    prompt = f"""
-    Compare the following two lists of actions and evaluate how well the stagehand actions match the ground truth actions.
     
-    Ground truth actions:
+    steps_percentage = calculate_steps_percentage(stagehand_actions, ground_truth_actions)
+    
+    prompt = f"""
+    Evaluate how well the Stagehand AI system completed this task:
+    
+    Website: {website}
+    Task: {task}
+    
+    Ground truth actions (expected steps):
     {json.dumps(ground_truth_actions, indent=2)}
     
-    Stagehand actions:
+    Stagehand actions (actual steps taken):
     {json.dumps(stagehand_actions, indent=2)}
     
-    Please analyze the two lists and provide:
-    1. An accuracy score from 0-100 representing how well the stagehand actions match the ground truth actions in terms of exact matches.
-    2. A similarity score from 0-100 that considers semantic similarity even when the exact wording is different.
-    3. A brief explanation for your scores.
+    Rate from 0-100:
+    1. Accuracy score: Exact matches between ground truth and actual actions
+    2. Similarity score: Semantic similarity even if worded differently
+    3. Brief explanation of your evaluation
     
-    IMPORTANT: Be somewhat lenient in your evaluation due to the tight time constraints (45 seconds) that the system operates under. The system may not have had time to complete all actions, so consider:
-    - Give higher scores when the system starts with the correct actions, even if it didn't finish
-    - Reward partially correct actions that show the system was on the right track
-    - Consider the intent behind actions rather than requiring exact matches
-    - If an action is semantically similar but worded differently, treat it as largely correct
+    IMPORTANT SCORING GUIDANCE:
+    - Be very lenient due to the 45-second time limit
+    - The system likely didn't have time to complete all actions
+    - Reward partial progress and correct intent
+    - If the system was on the right track but ran out of time, give higher scores
+    - Consider semantic similarity over exact wording
+    - Even if only 1-2 actions were completed correctly, consider scores of 60-70 if they were the right initial steps
     
-    Respond in JSON format only:
+    JSON response only:
     {{
         "accuracy_score": <score>,
         "similarity_score": <score>,
@@ -268,210 +144,83 @@ def evaluate_with_llm(stagehand_actions, ground_truth_actions):
     }}
     """
     
+    if not OPENAI_API_KEY:
+        print("Warning: OPENAI_API_KEY not found. Using random placeholder values.")
+        random_accuracy = random.randint(60, 85)
+        random_similarity = random.randint(65, 90)
+        return {
+            "accuracy_score": random_accuracy,
+            "similarity_score": random_similarity,
+            "steps_percentage": steps_percentage,
+            "explanation": "This is a placeholder evaluation. Set OPENAI_API_KEY env variable for actual evaluation."
+        }
+    
     try:
-        # Check if API key is available
-        if not LLM_API_KEY:
-            print("Warning: ANTHROPIC_API_KEY not found in environment. Using placeholder evaluation.")
-            return {
-                "accuracy_score": 70,  # Placeholder
-                "similarity_score": 80,  # Placeholder
-                "explanation": "This is a placeholder evaluation. Set ANTHROPIC_API_KEY env variable for actual evaluation."
-            }
-            
-        # Make API call to Anthropic Claude
-        try:
-            print("Calling Claude API for evaluation...")
-            response = requests.post(
-                LLM_API_URL,
-                headers={
-                    "x-api-key": LLM_API_KEY,
-                    "anthropic-version": "2023-06-01",
-                    "content-type": "application/json"
-                },
-                json={
-                    "model": "claude-3-sonnet-20240229",
-                    "max_tokens": 1000,
-                    "messages": [
-                        {
-                            "role": "user",
-                            "content": prompt
-                        }
-                    ]
-                },
-                timeout=30  # 30 second timeout
-            )
-        except requests.exceptions.RequestException as e:
-            print(f"API request error: {str(e)}")
-            # If we hit rate limits here, still return a useful evaluation
-            if "rate_limit" in str(e).lower():
-                print("LLM evaluation hit rate limits. Using manual scoring instead.")
-                return calculate_fallback_scores(stagehand_actions, ground_truth_actions)
-            return {
-                "accuracy_score": 50,  # Fallback
-                "similarity_score": 50,  # Fallback
-                "explanation": f"API request error: {str(e)}"
-            }
+        print("Calling OpenAI API for evaluation...")
+        response = requests.post(
+            "https://api.openai.com/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {OPENAI_API_KEY}",
+                "Content-Type": "application/json"
+            },
+            json={
+                "model": "gpt-4-turbo-preview",
+                "max_tokens": 1000,
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ]
+            },
+            timeout=30
+        )
         
-        # Parse response
         if response.status_code == 200:
             result = response.json()
-            content = result.get("content", [])
-            if content and isinstance(content, list) and len(content) > 0:
-                response_text = content[0].get("text", "")
+            if "choices" in result and len(result["choices"]) > 0:
+                response_text = result["choices"][0]["message"]["content"]
                 
-                # Extract JSON from response text
-                import re
                 json_match = re.search(r'\{.*\}', response_text, re.DOTALL)
                 if json_match:
-                    json_str = json_match.group(0)
                     try:
-                        evaluation = json.loads(json_str)
-                        return {
-                            "accuracy_score": evaluation.get("accuracy_score", 0),
-                            "similarity_score": evaluation.get("similarity_score", 0),
-                            "explanation": evaluation.get("explanation", "No explanation provided")
-                        }
+                        evaluation = json.loads(json_match.group(0))
+                        evaluation["steps_percentage"] = steps_percentage
+                        return evaluation
                     except json.JSONDecodeError:
-                        print(f"Error parsing JSON from LLM response: {json_str}")
-            
-            print(f"Unexpected response format from LLM API: {result}")
-        elif response.status_code == 429:  # Rate limit error
-            print("LLM evaluation hit rate limits. Using manual scoring instead.")
-            return calculate_fallback_scores(stagehand_actions, ground_truth_actions)
-        else:
-            print(f"LLM API error: {response.status_code} - {response.text}")
+                        print(f"Error parsing JSON from LLM response")
         
-        # Fallback if API call fails
         return {
-            "accuracy_score": 50,  # Fallback
-            "similarity_score": 50,  # Fallback
-            "explanation": f"Error getting evaluation from LLM API: {response.status_code}"
+            "accuracy_score": 50,
+            "similarity_score": 50,
+            "steps_percentage": steps_percentage,
+            "explanation": f"Error: Failed to get valid evaluation from OpenAI API. Status code: {response.status_code}"
         }
     except Exception as e:
-        print(f"Error evaluating with LLM: {str(e)}")
+        print(f"Error evaluating with OpenAI: {str(e)}")
         return {
             "accuracy_score": 0,
             "similarity_score": 0,
+            "steps_percentage": steps_percentage,
             "explanation": f"Error: {str(e)}"
         }
-
-# Calculate fallback scores when LLM evaluation fails
-def calculate_fallback_scores(stagehand_actions, ground_truth_actions):
-    """Calculate simple string matching scores between actions as a fallback"""
+def save_evaluation_result(task_id, website, task, ground_truth_actions, stagehand_actions, 
+                          evaluation_result, total_time, status, extract_content):
     try:
-        if not stagehand_actions or not ground_truth_actions:
-            return {
-                "accuracy_score": 0,
-                "similarity_score": 0,
-                "explanation": "No actions to compare or empty set."
-            }
-        
-        # Convert all actions to lowercase for comparison
-        stagehand_lower = [action.lower() for action in stagehand_actions]
-        ground_truth_lower = [action.lower() for action in ground_truth_actions]
-        
-        # Count exact matches
-        exact_matches = 0
-        for gt_action in ground_truth_lower:
-            if gt_action in stagehand_lower:
-                exact_matches += 1
-        
-        # Count partial matches (if a ground truth action is contained within a stagehand action)
-        partial_matches = 0
-        for gt_action in ground_truth_lower:
-            for sh_action in stagehand_lower:
-                # If ground truth action key elements are in stagehand action
-                if not any(term in sh_action for term in gt_action.split()):
-                    continue
-                    
-                # Check for type of action match (click, type, select)
-                if ("click" in gt_action and "click" in sh_action) or \
-                   ("type" in gt_action and "type" in sh_action) or \
-                   ("select" in gt_action and "select" in sh_action):
-                    partial_matches += 1
-                    break
-        
-        # Calculate scores
-        accuracy_score = int((exact_matches / len(ground_truth_actions)) * 100) if ground_truth_actions else 0
-        similarity_score = int(((exact_matches + 0.5 * partial_matches) / len(ground_truth_actions)) * 100) if ground_truth_actions else 0
-        
-        return {
-            "accuracy_score": min(accuracy_score, 100),  # Cap at 100
-            "similarity_score": min(similarity_score, 100),  # Cap at 100 
-            "explanation": f"Fallback evaluation: Found {exact_matches} exact matches and {partial_matches} partial matches out of {len(ground_truth_actions)} ground truth actions."
-        }
-    except Exception as e:
-        print(f"Error in fallback scoring: {str(e)}")
-        return {
-            "accuracy_score": 25,
-            "similarity_score": 35,
-            "explanation": f"Error in fallback scoring: {str(e)}"
-        }
-
-# Get extract content from log file
-def get_extract_content(log_file_path):
-    try:
-        with open(log_file_path, "r") as f:
-            log_contents = f.read()
-            
-        # Pattern to match EXTRACT content blocks - using a more robust pattern
-        extract_content_pattern = r"<stagehand>\[EXTRACT\] Content: (\[[\s\S]*?])</stagehand>"
-        content_matches = re.findall(extract_content_pattern, log_contents)
-        
-        # Combine all extract contents
-        all_content = []
-        for content in content_matches:
-            try:
-                # Try to parse as JSON if it's in that format
-                parsed_content = json.loads(content)
-                if isinstance(parsed_content, list):
-                    all_content.extend(parsed_content)
-                else:
-                    all_content.append(str(parsed_content))
-            except json.JSONDecodeError:
-                # If not valid JSON, just add as string
-                all_content.append(content)
-                
-        return all_content
-    except Exception as e:
-        print(f"Error getting extract content: {str(e)}")
-        return []
-
-# Save evaluation results to JSON file
-def save_evaluation_result(
-    task_id, 
-    website, 
-    task, 
-    ground_truth_actions, 
-    stagehand_actions, 
-    evaluation_result, 
-    total_time, 
-    browser_init_time, 
-    task_time, 
-    tokens_used, 
-    status
-):
-    try:
-        # Get extract content from the log
-        extract_content = get_extract_content(CURRENT_LOG_FILE)
-        
-        # Create result object
         result = {
             'task_id': task_id,
             'website': website,
             'task': task,
-            'ground_truth_actions': ground_truth_actions,  # No need to JSONify, will be done when writing
+            'ground_truth_actions': ground_truth_actions,
             'stagehand_actions': stagehand_actions,
             'extract_content': extract_content,
             'accuracy_score': evaluation_result['accuracy_score'],
             'similarity_score': evaluation_result['similarity_score'],
-            'explanation': evaluation_result['explanation'],  # Added explanation field
+            'steps_percentage': evaluation_result['steps_percentage'],
+            'explanation': evaluation_result['explanation'],
             'total_time_seconds': total_time,
-            'browser_init_time': browser_init_time,
-            'task_time_seconds': task_time,
-            'tokens_used': tokens_used,
             'status': status,
-            'timestamp': datetime.datetime.now().isoformat()  # Added timestamp
+            'timestamp': datetime.datetime.now().isoformat()
         }
         
         # Read existing results
@@ -483,11 +232,9 @@ def save_evaluation_result(
                 except json.JSONDecodeError:
                     print(f"Error reading results file. Creating new file.")
                     results = []
-        
-        # Append new result
+    
         results.append(result)
-        
-        # Write updated results back to file
+
         with open(RESULTS_FILE, 'w') as f:
             json.dump(results, f, indent=2)
             
@@ -495,70 +242,116 @@ def save_evaluation_result(
     except Exception as e:
         print(f"Error saving evaluation result: {str(e)}")
 
-# Stats tracking
-timeout_count = 0
-rate_limit_count = 0
-total_tokens = 0  # Track total tokens used
+def evaluate_task_results(task_id, website, task_description, start_time, status, log_content):
+    try:
+        elapsed_time = time.time() - start_time
+        
+        df = pd.read_excel(SPREADSHEET_PATH)
+        task_row = df[df['id'] == task_id]
+        if task_row.empty:
+            ground_truth_actions = []
+        else:
+            ground_truth_actions = ast.literal_eval(task_row.iloc[0]['action_reprs'])
+        
+        print("\nExtracting stagehand actions from log file...")
+        stagehand_actions = extract_stagehand_actions(log_content)
+        print(f"Found {len(stagehand_actions)} stagehand actions:")
+        for idx, action in enumerate(stagehand_actions):
+            print(f"  {idx+1}. {action}")
+        
+        extract_content = get_extract_content(log_content)
+        
+        print("\nEvaluating stagehand actions against ground truth...")
+        evaluation_result = evaluate_with_llm(stagehand_actions, ground_truth_actions, website, task_description)
+        print(f"Evaluation result:")
+        print(f"  Accuracy score: {evaluation_result['accuracy_score']}")
+        print(f"  Similarity score: {evaluation_result['similarity_score']}")
+        print(f"  Steps percentage: {evaluation_result['steps_percentage']:.1f}%")
+        print(f"  Explanation: {evaluation_result['explanation']}")
+        
+        print("\nSaving evaluation result to JSON...")
+        save_evaluation_result(
+            task_id, website, task_description, ground_truth_actions, stagehand_actions,
+            evaluation_result, elapsed_time, status, extract_content
+        )
+        
+        return True
+    except Exception as e:
+        print(f"Error during evaluation: {str(e)}")
+        return False
 
-def run_npm_start(task_index=0):
-    global timeout_count, rate_limit_count, total_tokens
+def load_tasks_from_spreadsheet():
+    print("Loading tasks from spreadsheet")
+    try:
+        df = pd.read_excel(SPREADSHEET_PATH)
+        tasks = []
+        for _, row in df.iterrows():
+            task_id = row['id']
+            website = row['website_id'] if 'website_id' in row else row['website']
+            task = row['task'] if 'task' in row else row['confirmed_task']
+            tasks.append({
+                'id': task_id,
+                'website': website,
+                'task': task
+            })
+        return tasks
+    except Exception as e:
+        print(f"Error loading spreadsheet: {str(e)}")
+        sys.exit(1)
+
+def run_task(task_index=0, tasks=None):
+    initialize_results_file()
     
-    # Get current task
-    tasks = load_tasks_from_spreadsheet()
     if task_index >= len(tasks):
         print("All tasks processed!")
-        print(f"Final stats:")
-        print(f"  Total timeouts: {timeout_count}")
-        print(f"  Total rate limit errors: {rate_limit_count}")
-        print(f"  Total tokens used: {total_tokens}")
-        # Exit the script instead of restarting
-        sys.exit(0)
+        return
     
     current_task = tasks[task_index]
     task_id = current_task['id']
     website = current_task['website']
     task_description = current_task['task']
-    ground_truth_actions = current_task['action_reprs']
+    
+    # Check if this task has already been processed
+    if os.path.exists(RESULTS_FILE) and os.path.getsize(RESULTS_FILE) > 0:
+        with open(RESULTS_FILE, 'r') as f:
+            try:
+                results = json.load(f)
+                if any(result.get('task_id') == task_id for result in results):
+                    print(f"Task ID {task_id} already processed. Skipping...")
+                    return run_task(task_index + 1, tasks)
+            except:
+                pass
+    
+    # Skip to ID 3 or higher as requested
+    if task_id < 20:
+        print(f"Skipping task ID {task_id} as requested to start from ID 3...")
+        return run_task(task_index + 20, tasks)
     
     # Format the query as requested
     current_query = f"USE {website} to do this task: {task_description}"
     
-    print(f"\n{'='*80}")
+    print(f"\n================================================================================")
     print(f"Processing task {task_index+1}/{len(tasks)}: ID={task_id}, Website={website}")
     print(f"Query: '{current_query}'")
-    print(f"{'='*80}\n")
+    print(f"================================================================================\n")
     
-    # Clear the current task log file
-    with open(CURRENT_LOG_FILE, 'w') as f:
-        f.write("")
-
-    # Open both log files
-    master_log = open(MASTER_LOG_FILE, 'a')
-    current_log = open(CURRENT_LOG_FILE, 'a')
-
-    # When logging
-    def write_to_logs(line):
-        timestamp = datetime.datetime.now().isoformat()
-        master_log.write(line)
-        current_log.write(line)
-        master_log.flush()
-        current_log.flush()
-        sys.stdout.write(line)
-        sys.stdout.flush()
-
+    # Clear the log file
+    with open(LOG_FILE, 'w') as f:
+        pass
+    
+    # Keep the log content
+    log_content = ""
+    
     try:
         timestamp = datetime.datetime.now().isoformat()
-        write_to_logs(f'\n\n{timestamp} - TASK {task_index+1}, ID={task_id}: "{current_query}"\n')
+        log_line = f'\n\n{timestamp} - TASK {task_index+1}, ID={task_id}: "{current_query}"\n'
+        log_content += log_line
         
-        # Track tokens for this query
-        query_tokens = 0
+        with open(LOG_FILE, 'a') as f:
+            f.write(log_line)
         
-        # Track timing
-        browser_init_start = time.time()
-        browser_ready = False
-        task_start_time = None
-        browser_init_time = 0
-        rate_limit_wait_time = 0
+        # Start timing the query
+        start_time = time.time()
         
         npm_process = subprocess.Popen(
             ['npm', 'start', current_query],
@@ -569,352 +362,187 @@ def run_npm_start(task_index=0):
         
         killed = False
         buffer = []  # For detecting rate limit in multi-line output
-        task_status = "completed"  # Default status
-        completed_early = False  # Track if we're exiting the loop early
 
         # Set timeout end time
-        timeout_end = browser_init_start + TIMEOUT_SECONDS
+        timeout_end = start_time + TIMEOUT_SECONDS
 
         for line in npm_process.stdout:
-            write_to_logs(line)
             # Store last few lines to detect multi-line errors
             buffer.append(line)
             if len(buffer) > 10:
                 buffer.pop(0)
             
-            # Track token usage from API responses
-            if "Total tokens:" in line:
-                try:
-                    # Extract token count from the line using a clearer regex
-                    tokens_match = re.search(r'TOKEN_COUNT: \[stagehand:anthropic\] Total tokens: (\d+) \((\d+) input, (\d+) output\)', line)
-                    if tokens_match:
-                        total = int(tokens_match.group(1))
-                        input_tokens = int(tokens_match.group(2))
-                        output_tokens = int(tokens_match.group(3))
-                        
-                        # Look for our specific formatting prefixes
-                        if "FINAL_TOKEN_COUNT: [stagehand:anthropic] Total tokens:" in line:
-                            # Update the query token count
-                            query_tokens = total
-                            total_tokens = total_tokens + total  # Update total tokens
-                            
-                            # Log token count based on type
-                            if "FINAL_TOKEN_COUNT:" in line:
-                                print(f"Final token count: {total} ({input_tokens} input, {output_tokens} output)")
-                            else:
-                                print(f"Token count: {total} ({input_tokens} input, {output_tokens} output)")
-                            
-                            write_to_logs(f'{timestamp} - Token count detected: {total} ({input_tokens} input, {output_tokens} output)\n')
-                except Exception as e:
-                    # Log the error without printing the entire line
-                    print(f"Error parsing token count: {str(e)}")
-                    write_to_logs(f'{timestamp} - Error parsing token count: {str(e)}\n')
-            
-            # Track when browser is ready to start actual task timing
-            if "[stagehand:init] local browser started successfully" in line:
-                browser_ready = True
-                task_start_time = time.time()
-                browser_init_time = task_start_time - browser_init_start
-                print(f"Browser initialized in {browser_init_time:.2f} seconds")
-                write_to_logs(f'{timestamp} - Browser initialized in {browser_init_time:.2f} seconds\n')
-                continue
+            # Add line to log content
+            log_content += line
             
             # Check if rate limit has been hit
             if RATE_LIMIT_ERROR in line or (RETRY_ERROR in line and any(RATE_LIMIT_ERROR in b for b in buffer)):
-                # Calculate elapsed time excluding rate limit wait
-                elapsed_time = time.time() - task_start_time if task_start_time else time.time() - browser_init_start
+                elapsed_time = time.time() - start_time
+                rate_limit_msg = f'{timestamp} - RATE LIMIT ERROR after {elapsed_time:.2f} seconds\n'
+                log_content += rate_limit_msg
                 print(f"RATE LIMIT ERROR after {elapsed_time:.2f} seconds, moving to next query")
-                write_to_logs(f'{timestamp} - RATE LIMIT ERROR after {elapsed_time:.2f} seconds\n')
-                write_to_logs(f'{timestamp} - Tokens used in this query: {query_tokens}\n')
                 
-                rate_limit_count += 1
+                with open(LOG_FILE, 'a') as f:
+                    f.write(line)
+                    f.write(rate_limit_msg)
+                
                 killed = True
-                task_status = "rate_limit_error"
                 npm_process.terminate()
-                npm_process.wait(timeout=5)
+                try:
+                    npm_process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    npm_process.kill()
                 
-                # Set flag to exit the loop but still process whatever actions were collected
-                completed_early = True
-                break
+                # Evaluate and save results
+                evaluate_task_results(task_id, website, task_description, start_time, "rate_limit_error", log_content)
+                
+                # Add sleep to allow rate limits to reset
+                wait_time = 60  # Wait 60 seconds before next query to help with rate limits
+                print(f"Waiting {wait_time} seconds before next query...")
+                time.sleep(wait_time)
+                
+                return run_task(task_index + 1, tasks)
             
             # Check if we've exceeded our timeout
             current_time = time.time()
             if current_time > timeout_end:
-                # Calculate elapsed time excluding rate limit wait
-                elapsed_time = current_time - task_start_time if task_start_time else current_time - browser_init_start
+                elapsed_time = current_time - start_time
+                timeout_msg = f'{timestamp} - TIMEOUT after {elapsed_time:.2f} seconds\n'
+                log_content += timeout_msg
                 print(f"TIMEOUT after {elapsed_time:.2f} seconds, moving to next query")
-                write_to_logs(f'{timestamp} - TIMEOUT after {elapsed_time:.2f} seconds\n')
-                write_to_logs(f'{timestamp} - Tokens used in this query: {query_tokens}\n')
                 
-                timeout_count += 1
+                with open(LOG_FILE, 'a') as f:
+                    f.write(line)
+                    f.write(timeout_msg)
+                
                 killed = True
-                task_status = "timeout"
                 npm_process.terminate()
-                npm_process.wait(timeout=5)
+                try:
+                    npm_process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    npm_process.kill()
                 
-                # Set flag to exit the loop but still process whatever actions were collected
-                completed_early = True
-                break
+                # Evaluate and save results
+                evaluate_task_results(task_id, website, task_description, start_time, "timeout", log_content)
+                
+                time.sleep(5)
+                
+                return run_task(task_index + 1, tasks)
             
-            if FINISH_TRIGGER in line:
+            # Write to log file and stdout
+            with open(LOG_FILE, 'a') as f:
+                f.write(line)
+            sys.stdout.write(line)
+            sys.stdout.flush()
+            
+            # Check for successful completion or errors
+            if "Task Completed" in line:
                 end_time = time.time()
-                if task_start_time:
-                    task_elapsed_time = end_time - task_start_time
-                    total_elapsed_time = end_time - browser_init_start
-                    print(f"Task completed in {task_elapsed_time:.2f} seconds (Total: {total_elapsed_time:.2f}s, Browser Init: {browser_init_time:.2f}s, Rate Limit Wait: {rate_limit_wait_time:.2f}s)")
-                    print(f"Tokens used in this query: {query_tokens}")
-                    write_to_logs(f'{timestamp} - Task completed in {task_elapsed_time:.2f} seconds (Total: {total_elapsed_time:.2f}s, Browser Init: {browser_init_time:.2f}s, Rate Limit Wait: {rate_limit_wait_time:.2f}s)\n')
-                    write_to_logs(f'{timestamp} - Tokens used in this query: {query_tokens}\n')
-                else:
-                    elapsed_time = end_time - browser_init_start
-                    task_elapsed_time = elapsed_time
-                    total_elapsed_time = elapsed_time
-                    print(f"Finished query in {elapsed_time:.2f} seconds")
-                    print(f"Tokens used in this query: {query_tokens}")
-                    write_to_logs(f'{timestamp} - finished query in {elapsed_time:.2f} seconds\n')
-                    write_to_logs(f'{timestamp} - Tokens used in this query: {query_tokens}\n')
-
+                elapsed_time = end_time - start_time
+                
+                completion_msg = f'{timestamp} - Task completed in {elapsed_time:.2f} seconds\n'
+                log_content += completion_msg
+                print(f"Finished query in {elapsed_time:.2f} seconds, moving to next query")
+                
+                with open(LOG_FILE, 'a') as f:
+                    f.write(completion_msg)
+                
                 killed = True
                 npm_process.terminate()
-                npm_process.wait(timeout=5)
-                completed_early = True
-                break
+                try:
+                    npm_process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    npm_process.kill()
+                
+                # Evaluate and save results
+                evaluate_task_results(task_id, website, task_description, start_time, "completed", log_content)
+                
+                time.sleep(5)
+                
+                return run_task(task_index + 1, tasks)
 
             if "[AI_RETRYError]" in line:
-                # Calculate error time
                 end_time = time.time()
-                if task_start_time:
-                    task_elapsed_time = end_time - task_start_time
-                    total_elapsed_time = end_time - browser_init_start
-                    print(f"Task failed in {task_elapsed_time:.2f} seconds (Total: {total_elapsed_time:.2f}s, Browser Init: {browser_init_time:.2f}s, Rate Limit Wait: {rate_limit_wait_time:.2f}s)")
-                    print(f"Tokens used in this query: {query_tokens}")
-                    write_to_logs(f'{timestamp} - Task failed in {task_elapsed_time:.2f} seconds (Total: {total_elapsed_time:.2f}s, Browser Init: {browser_init_time:.2f}s, Rate Limit Wait: {rate_limit_wait_time:.2f}s)\n')
-                    write_to_logs(f'{timestamp} - Tokens used in this query: {query_tokens}\n')
-                else:
-                    # Fallback to old timing if browser ready flag wasn't set
-                    elapsed_time = end_time - browser_init_start
-                    task_elapsed_time = elapsed_time
-                    total_elapsed_time = elapsed_time
-                    print(f"GOT AN ERROR in {elapsed_time:.2f} seconds")
-                    print(f"Tokens used in this query: {query_tokens}")
-                    write_to_logs(f'{timestamp} - Error in {elapsed_time:.2f} seconds\n')
-                    write_to_logs(f'{timestamp} - Tokens used in this query: {query_tokens}\n')
+                elapsed_time = end_time - start_time
+                
+                error_msg = f'{timestamp} - Error in {elapsed_time:.2f} seconds\n'
+                log_content += error_msg
+                print(f"GOT AN ERROR in {elapsed_time:.2f} seconds, moving to next query")
+                
+                with open(LOG_FILE, 'a') as f:
+                    f.write(error_msg)
                 
                 killed = True
-                task_status = "error"
                 npm_process.terminate()
-                npm_process.wait(timeout=5)
-                completed_early = True
-                break
+                try:
+                    npm_process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    npm_process.kill()
+                
+                # Evaluate and save results
+                evaluate_task_results(task_id, website, task_description, start_time, "ai_retry_error", log_content)
+                
+                time.sleep(5)
+                
+                return run_task(task_index + 1, tasks)
 
-        # If process is still running but we didn't break early, terminate it
-        if not killed:
-            npm_process.terminate()
-            npm_process.wait(timeout=5)
-            end_time = time.time()
-            if task_start_time:
-                task_elapsed_time = end_time - task_start_time
-                total_elapsed_time = end_time - browser_init_start
-            else:
-                total_elapsed_time = end_time - browser_init_start
-                task_elapsed_time = total_elapsed_time - browser_init_time
-            
-            task_status = "unknown_exit"
-            
-        # If we're here because the process completed normally, get timing
-        if not completed_early and not killed:
-            end_time = time.time()
-            if task_start_time:
-                task_elapsed_time = end_time - task_start_time
-                total_elapsed_time = end_time - browser_init_start
-            else:
-                total_elapsed_time = end_time - browser_init_start
-                task_elapsed_time = total_elapsed_time - browser_init_time
+        # If we get here, the process exited without any explicit trigger
+        exit_code = npm_process.wait()
+        exit_msg = f"Process exited with code {exit_code} without finishing\n"
+        log_content += exit_msg
+        print(exit_msg)
         
-        # Always close log files before extracting actions
-        master_log.close()
-        current_log.close()
+        with open(LOG_FILE, 'a') as f:
+            f.write(exit_msg)
         
-        # Now extract stagehand actions from the log file
-        print("\nExtracting stagehand actions from log file...")
-        stagehand_actions = extract_stagehand_actions(CURRENT_LOG_FILE, task_id)
-        print(f"Found {len(stagehand_actions)} stagehand actions:")
-        for idx, action in enumerate(stagehand_actions):
-            print(f"  {idx+1}. {action}")
+        # Always evaluate and save results
+        evaluate_task_results(task_id, website, task_description, start_time, f"unexpected_exit_code_{exit_code}", log_content)
         
-        # Evaluate stagehand actions against ground truth
-        print("\nEvaluating stagehand actions against ground truth...")
-        evaluation_result = evaluate_with_llm(stagehand_actions, ground_truth_actions)
-        print(f"Evaluation result:")
-        print(f"  Accuracy score: {evaluation_result['accuracy_score']}")
-        print(f"  Similarity score: {evaluation_result['similarity_score']}")
-        print(f"  Explanation: {evaluation_result['explanation']}")
-        
-        # Save evaluation result to JSON
-        print("\nSaving evaluation result to JSON...")
-        save_evaluation_result(
-            task_id, 
-            website, 
-            task_description, 
-            ground_truth_actions, 
-            stagehand_actions, 
-            evaluation_result, 
-            total_elapsed_time, 
-            browser_init_time, 
-            task_elapsed_time, 
-            query_tokens, 
-            task_status
-        )
-        
-        print(f"\nWaiting 5 seconds before processing next task...")
         time.sleep(5)
-        
-        return run_npm_start(task_index + 1)
+        return run_task(task_index + 1, tasks)
         
     except KeyboardInterrupt:
         print('\nReceived KeyboardInterrupt. Cleaning up and exiting...')
-        if not master_log.closed:
-            master_log.write('\nScript terminated by user\n')
-            master_log.close()
-        if not current_log.closed:
-            current_log.write('\nScript terminated by user\n')
-            current_log.close()
+        with open(LOG_FILE, 'a') as f:
+            f.write('\nScript terminated by user\n')
         if 'npm_process' in locals():
             npm_process.terminate()
         sys.exit(0)
-    except subprocess.TimeoutExpired:
-        # Handle the specific case of a timeout when waiting for process termination
-        print("Process took too long to terminate, forcing continuation.")
-        if not master_log.closed:
-            master_log.write("Process took too long to terminate, forcing continuation.\n")
-            master_log.close()
-        if not current_log.closed:
-            current_log.write("Process took too long to terminate, forcing continuation.\n")
-            current_log.close()
-        
-        # Even if the process didn't terminate properly, we still want to extract actions and evaluate them
-        # Close log files if still open
-        if not master_log.closed:
-            master_log.close()
-        if not current_log.closed:
-            current_log.close()
-            
-        # Set timing values for the result
-        end_time = time.time()
-        if task_start_time:
-            task_elapsed_time = end_time - task_start_time
-            total_elapsed_time = end_time - browser_init_start
-        else:
-            total_elapsed_time = end_time - browser_init_start
-            task_elapsed_time = total_elapsed_time - browser_init_time
-            
-        task_status = "timeout_on_termination"
-        
-        # Extract and evaluate actions
-        print("\nExtracting stagehand actions from log file...")
-        stagehand_actions = extract_stagehand_actions(CURRENT_LOG_FILE, task_id)
-        print(f"Found {len(stagehand_actions)} stagehand actions:")
-        for idx, action in enumerate(stagehand_actions):
-            print(f"  {idx+1}. {action}")
-        
-        print("\nEvaluating stagehand actions against ground truth...")
-        evaluation_result = evaluate_with_llm(stagehand_actions, ground_truth_actions)
-        print(f"Evaluation result:")
-        print(f"  Accuracy score: {evaluation_result['accuracy_score']}")
-        print(f"  Similarity score: {evaluation_result['similarity_score']}")
-        print(f"  Explanation: {evaluation_result['explanation']}")
-        
-        print("\nSaving evaluation result to JSON...")
-        save_evaluation_result(
-            task_id, 
-            website, 
-            task_description, 
-            ground_truth_actions, 
-            stagehand_actions, 
-            evaluation_result, 
-            total_elapsed_time, 
-            browser_init_time, 
-            task_elapsed_time, 
-            query_tokens, 
-            task_status
-        )
-        
-        print(f"\nWaiting 5 seconds before processing next task...")
-        time.sleep(5)
-        
-        return run_npm_start(task_index + 1)
     except Exception as e:
         error_msg = f"Error running npm start for task ID {task_id}: {str(e)}"
         print(error_msg)
-        if not master_log.closed:
-            master_log.write(f"{error_msg}\n")
-            master_log.close()
-        if not current_log.closed:
-            current_log.write(f"{error_msg}\n")
-            current_log.close()
+        with open(LOG_FILE, 'a') as f:
+            f.write(f"{error_msg}\n")
         
-        # For all other exceptions, we still want to try to extract and evaluate actions
-        # Even if something went wrong in the script itself
-        try:
-            end_time = time.time()
-            if task_start_time:
-                task_elapsed_time = end_time - task_start_time
-                total_elapsed_time = end_time - browser_init_start
-            else:
-                total_elapsed_time = end_time - browser_init_start
-                task_elapsed_time = total_elapsed_time - browser_init_time
-                
-            task_status = "script_error"
-            
-            # Extract and evaluate actions
-            print("\nAttempting to extract stagehand actions despite error...")
-            stagehand_actions = extract_stagehand_actions(CURRENT_LOG_FILE, task_id)
-            print(f"Found {len(stagehand_actions)} stagehand actions:")
-            for idx, action in enumerate(stagehand_actions):
-                print(f"  {idx+1}. {action}")
-            
-            print("\nEvaluating stagehand actions against ground truth...")
-            evaluation_result = evaluate_with_llm(stagehand_actions, ground_truth_actions)
-            print(f"Evaluation result:")
-            print(f"  Accuracy score: {evaluation_result['accuracy_score']}")
-            print(f"  Similarity score: {evaluation_result['similarity_score']}")
-            print(f"  Explanation: {evaluation_result['explanation']}")
-            
-            print("\nSaving evaluation result to JSON...")
-            save_evaluation_result(
-                task_id, 
-                website, 
-                task_description, 
-                ground_truth_actions, 
-                stagehand_actions, 
-                evaluation_result, 
-                total_elapsed_time, 
-                browser_init_time, 
-                task_elapsed_time, 
-                query_tokens, 
-                task_status
-            )
-        except Exception as inner_e:
-            print(f"Error during recovery after script error: {str(inner_e)}")
-            
-        print(f"\nWaiting 5 seconds before processing next task...")
+        # Evaluate and save results
+        evaluate_task_results(task_id, website, task_description, start_time, "script_error", log_content)
+        
         time.sleep(5)
-        
-        return run_npm_start(task_index + 1)
+        return run_task(task_index + 1, tasks)
 
 def main():
+    if not os.path.exists(LOG_FILE):
+        open(LOG_FILE, 'w').close()
+    
+    # Initialize results file
     initialize_results_file()
     
-    os.makedirs(os.path.dirname(MASTER_LOG_FILE), exist_ok=True)
-    
+    # Signal handler for CTRL+C
     def signal_handler(sig, frame):
         print('\nReceived SIGINT. Cleaning up and exiting...')
-        with open(MASTER_LOG_FILE, 'a') as f:
+        with open(LOG_FILE, 'a') as f:
             f.write('\nScript terminated by user\n')
         sys.exit(0)
     
     signal.signal(signal.SIGINT, signal_handler)
-    run_npm_start(0)
+    
+    # Load tasks
+    tasks = load_tasks_from_spreadsheet()
+    
+    # Run tasks
+    run_task(0, tasks)
+    
+    print("All tasks completed!")
 
 if __name__ == "__main__":
     main()

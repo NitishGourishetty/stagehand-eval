@@ -1,0 +1,28 @@
+[
+  {
+    "task_id": 21,
+    "website": "kohls",
+    "task": "Add a pair of diamond stud earrings to the cart.",
+    "ground_truth_actions": [
+      "[textbox]  Search by keyword or web id -> TYPE: diamond stud earrings",
+      "[span]  diamond stud earrings -> CLICK",
+      "[img]  10k Gold 1 Carat T.W. Black Diamond Stud Earrings -> CLICK",
+      "[button]  Add to Cart -> CLICK"
+    ],
+    "stagehand_actions": [
+      "[NAVIGATE] https://www.kohls.com",
+      "[OBSERVE] find the search bar",
+      "[ACT] Click the search textbox",
+      "[ACT] Type 'diamond stud earrings' into the search textbox",
+      "[ACT] Click the Search button"
+    ],
+    "extract_content": [],
+    "accuracy_score": 70,
+    "similarity_score": 80,
+    "steps_percentage": 100.0,
+    "explanation": "The Stagehand AI system correctly identified and navigated to the Kohl's website, found the search bar, clicked the search textbox, typed 'diamond stud earrings' into the search textbox, and clicked the Search button. These actions align closely with the ground truth steps up to the point of executing a search for diamond stud earrings. Although it did not complete the task of adding the earrings to the cart, possibly due to time constraints, its actions were correct and on the right track towards completing the task. Its performance shows a high degree of semantic similarity with the expected actions, demonstrating a good understanding of the initial steps required to perform the task.",
+    "total_time_seconds": 103.82101202011108,
+    "status": "timeout",
+    "timestamp": "2025-03-26T12:13:02.540927"
+  }
+]
