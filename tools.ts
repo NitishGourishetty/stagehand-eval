@@ -190,6 +190,7 @@ export const getTools = (
         });
       if (searchInstruction) {
         log("EXTRACT", "Using search instruction:", searchInstruction);
+
         const result = await generateText({
           model: model,
           prompt: `You want to extract the following data from the page: ${searchInstruction}. 
@@ -200,6 +201,7 @@ export const getTools = (
           system: `You are a helpful assistant that can extract data from a web page.`,
         });
         content = result.text.split("\n");
+
         log("EXTRACT", "Content:", content);
       }
       return content.join("\n");
