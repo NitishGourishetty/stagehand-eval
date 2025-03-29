@@ -33,7 +33,7 @@ load_dotenv()
 # Configuration
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), 'results')
 LOG_DIR = os.path.join(RESULTS_DIR, 'logs')
-TIMEOUT_SECONDS = 90  # Timeout in seconds
+TIMEOUT_SECONDS = 120  # Timeout in seconds
 RATE_LIMIT_ERROR = "rate_limit_error"
 RETRY_ERROR = "RetryError"
 
@@ -412,10 +412,10 @@ def run_task(task_index=0, tasks=None, dataset=None, results_file=None, log_file
             except:
                 pass
     
-    # Skip to ID 3 or higher as requested
-    if dataset == 'mind2web' and task_id < 120:
-        print(f"Skipping task ID {task_id} as requested to start from ID 3...")
-        return run_task(task_index + 120, tasks, dataset, results_file, log_file)
+    # # Skip to ID 3 or higher as requested
+    # if dataset == 'mind2web' and task_id < 120:
+    #     print(f"Skipping task ID {task_id} as requested to start from ID 3...")
+    #     return run_task(task_index + 120, tasks, dataset, results_file, log_file)
     
     # Format the query as requested
     current_query = f"USE {website} to do this task: {task_description}"
@@ -487,7 +487,7 @@ def run_task(task_index=0, tasks=None, dataset=None, results_file=None, log_file
                 evaluate_task_results(task_id, website, task_description, start_time, "rate_limit_error", log_content, dataset, results_file)
                 
                 # Add sleep to allow rate limits to reset
-                wait_time = 60  # Wait 60 seconds before next query to help with rate limits
+                wait_time = 10  # Wait 60 seconds before next query to help with rate limits
                 print(f"Waiting {wait_time} seconds before next query...")
                 time.sleep(wait_time)
                 

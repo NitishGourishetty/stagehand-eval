@@ -1,0 +1,18 @@
+{
+  "total_tasks": 495,
+  "successful_tasks": 346,
+  "success_rate": 69.8989898989899,
+  "average_accuracy": 21.793939393939393,
+  "median_accuracy": 20.0,
+  "std_accuracy": 22.962463080945856,
+  "min_accuracy": 0,
+  "max_accuracy": 90,
+  "action_types": {
+    "NAVIGATE": 638,
+    "ACT": 685,
+    "EXTRACT": 249,
+    "OBSERVE": 186
+  },
+  "total_actions": 1758,
+  "average_actions_per_task": 3.5515151515151517
+}

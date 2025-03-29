@@ -1,0 +1,2237 @@
+[
+    {
+      "task_id": 1,
+      "website": "exploretock",
+      "task": "Check for pickup restaurant available in Boston, NY on March 18, 5pm with just one guest",
+      "ground_truth_actions": [
+        "[combobox]  Reservation type -> SELECT: Pickup",
+        "[svg]   -> CLICK",
+        "[searchbox]  Find a location -> TYPE: Boston",
+        "[span]  Boston -> CLICK",
+        "[svg]   -> CLICK",
+        "[button]  18 -> CLICK",
+        "[combobox]  Time -> SELECT: 5:00 PM",
+        "[svg]   -> CLICK",
+        "[span]  2 guests -> CLICK",
+        "[combobox]  Size -> SELECT: 1 guest",
+        "[button]  Update search -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.exploretock.com",
+        "[ACT] Click on the \"Dine in\" dropdown",
+        "[OBSERVE] Find the pickup option in the dropdown menu",
+        "[ACT] Click on the \"Pickup\" option",
+        "[ACT] Click on the location dropdown",
+        "[OBSERVE] Find the search box for location",
+        "[ACT] Clear the search box and type \"Boston, NY\""
+      ],
+      "extract_content": [],
+      "accuracy_score": 70,
+      "similarity_score": 80,
+      "steps_percentage": 63.63636363636363,
+      "explanation": "The Stagehand AI system accurately followed the initial steps necessary for setting up a pickup order in Boston on the exploretock website. Although the actions do not mirror the ground truth actions precisely, the intent behind the steps taken shows a clear understanding of the task requirements. The AI successfully navigated to the website, selected the 'Pickup' option, and began specifying the location, which aligns with the fundamental steps outlined in the ground truth actions. Despite not completing the full sequence of actions, such as selecting the date, time, and guest size, the AI demonstrated partial progress toward the goal. Given the guidance for leniency and rewarding correct intent and partial progress, the scores reflect the AI's on-track performance albeit incomplete due to potential time constraints.",
+      "total_time_seconds": 82.46226406097412,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:43:11.830717"
+    },
+    {
+      "task_id": 3,
+      "website": "enterprise",
+      "task": "Sign Allan Smith for email offers with the email allan.smith@gmail.com and zip code 10001",
+      "ground_truth_actions": [
+        "[a]   -> CLICK",
+        "[textbox]  First Name (required) -> TYPE: Allan",
+        "[textbox]  Last Name (required) -> TYPE: Smith",
+        "[textbox]  Email Address (required) -> TYPE: allan.smith@gmail.com",
+        "[textbox]  Confirm Email Address (required) -> TYPE: allan.smith@gmail.com",
+        "[textbox]  ZIP Code (required) -> TYPE: 10001",
+        "[button]  Submit -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.enterprise.com",
+        "[ACT] Click the SIGN IN / JOIN button",
+        "[ACT] Click Join Now"
+      ],
+      "extract_content": [],
+      "accuracy_score": 20,
+      "similarity_score": 40,
+      "steps_percentage": 42.857142857142854,
+      "explanation": "The Stagehand AI system began with navigating to the correct website, showing correct intent towards the task, but it deviated significantly from the specific actions required to sign Allan Smith up for email offers. The acts of clicking 'SIGN IN / JOIN' then 'Join Now' indicate an attempt to initiate a signup process but do not match the explicit steps of filling out a sign-up form with Allan Smith's information. The actions show an understanding of the need to initiate a registration process but do not address the specific task of signing up for email offers with the provided details. The scores reflect recognition of the correct initial direction but a substantial deviation from the required steps.",
+      "total_time_seconds": 53.77604293823242,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:43:26.240947"
+    },
+    {
+      "task_id": 2,
+      "website": "exploretock",
+      "task": "Book a winery tour in Napa Valley in a winery which serves Mediterranean cuisine with wine testing for 4 guests on April 15, 10 am in a outdoor setup.",
+      "ground_truth_actions": [
+        "[svg]   -> CLICK",
+        "[svg]   -> CLICK",
+        "[searchbox]  Find a location -> TYPE: NAPA VALLEY",
+        "[span]  Napa Valley -> CLICK",
+        "[combobox]  Reservation type -> SELECT: Wineries",
+        "[svg]   -> CLICK",
+        "[svg]   -> CLICK",
+        "[button]  15 -> CLICK",
+        "[combobox]  Time -> SELECT: 10:00 AM",
+        "[combobox]  Party size -> SELECT: 4 guests",
+        "[svg]   -> CLICK",
+        "[button]  Edit cuisine type filter -> CLICK",
+        "[checkbox]  Mediterranean -> CLICK",
+        "[button]  Submit -> CLICK",
+        "[button]  Open additional search filters -> CLICK",
+        "[checkbox]  Outdoors -> CLICK",
+        "[checkbox]  Wine tasting -> CLICK",
+        "[button]  Update search -> CLICK",
+        "[span]  10:00 AM -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.exploretock.com",
+        "[OBSERVE] find the search bar",
+        "[ACT] Click on the search bar",
+        "[ACT] Type 'Napa Valley wineries'",
+        "[OBSERVE] find the search button or submit option",
+        "[ACT] Press Enter key",
+        "[NAVIGATE] https://www.exploretock.com/search?q=napa%20valley%20wineries",
+        "[OBSERVE] find the party size selector"
+      ],
+      "extract_content": [],
+      "accuracy_score": 25,
+      "similarity_score": 60,
+      "steps_percentage": 42.10526315789473,
+      "explanation": "The Stagehand AI system performed some initial correct steps indicative of starting the task properly, like navigating to the website and using the search bar to begin the winery research in Napa Valley. However, the specific actions such as selecting the date, party size, and specifying the cuisine and outdoor requirement were not addressed in the actual steps taken, compared with the ground truth actions expected. The early steps taken by Stagehand AI were on the right track but incomplete. Given the time limits and initial correct intent to search for wineries in Napa Valley, leniency was applied in scoring, recognizing partial progress.",
+      "total_time_seconds": 89.99814128875732,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:43:42.817029"
+    },
+    {
+      "task_id": 4,
+      "website": "enterprise",
+      "task": "Find a mini van at Brooklyn City from April 5th to April 8th for a 22 year old renter.",
+      "ground_truth_actions": [
+        "[searchbox]  Pick-up & Return Location (ZIP, City or Airport) (... -> TYPE: Brooklyn",
+        "[option]  Brooklyn, NY, US Select -> CLICK",
+        "[button]  Selected Pick-Up Date 03/19/2023 -> CLICK",
+        "[button]  04/05/2023 -> CLICK",
+        "[svg]   -> CLICK",
+        "[button]  04/08/2023 -> CLICK",
+        "[combobox]  Renter Age -> SELECT: 22",
+        "[button]  Vehicle Class -> CLICK",
+        "[radio]  Minivans -> CLICK",
+        "[button]  Apply Filter -> CLICK",
+        "[button]  Browse Vehicles -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00033831596375,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:44:19.972489"
+    },
+    {
+      "task_id": 6,
+      "website": "united",
+      "task": "Compare the fare types to book a 1-adult ticket from Springfiels, IL to Austin, TX for April 29th 2023",
+      "ground_truth_actions": [
+        "[combobox]  Enter your departing city, airport name, or airpor... -> TYPE: SPRINGFIELD",
+        "[button]  Springfield, IL, US (SPI) -> CLICK",
+        "[combobox]  Enter your destination city, airport name, or airp... -> TYPE: AUSTIN",
+        "[button]  Austin, TX, US (AUS) -> CLICK",
+        "[span]   -> CLICK",
+        "[button]  Find flights -> CLICK",
+        "[textbox]  Date -> CLICK",
+        "[button]  Move backward to switch to the previous month. -> CLICK",
+        "[button]  Saturday, April 29, 2023 -> CLICK",
+        "[button]  Update -> CLICK",
+        "[link]  Details -> CLICK",
+        "[link]  Seats -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.united.com",
+        "[ACT] Click on the From field and clear the current text"
+      ],
+      "extract_content": [],
+      "accuracy_score": 30,
+      "similarity_score": 60,
+      "steps_percentage": 16.666666666666664,
+      "explanation": "The Stagehand AI system initiated the task by navigating to the correct website and beginning the process to enter flight details by clearing the 'From' field, which is in line with the expected first steps of defining departure and destination locations. Although it did not complete any of the specific steps listed in the ground truth actions, such as entering city names or selecting airports and dates, the intent to initiate the process of booking a flight was correctly identified and started. Given the system started on the right track but presumably didn't have time to complete more steps, a lenient evaluation is applied. Therefore, the accuracy score is low due to the lack of exact match actions, but the similarity score is moderately high, acknowledging the correct initial approach towards the task.",
+      "total_time_seconds": 43.42962288856506,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:44:30.964666"
+    },
+    {
+      "task_id": 5,
+      "website": "kohls",
+      "task": "Find the highest rated dog collar under 10 dollar.",
+      "ground_truth_actions": [
+        "[link]  Shop by Category -> CLICK",
+        "[link]  Pet -> CLICK",
+        "[span]  Pet Type -> CLICK",
+        "[link]  Dog (1,338) -> CLICK",
+        "[span]  Category -> CLICK",
+        "[link]  Collars & Leashes (485) -> CLICK",
+        "[link]  Sort by: Featured -> CLICK",
+        "[link]  Highest Rated -> CLICK",
+        "[div]  Price -> CLICK",
+        "[link]  Under $10 (1) -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00081205368042,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:44:42.469114"
+    },
+    {
+      "task_id": 8,
+      "website": "underarmour",
+      "task": "Find a men's UA outlet T-shirt of XL size and add to cart.",
+      "ground_truth_actions": [
+        "[menuitem]  Outlet -> CLICK",
+        "[link]  Mens -> CLICK",
+        "[div]  Product Category -> CLICK",
+        "[link]  Clothing -> CLICK",
+        "[div]  Product Type -> CLICK",
+        "[link]  Short Sleeves -> CLICK",
+        "[div]  Size -> CLICK",
+        "[link]  XL -> CLICK",
+        "[img]  Men's UA Tech\u2122 2.0 Short Sleeve -> CLICK",
+        "[button]  XL -> CLICK",
+        "[button]  Add to Bag -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.underarmour.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 20,
+      "steps_percentage": 9.090909090909092,
+      "explanation": "The Stagehand AI only executed a single action which was navigating to the homepage of Under Armour. This action, while correct, constitutes a minimal fraction of the required steps to fulfill the given task. Despite this, it represented the correct initial step towards finding and adding a Men's UA outlet T-shirt of XL size to the cart. However, there were no following actions to directly match or closely resemble the subsequent steps listed in the ground truth. Hence, low scores are given, with a slightly generous evaluation for the correct intent and the partial progress of navigating to the desired website.",
+      "total_time_seconds": 46.88718605041504,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:45:23.950373"
+    },
+    {
+      "task_id": 7,
+      "website": "budget",
+      "task": "Get an SUV with an additional driver and wifi for pick up in  any rental location near Washington regional airport on June 1, 11 am, and drop off at Washington international airport on June 2, 11 am, and pay for the booking instantly.",
+      "ground_truth_actions": [
+        "[button]  Locations -> HOVER",
+        "[link]  Find a Location -> CLICK",
+        "[textbox]  Search by Airport, City, Zip, Address or Attractio... -> TYPE: washington",
+        "[span]  Washington County Regional Apo -> CLICK",
+        "[link]  Make a Reservation -> CLICK",
+        "[textbox]  mm/dd/yyyy -> CLICK",
+        "[link]  Next -> CLICK",
+        "[link]  1 -> CLICK",
+        "[link]  2 -> CLICK",
+        "[combobox]  Pick Up Time -> SELECT: 11:00 AM",
+        "[combobox]  Return Time -> SELECT: 11:00 AM",
+        "[textbox]  Return to same location -> TYPE: washington",
+        "[div]  Washington Dulles Intl Airport -> CLICK",
+        "[generic]  Vehicle Type * -> CLICK",
+        "[p]  SUVs & Wagons -> CLICK",
+        "[button]  Select My Car -> CLICK",
+        "[link]  Pay Now -> CLICK",
+        "[checkbox]  $21.99/Day -> CLICK",
+        "[checkbox]  $13.00/Day -> CLICK",
+        "[button]  Continue -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00153803825378,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:45:35.377981"
+    },
+    {
+      "task_id": 9,
+      "website": "kohls",
+      "task": "Browse for wall art with a price range of $25 to $50.",
+      "ground_truth_actions": [
+        "[textbox]  Search by keyword or web id -> TYPE: wall art",
+        "[input]   -> CLICK",
+        "[link]  Wall Art -> CLICK",
+        "[div]  Price -> CLICK",
+        "[link]  $25 to $50 (5,006) -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.kohls.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 20,
+      "similarity_score": 40,
+      "steps_percentage": 20.0,
+      "explanation": "The Stagehand AI system only executed the initial step of navigating to Kohl's homepage, which aligns with the first necessary action towards completing the task. However, it failed to execute any subsequent steps related to searching for wall art within a specified price range. Given the leniency guidelines and considering the correct initial step towards task completion, a minimal score for accuracy is provided, and a slightly higher score for similarity is given, acknowledging the correct website navigation as a requisite part of the task.",
+      "total_time_seconds": 43.78047013282776,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:45:41.902540"
+    },
+    {
+      "task_id": 12,
+      "website": "kayak",
+      "task": "From Birmingham (BHX) to Paris search for packages with casinos, restaurant, fitness and a free internet from April 7th to 11th.",
+      "ground_truth_actions": [
+        "[link]  Search for packages -> CLICK",
+        "[textbox]  From -> TYPE: Birmingham",
+        "[span]  Birmingham, England, United Kingdom -> CLICK",
+        "[textbox]  Enter destination or airport -> TYPE: Paris",
+        "[span]  City -> CLICK",
+        "[generic]  Tuesday April 4th -> CLICK",
+        "[div]  7 -> CLICK",
+        "[button]  Tuesday April 11, 2023 -> CLICK",
+        "[svg]   -> CLICK",
+        "[checkbox]  Free internet -> CLICK",
+        "[button]  Amenities -> CLICK",
+        "[checkbox]  Casino -> CLICK",
+        "[checkbox]  Restaurant -> CLICK",
+        "[checkbox]  Fitness -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.kayak.co.uk/"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 20,
+      "steps_percentage": 7.142857142857142,
+      "explanation": "The Stagehand AI system only performed one action, which was navigating to the Kayak website. This is the correct initial step but doesn't match any specific actions listed in the ground truth actions. There's a basic level of semantic similarity because navigating to the website is a necessary prerequisite for all subsequent actions. However, the AI did not complete or attempt any further tasks, such as specifying locations, dates, or selecting package features. Given the guidelines for leniency and recognizing partial progress with correct intent, the scores reflect acknowledgment of the right starting direction but significant incompletion.",
+      "total_time_seconds": 22.10508394241333,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:46:33.260763"
+    },
+    {
+      "task_id": 11,
+      "website": "kayak",
+      "task": "Find a cheapest SUV in Brooklyn for 1 day.",
+      "ground_truth_actions": [
+        "[link]  Search for cars -> CLICK",
+        "[textbox]  Pick-up location -> CLICK",
+        "[textbox]  Pick-up location -> TYPE: Brooklyn",
+        "[span]  Brooklyn, New York, United States -> CLICK",
+        "[span]  Different drop-off -> CLICK",
+        "[tab]  Same drop-off -> CLICK",
+        "[button]  End date -> CLICK",
+        "[button]  May 22, 2023 -> CLICK",
+        "[svg]   -> CLICK",
+        "[img]  SUV -> CLICK",
+        "[div]  $75 -> CLICK",
+        "[div]  View Deal -> HOVER"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.kayak.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 60,
+      "steps_percentage": 8.333333333333332,
+      "explanation": "The actual steps taken by Stagehand AI were significantly fewer than the expected steps. However, the one step it did take, navigating to the kayak website, was a necessary and correct first action towards completing the task. This demonstrates correct intent and partial progress. Given the guidance to be lenient and recognize partial progress, a similarity score of 60 is justified as the actual step is semantically related to the beginning of the task, though the accuracy score remains low at 10 due to the minimal overlap in actions.",
+      "total_time_seconds": 51.35833406448364,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:46:38.368537"
+    },
+    {
+      "task_id": 10,
+      "website": "kohls",
+      "task": "Add the cheapest Women's Sweaters to my shopping cart.",
+      "ground_truth_actions": [
+        "[span]  Shop by Category -> CLICK",
+        "[link]  Women -> HOVER",
+        "[link]  Sweaters & Cardigans -> CLICK",
+        "[link]  Sort by: Featured -> CLICK",
+        "[link]  Price Low-High -> CLICK",
+        "[p]  Women's Sonoma Goods For Life\u00ae All Over Stitch -> CLICK",
+        "[button]  Add to Cart -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00078225135803,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:46:46.015445"
+    },
+    {
+      "task_id": 13,
+      "website": "rottentomatoes",
+      "task": "Find a comedy movie streaming on Netflix and add to watchlist.",
+      "ground_truth_actions": [
+        "[link]  MOVIES -> HOVER",
+        "[link]  Netflix streaming -> CLICK",
+        "[svg]   -> CLICK",
+        "[div]   -> CLICK",
+        "[button]  APPLY -> CLICK",
+        "[img]  Chris Rock: Selective Outrage -> CLICK",
+        "[button]  WANT TO SEE -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.rottentomatoes.com/",
+        "[OBSERVE] find the MOVIES menu item"
+      ],
+      "extract_content": [],
+      "accuracy_score": 60,
+      "similarity_score": 70,
+      "steps_percentage": 28.57142857142857,
+      "explanation": "The Stagehand AI system initiated the task by navigating to the Rotten Tomatoes website and began looking for the 'MOVIES' menu item, which aligns with the first step in the expected actions, indicating correct intent and partial progress towards the task. Despite not completing all the steps or reaching the 'Netflix streaming' selection and the 'WANT TO SEE' action, it demonstrated understanding of the initial navigation and targeting necessary for the outlined task. The scores reflect recognition of the proper commencement of the task and leniency towards the system's inability to complete it within time constraints.",
+      "total_time_seconds": 34.899128913879395,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:47:20.110805"
+    },
+    {
+      "task_id": 16,
+      "website": "parking",
+      "task": "Browse events happening at Madison Square Garden.",
+      "ground_truth_actions": [
+        "[combobox]  \uf002\u00a0 Enter an Address or Venue to find parking -> TYPE: Madison Square Garden",
+        "[em]  Madison -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.msg.com/calendar"
+      ],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 30,
+      "steps_percentage": 50.0,
+      "explanation": "The Stagehand AI system did not directly follow the ground truth actions, which involved entering 'Madison Square Garden' into a combobox and selecting it to find parking for events. Instead, it navigated directly to the Madison Square Garden calendar page. This shows an understanding of the task's goal (to find events at Madison Square Garden) but does not align with the task's specific instructions related to parking. Given the leniency guidelines and considering correct intent, the direct navigation to the events calendar partially aligns with the ultimate goal of finding events, hence the similarity score is given as 30. However, since it didn't match the expected steps related to the parking search functionality, the accuracy score remains at 0.",
+      "total_time_seconds": 31.97739028930664,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:48:21.328453"
+    },
+    {
+      "task_id": 14,
+      "website": "parking",
+      "task": "Book parking spot for James SMith at Stewart Hotel in New York for 2 hours. The street address is 133 st avenue in New York. Zip code is 10001 and phone number is 888888888. The email address is buckeye.foobar@gmail.com. Employer's name is Gua AB.",
+      "ground_truth_actions": [
+        "[span]  Enter an Address or Venue to find parking -> CLICK",
+        "[span]  Enter an Address or Venue to find parking -> TYPE: stewart hotel",
+        "[option]  STEWART HOTEL\u00a0\u00a0148 W 31st Street, New York Parking... -> CLICK",
+        "[link]  BOOK MONTHLY PARKING -> CLICK",
+        "[textbox]  First Name -> CLICK",
+        "[textbox]  First Name -> TYPE: James",
+        "[textbox]  Last Name -> TYPE: SMith",
+        "[textbox]  Address1 -> TYPE: 133 st avenue",
+        "[textbox]  City Name -> TYPE: New York",
+        "[select]  Alabama -> SELECT: New York",
+        "[textbox]  Zip Code -> TYPE: 10001",
+        "[textbox]  (###) ###-#### -> TYPE: 888888888",
+        "[textbox]  Email Address -> TYPE: buckeye.foobar@gmail.com",
+        "[textbox]  Email Address -> TYPE: buckeye.foobar@gmail.com",
+        "[textbox]  Employer Name -> CLICK",
+        "[textbox]  Employer Name -> TYPE: Gua AB",
+        "[button]  Submit -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00103282928467,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:48:25.797256"
+    },
+    {
+      "task_id": 15,
+      "website": "parking",
+      "task": "Find motorcycle parking near Radio City Music Hall.",
+      "ground_truth_actions": [
+        "[span]  Enter an Address or Venue to find parking -> TYPE: radio city music hall",
+        "[em]  Music -> CLICK",
+        "[strong]  Filters -> CLICK",
+        "[checkbox]  Motorcycle Parking -> CLICK",
+        "[link]  View Details ROCKEFELLER CENTER -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00121021270752,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:48:50.159165"
+    },
+    {
+      "task_id": 17,
+      "website": "parking",
+      "task": "Find parking in New York City from June 5th to 9th.",
+      "ground_truth_actions": [
+        "[span]  Enter an Address or Venue to find parking -> TYPE: New York City",
+        "[option]  New York City\u00a0\u00a0 City -> CLICK",
+        "[span]  Mar 9 -> CLICK",
+        "[i]   -> CLICK",
+        "[i]   -> CLICK",
+        "[i]   -> CLICK",
+        "[gridcell]  5 -> CLICK",
+        "[span]  Jun 5 -> CLICK",
+        "[gridcell]  9 -> CLICK",
+        "[button]  SEARCH -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.0010929107666,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:49:35.151299"
+    },
+    {
+      "task_id": 20,
+      "website": "amazon",
+      "task": "Find Metformin 1000mg tablet price and details.",
+      "ground_truth_actions": [
+        "[button]  Open Menu -> CLICK",
+        "[link]  See All -> CLICK",
+        "[link]  Amazon Health -> CLICK",
+        "[link]  Amazon Pharmacy -> CLICK",
+        "[span]  Type your medication name -> TYPE: Metformin 1000mg",
+        "[li]  metformin 1000mg tablet -> CLICK",
+        "[img]  Metformin (Generic for Glucophage, Oral Tablet) -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.amazon.com",
+        "[OBSERVE] find the search box"
+      ],
+      "extract_content": [],
+      "accuracy_score": 20,
+      "similarity_score": 50,
+      "steps_percentage": 28.57142857142857,
+      "explanation": "The Stagehand AI completed only the initial steps which were navigating to Amazon's website and beginning to observe the environment, aiming to find the search box. These steps show a basic alignment with the initial steps of navigating to a product but do not match or even come close to the detailed and specific sequence of actions outlined in the ground truth actions. Given the leniency guidance, the Stagehand's intent to start the task correctly by navigating to the website and looking for a search feature shows it was on the right path, although it significantly fell short in completing the task. The similarity score reflects this correct directional intent even if the execution was far from complete.",
+      "total_time_seconds": 31.870126724243164,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:49:50.560415"
+    },
+    {
+      "task_id": 18,
+      "website": "amtrak",
+      "task": "Get quote for Amtrak vacation for two adults across country while leaving from Chicago on the 22nd of April. It should include Deluxe bedroom. The passenger is named John Mark with email address of johnmark@gmail.com and phone number of 234567890.",
+      "ground_truth_actions": [
+        "[button]  DEALS -> CLICK",
+        "[link]  VACATIONS & RAIL TOURS Train vacation packages thr... -> CLICK",
+        "[img]   -> CLICK",
+        "[link]  Close -> CLICK",
+        "[button]  Instant Quote -> CLICK",
+        "[textbox]  What city would you like to depart from? -> TYPE: Chicago",
+        "[checkbox]  I'm interested in the reverse trip of the selected... -> CLICK",
+        "[checkbox]  Deluxe Bedroom -> CLICK",
+        "[button]  Continue -> CLICK",
+        "[link]  Close -> CLICK",
+        "[textbox]  *Preferred date of travel -> CLICK",
+        "[link]  22 -> CLICK",
+        "[button]  Continue -> CLICK",
+        "[div]  + -> CLICK",
+        "[textbox]  About Your Trip: -> TYPE: Wedding Anniversary",
+        "[button]  Continue -> CLICK",
+        "[textbox]  *First Name -> TYPE: John",
+        "[textbox]  *Last Name -> TYPE: Mark",
+        "[textbox]  *Email Address -> TYPE: Johnmark@gmail.com",
+        "[textbox]  *Phone Number -> TYPE: 234567890",
+        "[label]  I am NOT a Travel Advisor. -> CLICK",
+        "[button]  Submit Quote Request -> HOVER"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.amtrak.com",
+        "[OBSERVE] Find any links related to vacations, packages, or cross-country travel",
+        "[ACT] Click on the 'Amtrak Vacations' link in the footer",
+        "[ACT] Click on 'Amtrak Vacations' under the Traveling with Us section"
+      ],
+      "extract_content": [],
+      "accuracy_score": 30,
+      "similarity_score": 45,
+      "steps_percentage": 18.181818181818183,
+      "explanation": "The Stagehand AI's actions display an initial correct intent by navigating to the Amtrak website and identifying the relevant section for vacations, which aligns with the initial steps of finding vacation packages. However, it significantly falls short of conducting the detailed actions listed in the ground truth, such as selecting specific trip options, configuring a trip for two adults with a Deluxe bedroom, or entering passenger details. The AI's actions show it understood the task was related to planning a vacation but did not progress towards the more intricate steps of specifying trip details or submitting a quote request. Therefore, a moderate similarity score is given for recognizing the correct section of the website related to the task, but a low accuracy score reflects the incomplete execution of specific required steps.",
+      "total_time_seconds": 85.33872413635254,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:50:01.248699"
+    },
+    {
+      "task_id": 19,
+      "website": "amazon",
+      "task": "See today's deals on video games and find the best deal on the lowest-priced mouse.",
+      "ground_truth_actions": [
+        "[button]  Open Menu -> CLICK",
+        "[link]  Movies, Music & Games -> CLICK",
+        "[link]  Video Games -> CLICK",
+        "[link]  Today's Deals -> CLICK",
+        "[link]  PC -> CLICK",
+        "[link]  Accessories -> CLICK",
+        "[link]  Gaming Mice -> CLICK",
+        "[span]  Featured -> CLICK",
+        "[option]  Price: Low to High -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.amazon.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 20,
+      "steps_percentage": 11.11111111111111,
+      "explanation": "The Stagehand AI system only completed the initial step of navigating to Amazon's homepage, which is a correct but minimal first action towards the tasked objective. Although this step is on the right track, it didn't proceed with any further specific actions towards finding today's deals on video games or identifying the lowest-priced mouse within the specified categories. Given the leniency for partial progress and correct initial intent, the scores slightly reflect the system's attempt to start the task appropriately.",
+      "total_time_seconds": 90.0012731552124,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:50:25.375436"
+    },
+    {
+      "task_id": 22,
+      "website": "underarmour",
+      "task": "Find men's running shoes of size 9 with lowest price and add to bag.",
+      "ground_truth_actions": [
+        "[menuitem]  Men -> CLICK",
+        "[link]  Shoes -> CLICK",
+        "[link]  Running -> CLICK",
+        "[div]  Size -> CLICK",
+        "[link]  9 -> CLICK",
+        "[span]  Now Trending -> CLICK",
+        "[li]  Price (Low - High) -> CLICK",
+        "[img]  Men's UA Surge 3 Running Shoes -> CLICK",
+        "[button]  9 -> CLICK",
+        "[button]  Add to Bag -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.underarmour.com",
+        "[ACT] Click on Shoes",
+        "[ACT] Click the X button to close the popup"
+      ],
+      "extract_content": [],
+      "accuracy_score": 20,
+      "similarity_score": 60,
+      "steps_percentage": 30.0,
+      "explanation": "The Stagehand AI system's actual steps show an initial correct intent by navigating to the Under Armour website and clicking on 'Shoes,' which aligns with the task of finding men's running shoes. However, it significantly diverged from the expected actions by not continuing into the Men, Running, and specific Size selections. Despite this, because the system started with relevant steps towards the goal but didn't complete the task or follow the exact sequence, it demonstrated partial progress and correct initial direction. Therefore, while accuracy is low due to limited action completion, the similarity in the initial steps taken justifies a more lenient score, recognizing the correct initial intent and the constraints the system likely faced.",
+      "total_time_seconds": 47.888046979904175,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:50:55.236913"
+    },
+    {
+      "task_id": 23,
+      "website": "rottentomatoes",
+      "task": "Show reviews of top critics for lowest rated Tom Hanks work",
+      "ground_truth_actions": [
+        "[textbox]  Search -> TYPE: Tom Hanks",
+        "[p]  Tom Hanks -> CLICK",
+        "[link]  My Life in Ruins (2009) -> CLICK",
+        "[link]  Top Critics (49) -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.rottentomatoes.com/",
+        "[OBSERVE] Find the search bar or search icon"
+      ],
+      "extract_content": [],
+      "accuracy_score": 40,
+      "similarity_score": 50,
+      "steps_percentage": 50.0,
+      "explanation": "The Stagehand AI system started on the right track by navigating to the Rotten Tomatoes website and beginning the search process for Tom Hanks, which aligns with the first step of the expected actions. However, it did not progress beyond finding the search bar or icon, failing to complete the specific tasks of searching for Tom Hanks, selecting his profile, choosing a specific work, and filtering for top critic reviews. The initial steps taken are in the right direction but incomplete. The accuracy score is lower due to the lack of completion of the specific requested actions, but the similarity score is somewhat higher to acknowledge the correct initial intent and partial progress.",
+      "total_time_seconds": 38.395763874053955,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:51:10.224770"
+    },
+    {
+      "task_id": 21,
+      "website": "kohls",
+      "task": "Add a pair of diamond stud earrings to the cart.",
+      "ground_truth_actions": [
+        "[textbox]  Search by keyword or web id -> TYPE: diamond stud earrings",
+        "[span]  diamond stud earrings -> CLICK",
+        "[img]  10k Gold 1 Carat T.W. Black Diamond Stud Earrings -> CLICK",
+        "[button]  Add to Cart -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 95.06452012062073,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:51:10.270237"
+    },
+    {
+      "task_id": 24,
+      "website": "us.megabus",
+      "task": "Find a ticket from Abbotsford to Sheboygan on March 26, 2023.",
+      "ground_truth_actions": [
+        "[button]  Explore\ue911 -> CLICK",
+        "[link]  Route map -> CLICK",
+        "[textbox]  Pick an origin Pick a destination -> TYPE: Abbotsford",
+        "[span]  Abbotsford, WI -> CLICK",
+        "[textbox]  Enter a town, city or zipcode -> TYPE: Sheboygan",
+        "[span]  Sheboygan, WI -> CLICK",
+        "[button]  Search -> CLICK",
+        "[input]   -> CLICK",
+        "[gridcell]  March 26, 2023 -> CLICK",
+        "[button]  Find tickets -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.0010998249054,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:52:17.925488"
+    },
+    {
+      "task_id": 25,
+      "website": "us.megabus",
+      "task": "Find bus stops in Alanson, MI",
+      "ground_truth_actions": [
+        "[button]  Explore\ue911 -> CLICK",
+        "[link]  Bus stops -> CLICK",
+        "[button]  Alanson, MI \ue911 -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.0013530254364,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:52:40.422894"
+    },
+    {
+      "task_id": 27,
+      "website": "carmax",
+      "task": "Search for used Jaguar XFs with no black exterior color and save the search as Jaguar  to get a notification daily.",
+      "ground_truth_actions": [
+        "[searchbox]  Search make, model, or keyword -> TYPE: jaguar xf",
+        "[link]  Jaguar XF -> CLICK",
+        "[button]  Advanced Search -> CLICK",
+        "[textbox]  Ex. Black exterior -> TYPE: black",
+        "[button]  Black (Exterior Color) -> CLICK",
+        "[button]  SAVE SEARCH -> CLICK",
+        "[textbox]  Custom name your search -> TYPE: Jaguar",
+        "[button]  CONTINUE -> CLICK",
+        "[radio]  Daily summary -> CLICK",
+        "[button]  CONTINUE -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.carmax.com/",
+        "[ACT] Type \"Jaguar XF\" into the search box",
+        "[ACT] Click the search button (magnifying glass icon)"
+      ],
+      "extract_content": [],
+      "accuracy_score": 40,
+      "similarity_score": 60,
+      "steps_percentage": 30.0,
+      "explanation": "The Stagehand AI system began by navigating to the correct website and performing a search for 'Jaguar XF,' which corresponds to the correct initial steps according to the ground truth actions. However, the AI stopped after clicking the search button, missing the steps related to filtering by exterior color, saving the search, and setting up daily notifications. The initial steps were accurately executed but the task was not completed. Given the leniency guidance and acknowledging the correct intent and partial progress, I awarded a higher similarity score for the actions that align semantically with starting the task correctly.",
+      "total_time_seconds": 48.09880805015564,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:52:48.138653"
+    },
+    {
+      "task_id": 28,
+      "website": "viator",
+      "task": "Browse Tokyo's best tea related attractions in the morning.",
+      "ground_truth_actions": [
+        "[span]  Explore the World -> HOVER",
+        "[span]  Tokyo -> CLICK",
+        "[link]  Food & Drink -> CLICK",
+        "[link]  Coffee & Tea -> CLICK",
+        "[label]  6am\u201412pm -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.viator.com",
+        "[OBSERVE] find the search bar"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 20,
+      "steps_percentage": 40.0,
+      "explanation": "The Stagehand AI system started by navigating to the correct website, viator.com, which was a necessary first step towards completing the task but did not proceed beyond observing the search bar. While navigation to the website was accurate, the actions listed in the ground truth actions were not followed through, resulting in a low accuracy score. The observation of the search bar could be interpreted as a preparatory action for a search related to the task, so a slightly higher similarity score is given, recognizing the correct intent albeit the incomplete execution. The system did not hover, click, or select any specifics related to Tokyo's tea attractions which significantly impacts the accuracy and similarity scores.",
+      "total_time_seconds": 30.213223218917847,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:52:53.647303"
+    },
+    {
+      "task_id": 26,
+      "website": "us.megabus",
+      "task": "Add to my basket tickets for 3 people from New York to Alfred.",
+      "ground_truth_actions": [
+        "[textbox]  From (type text or use the arrow keys) -> TYPE: New York",
+        "[span]  New York, NY -> CLICK",
+        "[textbox]  To (type text or use the arrow keys) -> TYPE: Alfred",
+        "[span]  Alfred, NY -> CLICK",
+        "[textbox]  Pick a date -> CLICK",
+        "[gridcell]  March 31, 2023 -> CLICK",
+        "[span]   -> CLICK",
+        "[span]   -> CLICK",
+        "[button]  Find tickets -> CLICK",
+        "[button]  Add to basket -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00103187561035,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:53:02.917457"
+    },
+    {
+      "task_id": 30,
+      "website": "delta",
+      "task": "Check for travel requirements when travelling from New York to Tokyo as US citizen.",
+      "ground_truth_actions": [
+        "[tab]  Travel Info -> CLICK",
+        "[link]  Travel Planning Center -> CLICK",
+        "[button]  Find Your Destination -> CLICK",
+        "[link]  Explore Destinations & Travel Requirements -> CLICK",
+        "[combobox]  Origin -> CLICK",
+        "[combobox]  Origin -> TYPE: New York",
+        "[p]  New York City -> CLICK",
+        "[combobox]  Destination -> CLICK",
+        "[combobox]  Destination -> TYPE: Tokyo",
+        "[span]  (HND) -> CLICK",
+        "[combobox]  Nationality -> CLICK",
+        "[option]  United States of America (USA) -> CLICK",
+        "[combobox]  Vaccination status Vaccination status -> CLICK",
+        "[option]  Fully vaccinated -> CLICK",
+        "[button]  Search -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.delta.com/us/en/travel-planning-center/international-travel-requirements",
+        "[NAVIGATE] https://www.delta.com/us/en/travel-planning-center/know-before-you-go/international-travel"
+      ],
+      "extract_content": [],
+      "accuracy_score": 20,
+      "similarity_score": 40,
+      "steps_percentage": 13.333333333333334,
+      "explanation": "The Stagehand AI system managed to navigate to the correct domain and to a page likely relevant to the travel planning and international travel requirements, which shows an understanding of the required information domain. However, it did not execute or simulate any specific interactions that would lead to finding the travel requirements from New York to Tokyo for a US citizen, such as selecting the origin, destination, and submitting the form. The initial navigational steps were correct but incomplete; therefore, it did show some level of correctness and intent in the right direction. Given the leniency in scoring due to time limits and the acknowledgment of partial progress and correct initial intent, the given scores seem to fairly reflect the performance under the provided guidance.",
+      "total_time_seconds": 35.97263503074646,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:53:44.231524"
+    },
+    {
+      "task_id": 29,
+      "website": "kohls",
+      "task": "Get the lowest priced plus size one piece active swimsuit in color black.",
+      "ground_truth_actions": [
+        "[link]  Shop by Category -> CLICK",
+        "[link]  Women -> HOVER",
+        "[link]  Swimwear -> CLICK",
+        "[link]  Women's Plus -> CLICK",
+        "[div]  Color -> CLICK",
+        "[link]  Black (294) -> CLICK",
+        "[link]  Sort by: Featured -> CLICK",
+        "[link]  Price Low-High -> CLICK",
+        "[div]  Occasion -> CLICK",
+        "[link]  Active (6) -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.kohls.com",
+        "[OBSERVE] Find the search bar",
+        "[ACT] Type \"plus size one piece active swimsuit black\" into the search textbox"
+      ],
+      "extract_content": [],
+      "accuracy_score": 30,
+      "similarity_score": 60,
+      "steps_percentage": 30.0,
+      "explanation": "The actual steps taken by Stagehand AI partially align with the intended goal but lack detail and complexity compared to the ground truth actions. The AI directly used the search functionality to look for the specific item, which is a fundamentally correct approach if one aims for efficiency. However, it did not navigate through the website's categories or use the filtering options (e.g., color, sort by price, active occasion) as outlined in the expected steps. Given the leniency guideline and the correct intent to find the product via search, a higher similarity score is justified, reflecting that the AI was on the right track but did not execute all detailed actions.",
+      "total_time_seconds": 63.80573797225952,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:53:48.459074"
+    },
+    {
+      "task_id": 34,
+      "website": "ticketcenter",
+      "task": "Find the most expensive ticket for New York Knicks game on April 9",
+      "ground_truth_actions": [
+        "[textbox]  Search for artists, teams or venues... -> CLICK",
+        "[textbox]  Search for artists, teams or venues... -> TYPE: New york knicks",
+        "[option]  New York Knicks -> CLICK",
+        "[link]  TICKETS -> CLICK",
+        "[span]   -> CLICK",
+        "[div]  Price - High to Low -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.ticketcenter.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 20,
+      "steps_percentage": 16.666666666666664,
+      "explanation": "The Stagehand AI system only completed the first step of navigating to the website, which partially aligns with the expected initial action of searching for a specific term on that site. The system did not perform any of the following key actions such as searching for 'New York Knicks', selecting the New York Knicks option, clicking on tickets, selecting a date, and sorting by price. The given action demonstrates a very initial phase towards the end goal but does not directly align with any of the detailed ground truth actions beyond navigating to the site, therefore resulting in very low scores for both accuracy and similarity.",
+      "total_time_seconds": 21.946364879608154,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:55:00.303871"
+    },
+    {
+      "task_id": 31,
+      "website": "underarmour",
+      "task": "Filter women's sports bras that are purple  with high support that are small size.",
+      "ground_truth_actions": [
+        "[menuitem]  Women -> CLICK",
+        "[link]  Sports Bras -> CLICK",
+        "[div]  Size -> CLICK",
+        "[link]  S -> CLICK",
+        "[div]  Filter -> CLICK",
+        "[RootWebArea]  Women's Sports Bras | Under Armour -> CLICK",
+        "[button]  Show more -> CLICK",
+        "[div]  Color -> CLICK",
+        "[link]  Refine by color: Purple -> CLICK",
+        "[div]  Support Level -> CLICK",
+        "[link]  High Support -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 94.87519192695618,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:55:00.359774"
+    },
+    {
+      "task_id": 33,
+      "website": "ultimate-guitar",
+      "task": "Add the most most popular of all time tab to a playlist",
+      "ground_truth_actions": [
+        "[link]  Tabs -> CLICK",
+        "[link]  Tab -> CLICK",
+        "[svg]   -> CLICK",
+        "[link]  Most popular of all time -> CLICK",
+        "[link]  Stairway To Heaven -> CLICK",
+        "[button]   ADD TO PLAYLIST -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.ultimate-guitar.com/"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 15,
+      "steps_percentage": 16.666666666666664,
+      "explanation": "The Stagehand AI only completed one action, which was navigating to the homepage of Ultimate Guitar. While this is the correct initial step, it's very far from completing the task as outlined in the ground truth actions. The action does show correct intent, as starting at the website's homepage is necessary for any task on the site. However, since it did not engage with any specific elements or navigate further as required, the accuracy and similarity scores are very low. Being lenient due to time constraints, recognition of the correct intent to begin the task warrants a slight increase in scores.",
+      "total_time_seconds": 49.39872884750366,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:55:06.497411"
+    },
+    {
+      "task_id": 32,
+      "website": "ultimate-guitar",
+      "task": "Find the most popular guitar tab for Absolute Beginners.",
+      "ground_truth_actions": [
+        "[link]  Tabs -> CLICK",
+        "[svg]   -> CLICK",
+        "[link]  Most popular of all time -> CLICK",
+        "[link]  Absolute Beginner 91,138 -> CLICK",
+        "[link]  You Belong With Me (ver\u00a02) -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00100016593933,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:55:18.491806"
+    },
+    {
+      "task_id": 35,
+      "website": "ticketcenter",
+      "task": "Book a WWE ticket for price range between $50 to $100.",
+      "ground_truth_actions": [
+        "[link]  WWE Tickets -> CLICK",
+        "[link]  TICKETS -> CLICK",
+        "[p]  $41 - $1,255 -> CLICK",
+        "[input]   -> TYPE: 50",
+        "[input]   -> TYPE: 100",
+        "[button]  Done -> CLICK",
+        "[button]  $50/ea -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00042295455933,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:56:36.535505"
+    },
+    {
+      "task_id": 37,
+      "website": "sixflags",
+      "task": "Sign up for emails using the name Dick Smith and the email smith@gmail.com, select Six Flags Magic Mountain as the Park of Preference,",
+      "ground_truth_actions": [
+        "[textbox]  First Name -> TYPE: Dick",
+        "[textbox]  Last Name -> TYPE: Smith",
+        "[textbox]  Email -> TYPE: smith@gmail.com",
+        "[combobox]  Park of Preference -> SELECT: Six Flags Magic Mountain / Los Angeles, CA",
+        "[button]  Sign Up -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.sixflags.com",
+        "[ACT] Click the First Name field and clear the text"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 30,
+      "steps_percentage": 40.0,
+      "explanation": "The Stagehand AI system demonstrated an initial correct intent by navigating to the Six Flags website, which aligns with the preliminary step of accessing the site to progress toward the task of signing up for emails. However, it only completed the action of preparing to input the user's first name without filling in any data or proceeding to subsequent steps like inputting last name, email, selecting the preferred park, and finally signing up. While the intent was correct and partially on track, the execution was incomplete. Hence, the scores reflect recognition of the correct start but acknowledge the lack of completion and precise action alignment with the ground truth.",
+      "total_time_seconds": 55.67436099052429,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:56:46.139185"
+    },
+    {
+      "task_id": 36,
+      "website": "sixflags",
+      "task": "Buy tickets for a group at Hurricane harbor Phoenix on April 22",
+      "ground_truth_actions": [
+        "[button]  Browse the Parks Below -> CLICK",
+        "[span]  Hurricane Harbor Phoenix -> CLICK",
+        "[button]  Go! -> CLICK",
+        "[link]  Groups \ue92e -> CLICK",
+        "[span]  Buy Now -> CLICK",
+        "[button]  April 22, 2023 -> CLICK",
+        "[button]  Buy Now -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.sixflags.com/",
+        "[OBSERVE] Find a link or option for Hurricane Harbor Phoenix or a parks selection menu",
+        "[ACT] Click on the Park of Preference dropdown",
+        "[ACT] Select Hurricane Harbor Phoenix / Phoenix, AZ option",
+        "[OBSERVE] Find a button or link to buy tickets",
+        "[NAVIGATE] https://www.sixflags.com/hurricane-harbor-phoenix/tickets",
+        "[EXTRACT] https://www.sixflags.com/hurricane-harbor-phoenix/tickets",
+        "[EXTRACT] Using search instruction: Find information about ticket options and availability for Hurricane Harbor Phoenix",
+        "[EXTRACT] Content: [\n  \"I am unable to extract the requested data about ticket options and availability for Hurricane Harbor Phoenix, as the page content indicates a server error (CLOUDFLARE_ERROR_500S_BOX). This prevents me from accessing the necessary information. Please check the page later or try a different source for the information you need.\"\n]",
+        "[NAVIGATE] https://www.sixflags.com/hurricane-harbor-phoenix"
+      ],
+      "extract_content": [
+        "https://www.sixflags.com/hurricane-harbor-phoenix/tickets",
+        "Using search instruction: Find information about ticket options and availability for Hurricane Harbor Phoenix",
+        "Content: [\n  \"I am unable to extract the requested data about ticket options and availability for Hurricane Harbor Phoenix, as the page content indicates a server error (CLOUDFLARE_ERROR_500S_BOX). This prevents me from accessing the necessary information. Please check the page later or try a different source for the information you need.\"\n]"
+      ],
+      "accuracy_score": 30,
+      "similarity_score": 60,
+      "steps_percentage": 100.0,
+      "explanation": "The Stagehand AI system managed to correctly navigate to the Six Flags website and select Hurricane Harbor Phoenix, aligning with the initial steps required for the task. However, it did not proceed to the specific action of looking for group tickets or selecting a date, as outlined in the ground truth actions. Instead, it encountered a server error which prevented further progress. The intent to find ticket options suggests a similarity in understanding the task's goal, but it significantly deviates in executing the precise steps and reaching the goal of acquiring tickets for a specified date. Given the constraints and the partial matching of early steps, scores reflect acknowledgment of correct initial direction despite an incomplete and inaccurate follow-through.",
+      "total_time_seconds": 90.00109505653381,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:56:59.206408"
+    },
+    {
+      "task_id": 38,
+      "website": "viator",
+      "task": "Book the cheapest likely to sell out activity in Los Angeles on April 2",
+      "ground_truth_actions": [
+        "[textbox]  Where to? -> TYPE: Los Angeles",
+        "[b]  Los Angeles -> CLICK",
+        "[button]  Next -> CLICK",
+        "[gridcell]  Sun Apr 02 2023 -> CLICK",
+        "[circle]   -> CLICK",
+        "[link]  Likely To Sell Out -> CLICK",
+        "[svg]   -> CLICK",
+        "[span]  Price (Low to High) -> CLICK",
+        "[link]  Hollywood Sign Hiking Tour to Griffith Observatory -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00122690200806,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:57:37.909140"
+    },
+    {
+      "task_id": 39,
+      "website": "rei",
+      "task": "Find climbing gear and sort the results by price high to low.",
+      "ground_truth_actions": [
+        "[button]  Climb -> CLICK",
+        "[button]  Climb -> CLICK",
+        "[link]  Explore Climb -> CLICK",
+        "[link]  Shop all climbing gear -> CLICK",
+        "[combobox]  Sort By -> SELECT: Price: High - Low"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00123476982117,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:58:00.408168"
+    },
+    {
+      "task_id": 41,
+      "website": "imdb",
+      "task": "Get the most popular documentary tv series sorted by IMDB rating, see the details of the top result.",
+      "ground_truth_actions": [
+        "[button]  Open Navigation Drawer -> CLICK",
+        "[span]  Browse TV Shows by Genre -> CLICK",
+        "[link]  Documentary -> CLICK",
+        "[link]  User Rating -> CLICK",
+        "[link]  Going Postal -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.imdb.com/"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 20,
+      "steps_percentage": 20.0,
+      "explanation": "The Stagehand AI system only completed the initial action of navigating to the IMDb homepage, which is a correct but very basic first step towards achieving the task. It did not perform any of the more specific actions required to retrieve the most popular documentary TV series sorted by IMDb rating or to view the top result's details. Therefore, the accuracy score is very low. However, given the correct direction towards starting the task (navigating to the IMDb site), a minimal similarity score is acknowledged. The leniency guidance suggests rewarding partial progress and correct intent, which is considered in the similarity score.",
+      "total_time_seconds": 40.033921003341675,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T18:58:08.257102"
+    },
+    {
+      "task_id": 40,
+      "website": "newegg",
+      "task": "Add Western Digital internal SSD with 1TB storage and 8GB Ram DDR to the cart.",
+      "ground_truth_actions": [
+        "[searchbox]  Search Site -> CLICK",
+        "[searchbox]  Search Site -> TYPE: Western Digital internal SSD 1 TB",
+        "[button]  \uf002 -> CLICK",
+        "[link]  Western Digital WD_BLACK SN770 M.2 2280 1TB PCIe G... -> CLICK",
+        "[button]  ADD TO CART \uf0da -> CLICK",
+        "[button]  NO, THANKS -> CLICK",
+        "[button]  Close -> CLICK",
+        "[searchbox]  Search Site -> TYPE: 8GB Ram",
+        "[button]  \uf002 -> CLICK",
+        "[img]  8GB (1x8GB) DDR3L 1600 (PC3L-12800) Desktop Memory... -> CLICK",
+        "[button]  ADD TO CART \uf0da -> CLICK",
+        "[button]  NO, THANKS -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.0012321472168,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:58:29.243164"
+    },
+    {
+      "task_id": 42,
+      "website": "imdb",
+      "task": "Show top 50 Movies and TV shows by Sci fi genre.",
+      "ground_truth_actions": [
+        "[path]   -> CLICK",
+        "[span]  Top 250 Movies -> CLICK",
+        "[link]  Sci-Fi -> CLICK",
+        "[button]  Open Navigation Drawer -> CLICK",
+        "[span]  Top 250 TV Shows -> CLICK",
+        "[link]  Sci-Fi -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.0008647441864,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:59:14.246275"
+    },
+    {
+      "task_id": 43,
+      "website": "ign",
+      "task": "Show review of Prometheus movie.",
+      "ground_truth_actions": [
+        "[path]   -> CLICK",
+        "[tab]  MOVIES -> CLICK",
+        "[searchbox]  Search -> TYPE: Prometheus",
+        "[div]  Prometheus -> CLICK",
+        "[tab]  Reviews -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00012016296387,
+      "status": "timeout",
+      "timestamp": "2025-03-26T18:59:38.293864"
+    },
+    {
+      "task_id": 44,
+      "website": "ign",
+      "task": "Open the Resident evil 4 game guide.",
+      "ground_truth_actions": [
+        "[path]   -> CLICK",
+        "[link]  Guides -> CLICK",
+        "[button]  Open Guide -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.ign.com",
+        "[OBSERVE] find the search button or search bar"
+      ],
+      "extract_content": [],
+      "accuracy_score": 20,
+      "similarity_score": 40,
+      "steps_percentage": 66.66666666666666,
+      "explanation": "The Stagehand AI system initiated the task by navigating to the IGN website, which aligns with the first step towards accessing any specific guide on the site. However, the actions diverge after this initial step. The expected ground truth involves direct interaction with specific elements ('Guides', 'Open Guide') to reach the Resident Evil 4 game guide, which Stagehand did not perform. Instead, it looked for a search function, indicating an alternative method for finding the guide, albeit indirectly related to the end goal. This shows a correct intent and partial progress in understanding the task. Given the leniency guidance and recognizing the correct initial direction, the scores are adjusted to reflect Stagehand's partial compliance and intent towards accomplishing the assigned task.",
+      "total_time_seconds": 86.99113512039185,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:00:03.864495"
+    },
+    {
+      "task_id": 46,
+      "website": "instacart",
+      "task": "Add a new address to the account. The address is 2983 Marietta Street,  APT 2. Business name is Buck.",
+      "ground_truth_actions": [
+        "[span]  171 2nd street -> CLICK",
+        "[textbox]  Add a new address -> TYPE: 2983 Marietta Street",
+        "[span]  2983 Marietta Street -> CLICK",
+        "[textbox]  Apt, floor, suite, etc (optional) -> TYPE: 2",
+        "[textbox]  Business name (optional) -> TYPE: Buck",
+        "[button]  Save Address -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.instacart.com/"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 30,
+      "steps_percentage": 16.666666666666664,
+      "explanation": "The Stagehand AI's action only included navigating to the Instacart homepage, which is the correct initial step for any task on the website. Thus, it displayed a correct entry point but failed to complete or even attempt any of the specific actions required to add a new address to the account. Although the only action taken was on the right track, it didn't demonstrate accurate completion or similar intent beyond opening the site. The scores reflect this very initial step being in the correct direction but also acknowledge that no further steps were attempted.",
+      "total_time_seconds": 61.12930917739868,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:00:21.881712"
+    },
+    {
+      "task_id": 45,
+      "website": "instacart",
+      "task": "Find nearest Sprouts Farmers Market and add two fruits and one sauce from the deals.",
+      "ground_truth_actions": [
+        "[img]   -> CLICK",
+        "[link]  Deals -> CLICK",
+        "[div]  Add -> CLICK",
+        "[span]  Add -> CLICK",
+        "[link]  View More -> CLICK",
+        "[div]  Add -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.01205492019653,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:00:23.306410"
+    },
+    {
+      "task_id": 47,
+      "website": "instacart",
+      "task": "Add 2 different flavor dog treats and one dog food with lowest price to cart from Safeway.",
+      "ground_truth_actions": [
+        "[textbox]  Search -> TYPE: dog treats",
+        "[span]  dog treats -> CLICK",
+        "[span]  View all 20+ items -> CLICK",
+        "[span]  Best match -> CLICK",
+        "[option]  Price: lowest first -> CLICK",
+        "[span]  Add -> CLICK",
+        "[span]  Add -> CLICK",
+        "[button]  Load more -> CLICK",
+        "[span]  Add to cart -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.instacart.com",
+        "[ACT] Click on Safeway"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 30,
+      "steps_percentage": 22.22222222222222,
+      "explanation": "The Stagehand AI's actions show it initiated the process correctly by navigating to the Instacart website and then clicking on Safeway, aligning with the early steps that might be required for the task. However, it did not proceed to search or add any items to the cart, thus showing a significant deviation from the expected steps. The action of navigating to the website and selecting Safeway shows correct intent and partial progress toward the goal, but no further actions towards adding items to the cart were attempted. Therefore, a low accuracy score is given but with a slightly higher similarity score for the initial correct direction.",
+      "total_time_seconds": 57.49097013473511,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:00:40.399652"
+    },
+    {
+      "task_id": 49,
+      "website": "booking",
+      "task": "Find a 3-star rated hostel with balcony and free cancellation option in Udipi, Karnataka for one person under 50 dollars from June 15 to 20, free wifi is compulsory.",
+      "ground_truth_actions": [
+        "[link]  Hostels -> CLICK",
+        "[searchbox]  Please type your destination -> TYPE: udupi",
+        "[option]  Udupi Karnataka,\u00a0India -> CLICK",
+        "[span]  25 -> CLICK",
+        "[svg]   -> CLICK",
+        "[checkbox]  15 June 2023 -> CLICK",
+        "[checkbox]  20 June 2023 -> CLICK",
+        "[span]  2 adults -> CLICK",
+        "[button]  - -> CLICK",
+        "[button]  Search -> CLICK",
+        "[span]   -> CLICK",
+        "[span]   -> CLICK",
+        "[span]   -> CLICK",
+        "[span]   -> CLICK",
+        "[button]  Show all 25 -> CLICK",
+        "[span]   -> CLICK",
+        "[button]  Sort by:Top picks for solo travellers -> CLICK",
+        "[button]  Price (lowest first) -> CLICK",
+        "[link]  See availability -> CLICK",
+        "[button]  Reserve -> CLICK",
+        "[button]  I'll\u00a0reserve -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.booking.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 5,
+      "similarity_score": 10,
+      "steps_percentage": 4.761904761904762,
+      "explanation": "The AI only completed the very first action ('[NAVIGATE] https://www.booking.com'), which matches the initial step but did not continue beyond accessing the website. Accuracy is low because it didn't follow through with any specific task-related actions such as selecting a hostel, dates, or features. However, navigating to the booking website is a correct initial step, hence a minimal score. Similarity is slightly higher because it indicates an understanding of where to start the process, though it didn't progress any further.",
+      "total_time_seconds": 32.4816529750824,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:01:03.699227"
+    },
+    {
+      "task_id": 48,
+      "website": "redbox",
+      "task": "Find the newest movies for rent  in the Redbox kiosk at any Winn Dixie in Daytona Beach.",
+      "ground_truth_actions": [
+        "[button]  Navigate to Find a kiosk nearby -> CLICK",
+        "[textbox]  City or ZIP Code -> TYPE: Daytona",
+        "[button]  select to search for a kiosk using city or zipcode -> CLICK",
+        "[button]  select to browse a kiosk -> CLICK",
+        "[button]  Show Filters -> CLICK",
+        "[button]  Filter by rent -> CLICK",
+        "[span]  Hide Filters -> CLICK",
+        "[path]   -> CLICK",
+        "[combobox]  sortBy -> SELECT: Newest"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.redbox.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 20,
+      "steps_percentage": 11.11111111111111,
+      "explanation": "The Stagehand AI's actual steps only involved navigating to the Redbox homepage, which is a necessary but very initial step towards completing the task. It did not perform any of the actions related to finding the newest movies at a specific kiosk location, entering the city name, searching using city or zipcode, filtering by rent, or selecting to sort by the newest movies. However, navigating to the website is the correct first step, so it deserves some credit for beginning the task appropriately. The given high leniency guidelines suggest rewarding the intention and the fact that the task was started correctly.",
+      "total_time_seconds": 71.55405497550964,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:01:21.009465"
+    },
+    {
+      "task_id": 51,
+      "website": "ticketcenter",
+      "task": "Show MLB tickets for this weekend and select the next one.",
+      "ground_truth_actions": [
+        "[button]  SPORTS -> HOVER",
+        "[link]  All MLB Tickets -> CLICK",
+        "[button]  All dates -> CLICK",
+        "[link]  This weekend -> CLICK",
+        "[link]  TICKETS -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.ticketcenter.com",
+        "[ACT] Click on SPORTS"
+      ],
+      "extract_content": [],
+      "accuracy_score": 40,
+      "similarity_score": 60,
+      "steps_percentage": 40.0,
+      "explanation": "The Stagehand AI system only completed two steps out of the expected sequence. It successfully navigated to the ticketcenter website and clicked on SPORTS, which aligns with the expected first action. However, it did not continue to select MLB tickets, choose dates, or select a specific game, stopping far short of completing the task. The initial steps were correct, indicating it was on the right track, so partial progress is acknowledged. Given the scoring guidance to be lenient and acknowledge correct intent and partial progress, the scores reflect recognition of the correct direction at the start despite incomplete task execution.",
+      "total_time_seconds": 50.90120601654053,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:02:06.877915"
+    },
+    {
+      "task_id": 50,
+      "website": "ticketcenter",
+      "task": "Find the list of off-Broadway theatre shows on April 19",
+      "ground_truth_actions": [
+        "[button]  THEATRE -> CLICK",
+        "[link]  Off-Broadway -> CLICK",
+        "[button]  All dates -> CLICK",
+        "[textbox]  Select Date Range -> CLICK",
+        "[gridcell]  19 -> CLICK",
+        "[input]   -> CLICK",
+        "[gridcell]  19 -> CLICK",
+        "[button]  Apply -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.0020968914032,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:02:18.917469"
+    },
+    {
+      "task_id": 53,
+      "website": "ticketcenter",
+      "task": "Show me all NFL tickets",
+      "ground_truth_actions": [
+        "[button]  SPORTS -> HOVER",
+        "[tab]  NFL -> HOVER",
+        "[link]  All NFL Tickets -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.ticketcenter.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 20,
+      "steps_percentage": 33.33333333333333,
+      "explanation": "The Stagehand AI system only completed the initial navigation to the website, which is a necessary first step but did not perform any of the specified actions to hover over 'SPORTS', navigate to 'NFL', or click on 'All NFL Tickets'. Given leniency for time constraints and recognizing the correct intent to start the task by navigating to the site, a minimal similarity score is given to acknowledge partial progress towards the goal. However, there was no direct match with any of the expected steps, hence the zero accuracy score.",
+      "total_time_seconds": 24.088080167770386,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:02:26.496877"
+    },
+    {
+      "task_id": 52,
+      "website": "ticketcenter",
+      "task": "Go to the list of ballet event for the next 30 days.",
+      "ground_truth_actions": [
+        "[textbox]  Search for artists, teams or venues... -> TYPE: Ballet",
+        "[button]  Search -> CLICK",
+        "[button]  All dates -> CLICK",
+        "[link]  Next 30 days -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.ticketcenter.com",
+        "[ACT] Click on THEATRE",
+        "[ACT] Click on Ballet",
+        "[ACT] Click on CATEGORIES"
+      ],
+      "extract_content": [],
+      "accuracy_score": 40,
+      "similarity_score": 60,
+      "steps_percentage": 100.0,
+      "explanation": "The Stagehand AI system partially completed the task with discernible intent towards reaching the goal. Though it did not follow the expected action sequence of using the search function, clicking on the 'Search' button, and selecting a specific date range for ballet events, it did navigate correctly to the website and made an effort to reach the ballet events by clicking on 'THEATRE', then 'Ballet', indicating a correct understanding of the task's domain. Given the guidance to be lenient and to reward partial progress and correct intent, the scores reflect the system's right direction but note the deviation from the expected steps.",
+      "total_time_seconds": 90.00068473815918,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:03:08.510462"
+    },
+    {
+      "task_id": 54,
+      "website": "ticketcenter",
+      "task": "Buy two tickets for the Boston Red Sox vs. New York Yankees game on August 18th, with a total cost of no more than $200.",
+      "ground_truth_actions": [
+        "[textbox]  Search for artists, teams or venues... -> TYPE: red sox vs yankees",
+        "[button]  Search -> CLICK",
+        "[link]  TICKETS -> CLICK",
+        "[span]   -> CLICK",
+        "[label]  2 -> CLICK",
+        "[span]   -> CLICK",
+        "[input]   -> TYPE: 200",
+        "[span]  Prices with Fees -> CLICK",
+        "[button]  Done -> CLICK",
+        "[button]  $83.95/ea -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.ticketcenter.com",
+        "[OBSERVE] Find the search box"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 40,
+      "steps_percentage": 20.0,
+      "explanation": "The Stagehand AI system only completed the initial step of navigating to the website, which is a necessary but very basic part of the task. It did not manage to perform any searches or select tickets, which are critical steps to fulfill the task. However, navigating to the correct website shows a correct understanding of the first required action, so it gets a low accuracy score for doing so. The similarity score is a bit higher because the action taken is on the right path toward completing the task but lacks further required steps.",
+      "total_time_seconds": 53.56660604476929,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:03:18.674791"
+    },
+    {
+      "task_id": 56,
+      "website": "airbnb",
+      "task": "Search for a tiny home anywhere for an adult and 2 pets to stay in from april 10 to april 12",
+      "ground_truth_actions": [
+        "[path]   -> CLICK",
+        "[span]  Tiny homes -> CLICK",
+        "[button]  Check in / Check out Any week -> CLICK",
+        "[button]  10, Monday, April 2023. Available. Select as check... -> CLICK",
+        "[button]  12, Wednesday, April 2023. Available. Select as ch... -> CLICK",
+        "[div]  Add guests -> CLICK",
+        "[svg]   -> CLICK",
+        "[svg]   -> CLICK",
+        "[path]   -> CLICK",
+        "[span]   -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.airbnb.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 20,
+      "steps_percentage": 10.0,
+      "explanation": "The Stagehand AI only completed the very initial step of navigating to the Airbnb website, without performing any of the specific task actions such as selecting tiny homes, setting dates, or adding guests and pets. Despite the very limited progress, the navigation to the site demonstrates a correct initial intent and thus warrants leniency in scoring. However, the overall task was not addressed in the actions, resulting in low scores for both accuracy and similarity.",
+      "total_time_seconds": 50.1393940448761,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:04:03.951457"
+    },
+    {
+      "task_id": 55,
+      "website": "uniqlo",
+      "task": "Add two pairs of women's Pink sweet pants in XXL size to your cart and view your cart.",
+      "ground_truth_actions": [
+        "[link]  WOMEN -> CLICK",
+        "[tab]  Bottoms -> CLICK",
+        "[link]  Pants -> CLICK",
+        "[gridcell]  Category -> CLICK",
+        "[input]   -> CLICK",
+        "[option]  Sweatpants -> CLICK",
+        "[heading]  Sweatpants -> CLICK",
+        "[checkbox]  PINK -> CLICK",
+        "[checkbox]  XXL -> CLICK",
+        "[input]   -> CLICK",
+        "[option]  2 -> CLICK",
+        "[button]  ADD TO CART -> CLICK",
+        "[button]  VIEW CART -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00225901603699,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:04:11.464989"
+    },
+    {
+      "task_id": 57,
+      "website": "tesla",
+      "task": "Open the page to schedule a Model X test drive.",
+      "ground_truth_actions": [
+        "[button]  Menu -> CLICK",
+        "[link]  Demo Drive -> CLICK",
+        "[button]  Model X -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.tesla.com",
+        "[ACT] Click the \"Schedule a Drive Today\" button"
+      ],
+      "extract_content": [],
+      "accuracy_score": 40,
+      "similarity_score": 70,
+      "steps_percentage": 66.66666666666666,
+      "explanation": "The Stagehand AI did not follow the step-by-step instructions as specified in the ground truth actions, missing the detailed navigation through the menu and selection process specific to the Model X. However, it demonstrated correct intent by navigating directly to the Tesla website and attempting to schedule a drive, which is semantically similar to the goal of scheduling a Model X test drive. The system made partial progress by performing an action that aligns with the task's objective, thus justifying the leniency in scoring due to the observed correct intent and partial completion.",
+      "total_time_seconds": 48.79836988449097,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:04:24.060960"
+    },
+    {
+      "task_id": 58,
+      "website": "tesla",
+      "task": "Show me a map with charging stations in London.",
+      "ground_truth_actions": [
+        "[button]  Menu -> CLICK",
+        "[link]  Charging -> CLICK",
+        "[link]  Find Us -> CLICK",
+        "[textbox]  search input -> TYPE: London",
+        "[li]  London, UK -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.tesla.com",
+        "[ACT] Click the Menu button"
+      ],
+      "extract_content": [],
+      "accuracy_score": 60,
+      "similarity_score": 70,
+      "steps_percentage": 40.0,
+      "explanation": "The Stagehand AI system initiated the task correctly by navigating to the Tesla website and clicking on the Menu button, which aligns with the first step provided in the ground truth actions. Although it did not complete the full task sequence, such as accessing 'Charging' and locating 'Find Us', its initial steps display correct intent and partial progress. Due to the very lenient scoring guidance and considering the likely time constraints the system faced, it is fair to recognize its accurate start and partially correct direction. Therefore, the scores reflect acknowledgment of the accurate and similar actions performed, while also accounting for the uncompleted steps.",
+      "total_time_seconds": 41.585026025772095,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:04:39.710620"
+    },
+    {
+      "task_id": 59,
+      "website": "tesla",
+      "task": "View inventory of Tesla Model S that are blue and new with 19\" wheels within 50 miles of zip code 60602.",
+      "ground_truth_actions": [
+        "[link]  Model S -> CLICK",
+        "[link]  View Inventory -> CLICK",
+        "[image]   -> CLICK",
+        "[checkbox]  19\" Wheels -> CLICK",
+        "[textbox]  Registration Zip Code Where you will register the ... -> TYPE: 60602",
+        "[combobox]  Search within -> SELECT: 50 miles"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.tesla.com/"
+      ],
+      "extract_content": [],
+      "accuracy_score": 20,
+      "similarity_score": 40,
+      "steps_percentage": 16.666666666666664,
+      "explanation": "The Stagehand AI system only managed to perform the initial navigation to the Tesla website, which aligns with the first necessary step towards completing the task described. However, it failed to proceed with further steps like selecting the Model S, viewing inventory, specifying attributes of the car (color, wheel size), and defining the search area by zip code and distance. Given the leniency in scoring and acknowledging partial progress with the correct initial intent, the scores reflect the system\u2019s effort to start the task but its inability to execute any detailed actions.",
+      "total_time_seconds": 90.00151515007019,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:05:52.061485"
+    },
+    {
+      "task_id": 62,
+      "website": "tesla",
+      "task": "Show me the inventory of the Tesla Model S within 200 miles from 10001",
+      "ground_truth_actions": [
+        "[link]  Model S -> CLICK",
+        "[link]  View Inventory -> CLICK",
+        "[textbox]  Registration Zip Code Where you will register the ... -> TYPE: 10001",
+        "[combobox]  Search within -> SELECT: 200 miles"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.tesla.com/"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 20,
+      "steps_percentage": 25.0,
+      "explanation": "The Stagehand AI system only completed one action, which was navigating to the Tesla homepage. While this is technically a correct first step towards completing the task, it did not perform any of the specific actions required to view the Tesla Model S inventory within 200 miles of the specified zip code. Therefore, the accuracy is very low because it didn't match any of the expected specific actions. The similarity score is slightly higher because the action taken was on the right track towards the goal but didn't progress beyond the initial navigation.",
+      "total_time_seconds": 28.893794059753418,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:05:57.585316"
+    },
+    {
+      "task_id": 60,
+      "website": "tesla",
+      "task": "Show me the best seller accessories for the Model X",
+      "ground_truth_actions": [
+        "[link]  Shop -> CLICK",
+        "[link]  Shop Now -> CLICK",
+        "[heading]  Best Sellers -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://shop.tesla.com/"
+      ],
+      "extract_content": [],
+      "accuracy_score": 30,
+      "similarity_score": 40,
+      "steps_percentage": 33.33333333333333,
+      "explanation": "The Stagehand AI's actions demonstrate an initial step that aligns with the expected ground truth actions by navigating to the Tesla shop website, which is a necessary first action towards completing the task. However, it failed to execute further specific actions such as clicking on 'Shop', 'Shop Now', and finally selecting 'Best Sellers' for the Model X accessories. The accuracy score is therefore low because the AI did not exactly match any of the detailed steps beyond the initial navigation. The similarity score is slightly higher as the action taken is semantically related and correct in the broader context of the task (i.e., beginning the process of locating the best seller accessories). The scores reflect acknowledgment of partial progress and correct initial intent within the constraints of time and execution.",
+      "total_time_seconds": 90.00131011009216,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:06:14.370517"
+    },
+    {
+      "task_id": 61,
+      "website": "tesla",
+      "task": "Add a Tesla Shop Gift Card for April May with the email april.may@gmail.com to my cart",
+      "ground_truth_actions": [
+        "[link]  Shop -> CLICK",
+        "[menuitem]  Lifestyle -> CLICK",
+        "[img]  Tesla Shop Gift Card -> CLICK",
+        "[textbox]  Name of Recipient -> TYPE: April May",
+        "[textbox]  Email Address of Recipient -> TYPE: april.may@gmail.com",
+        "[button]  Add to Cart -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://shop.tesla.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 30,
+      "steps_percentage": 16.666666666666664,
+      "explanation": "The Stagehand AI only completed the initial navigation step to the Tesla shop website, which corresponds partially to the expected first action of navigating to the Shop section of the website. However, it did not perform any of the specific actions related to selecting a Tesla Shop Gift Card and inputting the requested information. While the initial navigation is a correct direction towards the task goal, it significantly lacks the subsequent required actions. Given the guidance for leniency and recognizing partial progress, the scores reflect the correct intent to navigate to the site but acknowledge the substantial completion gap.",
+      "total_time_seconds": 90.00143694877625,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:06:41.016768"
+    },
+    {
+      "task_id": 64,
+      "website": "tesla",
+      "task": "Schedule a demo drive for Model Y for Roy Adams with phone number 123-999-0000, email address RA@gmail.com and zip code 90001 in the United States.",
+      "ground_truth_actions": [
+        "[link]  Demo Drive -> CLICK",
+        "[button]  Model Y -> CLICK",
+        "[textbox]  Last Name -> TYPE: Adams",
+        "[textbox]  First Name -> TYPE: Roy",
+        "[textbox]  Phone Number -> TYPE: 123-999-0000",
+        "[textbox]  Email Address -> TYPE: RA@gmail.com",
+        "[textbox]  Zip Code -> TYPE: 90001",
+        "[button]  Submit and Continue -> HOVER"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.tesla.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 30,
+      "steps_percentage": 12.5,
+      "explanation": "The Stagehand AI system only completed the initial navigation step to the Tesla website, which matches the implied first step of going to the site to schedule a demo drive, showing correct intent and partial progress. However, it did not complete any specific actions related to selecting the Model Y, entering contact information, or submitting the request for a demo drive. Therefore, while the intent was correct and it was a necessary first step, the lack of further action results in a low accuracy score. The similarity score is slightly higher because the system was on the right track but did not proceed beyond the initial navigation.",
+      "total_time_seconds": 26.454861640930176,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:06:45.647985"
+    },
+    {
+      "task_id": 63,
+      "website": "tesla",
+      "task": "Go to the page with help in choosing a solar energy product for homes.",
+      "ground_truth_actions": [
+        "[link]  Solar Panels -> CLICK",
+        "[link]  Order Now -> CLICK",
+        "[button]  Help Me Choose Solar -> CLICK",
+        "[button]  Next -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.tesla.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 25,
+      "similarity_score": 40,
+      "steps_percentage": 25.0,
+      "explanation": "The Stagehand AI system only completed the initial action of navigating to the Tesla homepage, which is a correct initial step but falls significantly short of completing the task as outlined in the ground truth actions. The step taken shows correct intent towards beginning the process of navigating Tesla's website to find solar product options, thus demonstrating partial progress and correct direction. Given the very lenient scoring guidance and considering the correct initial navigation, a higher similarity score is warranted due to the action being in the right direction, albeit far from completing the task.",
+      "total_time_seconds": 90.0014898777008,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:07:27.688164"
+    },
+    {
+      "task_id": 65,
+      "website": "newegg",
+      "task": "Find the cheapest power supply unit with at least 600W power output.",
+      "ground_truth_actions": [
+        "[searchbox]  Search Site -> TYPE: 600w power supply",
+        "[button]  \uf002 -> CLICK",
+        "[generic]  600 W -> CLICK",
+        "[combobox]  Featured Items \uf0d7 -> SELECT: Lowest Price",
+        "[img]  Hercules DUAL FAN 600w-Max ATX Power Supply SATA, ... -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.0014910697937,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:08:15.689681"
+    },
+    {
+      "task_id": 66,
+      "website": "uniqlo",
+      "task": "Find all Uniqlo's located in Chicago, IL.",
+      "ground_truth_actions": [
+        "[link]  Store Locator -> CLICK",
+        "[searchbox]  SEARCH BY KEYWORD -> CLICK",
+        "[searchbox]  SEARCH BY KEYWORD -> TYPE: Chicago",
+        "[input]   -> CLICK",
+        "[option]  IL -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.uniqlo.com/us/en/stores/",
+        "[NAVIGATE] https://www.uniqlo.com/us/en/",
+        "[OBSERVE] find the store locator link or any link related to finding stores",
+        "[OBSERVE] find the store locator link or any link related to finding stores at the bottom of the page"
+      ],
+      "extract_content": [],
+      "accuracy_score": 25,
+      "similarity_score": 55,
+      "steps_percentage": 80.0,
+      "explanation": "The Stagehand AI system's actions did not exactly match the expected sequence for finding Uniqlo stores in Chicago on the website but demonstrated an understanding of the necessary initial steps such as navigating to the store page and attempting to locate the store locator feature. The actions show correct intent by trying to access and observe the store locator, although it did not complete the search procedure as detailed in the ground truth. The partial progress and correct intent towards achieving the task justify the leniency in scoring.",
+      "total_time_seconds": 90.00136017799377,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:08:38.923923"
+    },
+    {
+      "task_id": 68,
+      "website": "uniqlo",
+      "task": "Find a black blazer for men with L size and add to wishlist.",
+      "ground_truth_actions": [
+        "[svg]   -> CLICK",
+        "[searchbox]  Search by keyword -> TYPE: blazer",
+        "[span]  blazer -> CLICK",
+        "[heading]  Gender > Category -> CLICK",
+        "[input]   -> CLICK",
+        "[option]  MEN -> CLICK",
+        "[svg]   -> CLICK",
+        "[heading]  Color -> CLICK",
+        "[span]  BLACK -> CLICK",
+        "[svg]   -> CLICK",
+        "[path]   -> CLICK",
+        "[button]  L -> CLICK",
+        "[button]  CLOSE -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.uniqlo.com/us/en/"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 20,
+      "steps_percentage": 7.6923076923076925,
+      "explanation": "The Stagehand AI system only completed the initial step of navigating to the Uniqlo website, which aligns with the first step of accessing a site before performing any specific task. However, this is a very basic action and doesn't reflect the completion of the task's specific requirements, such as searching for a black blazer for men in L size and adding it to the wishlist. Although the intent to begin the task is evident, the lack of further actions results in low scores. The similarity score is slightly higher acknowledging the correct initial step towards task completion, but overall, much more was needed for a successful task completion.",
+      "total_time_seconds": 48.73468804359436,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:08:45.550792"
+    },
+    {
+      "task_id": 67,
+      "website": "uniqlo",
+      "task": "Show me the list of baby products that are on sale and under 10 dollars.",
+      "ground_truth_actions": [
+        "[link]  BABY -> HOVER",
+        "[link]  Sale -> CLICK",
+        "[heading]  Price -> CLICK",
+        "[label]  $0-$10 -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.uniqlo.com/us/en/",
+        "[OBSERVE] Find the menu or navigation options that might lead to baby products",
+        "[ACT] Click the BABY tab in the main navigation",
+        "[OBSERVE] Find links or options related to sale items or clearance for baby products"
+      ],
+      "extract_content": [],
+      "accuracy_score": 50,
+      "similarity_score": 70,
+      "steps_percentage": 100.0,
+      "explanation": "The Stagehand AI system did follow the correct initial step by navigating to the Uniqlo website and clicking on the BABY tab, which matches the ground truth action of hovering over the BABY link and aiming for the sale section. Although it did not complete all the listed steps, such as filtering by price, the actions taken were on the right track towards accomplishing the task. Given the allowance for partial progress and the correct intent, the scores reflect the AI system's appropriate start but incomplete execution of the task.",
+      "total_time_seconds": 77.86198306083679,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:08:50.187758"
+    },
+    {
+      "task_id": 70,
+      "website": "soundcloud",
+      "task": "Like a game mix album.",
+      "ground_truth_actions": [
+        "[searchbox]  Search -> TYPE: game mix",
+        "[button]  Search -> CLICK",
+        "[link]  Albums -> CLICK",
+        "[button]  Like -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://soundcloud.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 30,
+      "steps_percentage": 25.0,
+      "explanation": "The Stagehand AI system only achieved one step by navigating to the SoundCloud website, which aligns with the initial intent of performing an action on the platform but does not match or closely resemble any of the specific expected actions listed in the ground truth actions. The action of navigating to the site could be considered a prerequisite step before executing any specific task, thus meriting a minimal score for accuracy and a slightly higher score for similarity due to acknowledging the correct platform. No direct actions related to searching, selecting albums, or liking were attempted, limiting the scores considerably.",
+      "total_time_seconds": 35.42040181159973,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:09:30.266904"
+    },
+    {
+      "task_id": 69,
+      "website": "soundcloud",
+      "task": "Delete the history of what i heard recently.",
+      "ground_truth_actions": [
+        "[link]  Library -> CLICK",
+        "[link]  History -> CLICK",
+        "[button]  Clear all history -> CLICK",
+        "[button]  Clear my history -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://soundcloud.com/",
+        "[ACT] Click the Sign in button"
+      ],
+      "extract_content": [],
+      "accuracy_score": 5,
+      "similarity_score": 15,
+      "steps_percentage": 50.0,
+      "explanation": "The Stagehand AI's actions display an initial correct intent by navigating to the SoundCloud website and attempting to sign in, which is a necessary step before any user-specific actions, such as deleting history, can be taken. However, these actions do not directly match any of the ground truth actions specified for completing the task. The accuracy score is very low because the AI did not explicitly perform or directly address any of the step-by-step actions listed in the ground truth actions. The similarity score is slightly higher because the intent to get to a position where one could clear the history (by signing in) aligns somewhat with the preparatory steps implied by the ground truth actions, despite not directly addressing the task of clearing the history. The system did not complete the specified task but was on a path that could potentially lead to it after the initial steps.",
+      "total_time_seconds": 90.00105905532837,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:09:49.104526"
+    },
+    {
+      "task_id": 72,
+      "website": "gamestop",
+      "task": "sell playstation controller for cash credit on GameStop in 43240.",
+      "ground_truth_actions": [
+        "[link]  repeat Trade-In -> CLICK",
+        "[img]   -> CLICK",
+        "[link]  Sony DUALSHOCK 4 Wireless Controller for PlayStati... -> CLICK",
+        "[div]  Find a Store -> CLICK",
+        "[link]  FIND A STORE -> CLICK",
+        "[textbox]  SEARCH BY CITY, STATE, OR ZIP CODE -> TYPE: 43240",
+        "[button]  SEARCH -> CLICK",
+        "[button]  Polaris Fashion Place Mall - GameStop -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.gamestop.com/trade"
+      ],
+      "extract_content": [],
+      "accuracy_score": 20,
+      "similarity_score": 40,
+      "steps_percentage": 12.5,
+      "explanation": "The Stagehand AI system completed the initial step correctly by navigating to the GameStop trade-in page, which aligns with the intent of selling a PlayStation controller for cash or credit. Although it only executed one action and did not proceed to select the specific product, find a store, or enter a ZIP code as outlined in the ground truth actions, the action taken was a correct initial step towards completing the task. Therefore, the accuracy score reflects the partial completion of the task, while the similarity score acknowledges the correct direction despite the lack of further actions.",
+      "total_time_seconds": 32.72850823402405,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:10:02.105821"
+    },
+    {
+      "task_id": 71,
+      "website": "gamestop",
+      "task": "Show me the list of playstation 5 games available for pre-orders.",
+      "ground_truth_actions": [
+        "[button]  Main Menu -> CLICK",
+        "[button]  Video Games chevron_right -> CLICK",
+        "[button]  PlayStation 5 -> CLICK",
+        "[link]  Filter -> CLICK",
+        "[checkbox]  Shop Pre-Orders Shop Pre-Orders -> CLICK",
+        "[button]  Done -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.gamestop.com",
+        "[ACT] Click on PlayStation 5 in the navigation menu",
+        "[NAVIGATE] https://www.gamestop.com/video-games/playstation-5?prefn1=availabilityFilter&prefv1=preOrder"
+      ],
+      "extract_content": [],
+      "accuracy_score": 60,
+      "similarity_score": 70,
+      "steps_percentage": 50.0,
+      "explanation": "The Stagehand AI system demonstrated partial completion of the task by correctly navigating to the GameStop website and directly accessing the PlayStation 5 pre-order section through a URL, instead of following the step-by-step process outlined in the expected actions. Although the system did not explicitly perform each action such as clicking through menus and setting filters as listed, it achieved the intended outcome of reaching the PlayStation 5 pre-orders page. This indicates a correct understanding and intent towards the task, hence the scores reflect a recognition of this partial progress and the semantic similarity of the actions taken, despite not matching the exact steps.",
+      "total_time_seconds": 81.17934322357178,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:10:28.086018"
+    },
+    {
+      "task_id": 73,
+      "website": "gamestop",
+      "task": "Find the trade-in options for PS4.",
+      "ground_truth_actions": [
+        "[link]  repeat Trade-In -> CLICK",
+        "[p]  Consoles -> CLICK",
+        "[link]  Filter -> CLICK",
+        "[generic]  Refine by Category: PlayStation 4 -> CLICK",
+        "[button]  Done -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.gamestop.com",
+        "[OBSERVE] Find any navigation links or menu items related to trade-ins"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 50,
+      "steps_percentage": 40.0,
+      "explanation": "The Stagehand AI system completed the initial step of navigating to the GameStop website, which aligns with the expected ground truth actions related to finding trade-in options. However, it did not perform any further actions specified in the ground truth, such as clicking on trade-in, selecting consoles, filtering for PlayStation 4, and confirming the choices. The AI's step to observe for trade-in navigation links or menu items shows correct intent and partial progress toward completing the task. The leniency guidelines recommend rewarding the right initial steps and intent, which justifies the scores.",
+      "total_time_seconds": 39.311517000198364,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:10:34.219086"
+    },
+    {
+      "task_id": 76,
+      "website": "rottentomatoes",
+      "task": "List all George Clooney movies and sort them by box office revenue",
+      "ground_truth_actions": [
+        "[textbox]  Search -> TYPE: George Clooney",
+        "[p]  George Clooney -> CLICK",
+        "[button]  BOX OFFICE -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.rottentomatoes.com/",
+        "[OBSERVE] Find the search bar or search icon"
+      ],
+      "extract_content": [],
+      "accuracy_score": 50,
+      "similarity_score": 60,
+      "steps_percentage": 66.66666666666666,
+      "explanation": "The Stagehand AI system correctly initiated the task by navigating to the Rotten Tomatoes website and identifying the need to find the search bar, which aligns with the first step of the ground truth actions. However, it didn't proceed to enter 'George Clooney' into the search box, nor did it navigate to his profile or sort his movies by box office revenue. The accuracy score is in the middle range because the initial step matches the general direction of the expected actions, but it doesn't cover the full scope. The similarity score is slightly higher because the intent to start searching for George Clooney movies, which is the core of the task, was correctly identified, albeit incompletely executed.",
+      "total_time_seconds": 34.17169904708862,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:11:37.360786"
+    },
+    {
+      "task_id": 74,
+      "website": "tvguide",
+      "task": "Find the channel number for the local CBS in Spokane Washington in 99201.",
+      "ground_truth_actions": [
+        "[link]  Live TV -> CLICK",
+        "[button]  Broadcast TV Spokane (3) -> CLICK",
+        "[textbox]  Search -> TYPE: 99201",
+        "[button]  Antenna -> CLICK",
+        "[button]  Broadcast TV Spokane (3) -> CLICK",
+        "[button]  Apply -> CLICK",
+        "[button]  Skip -> CLICK",
+        "[div]  CH 2.1 -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00152111053467,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:11:41.652997"
+    },
+    {
+      "task_id": 75,
+      "website": "airbnb",
+      "task": "Search for Castles in Europe for a week next month and price below $1000 per night.",
+      "ground_truth_actions": [
+        "[button]  Location Anywhere -> CLICK",
+        "[div]   -> CLICK",
+        "[button]  1, Saturday, April 2023. Available. Select as chec... -> CLICK",
+        "[button]  8, Saturday, April 2023. Available. Select as chec... -> CLICK",
+        "[span]   -> CLICK",
+        "[span]  Castles -> CLICK",
+        "[button]  Filters -> CLICK",
+        "[textbox]  max price $ -> TYPE: 1000",
+        "[link]  Show 673 stays -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.airbnb.com",
+        "[ACT] Click on the \"Where\" search field",
+        "[ACT] Type \"Europe\" in the search field"
+      ],
+      "extract_content": [],
+      "accuracy_score": 20,
+      "similarity_score": 45,
+      "steps_percentage": 33.33333333333333,
+      "explanation": "The Stagehand AI system only completed initial steps such as navigating to the Airbnb website and starting a basic search by typing 'Europe' into the search field, which aligns partly with the first steps of specifying a location needed before defining more specific details such as dates, type of place, and price range. It did not proceed to input dates, select the type 'Castles', apply price filters, or initiate the search fully as outlined in the expected actions. However, starting a search by specifying a location is a correct initial step towards the task, hence the scores reflect partial completion with correct intent.",
+      "total_time_seconds": 90.00055885314941,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:12:09.701862"
+    },
+    {
+      "task_id": 77,
+      "website": "seatgeek",
+      "task": "Search for all Alternative Concerts taking place in New York City.",
+      "ground_truth_actions": [
+        "[button]  Change Location -> CLICK",
+        "[searchbox]  Search by city... -> TYPE: New York",
+        "[option]  New York, NY -> CLICK",
+        "[img]  Concerts -> CLICK",
+        "[img]  Alternative -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://seatgeek.com/",
+        "[NAVIGATE] https://seatgeek.com/concerts/new-york",
+        "[NAVIGATE] https://seatgeek.com/alternative-concerts/new-york"
+      ],
+      "extract_content": [],
+      "accuracy_score": 70,
+      "similarity_score": 85,
+      "steps_percentage": 60.0,
+      "explanation": "The Stagehand AI system's actions demonstrate a significant level of accuracy and similarity compared to the expected steps. While it did not follow the step-by-step interaction with the website's UI elements, such as clicking buttons or typing in search boxes, it achieved the end goal through direct navigation. The accuracy score is somewhat lower because the AI skipped some intermediate steps such as specifically selecting New York City or choosing the 'Alternative' genre through the website's interface. However, the similarity score is higher because the AI's navigations directly lead to the desired outcome of viewing alternative concerts in New York, which shows a clear understanding of the task's intent. The direct navigation to the final URL accomplishes the goal in fewer steps, showing efficiency despite bypassing detailed UI interactions.",
+      "total_time_seconds": 50.47802710533142,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:12:15.417055"
+    },
+    {
+      "task_id": 80,
+      "website": "new.mta.info",
+      "task": "View the special timetable for Far Rockaway Branch of the Long Island Railroad.",
+      "ground_truth_actions": [
+        "[link]  Schedules -> CLICK",
+        "[heading]  Long Island Rail Road & Metro-North Railroad -> CLICK",
+        "[div]  Long Island Rail Road schedules -> CLICK",
+        "[link]  Far Rockaway Branch -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://new.mta.info"
+      ],
+      "extract_content": [],
+      "accuracy_score": 20,
+      "similarity_score": 40,
+      "steps_percentage": 25.0,
+      "explanation": "The Stagehand AI system only completed the initial action of navigating to the MTA website, which is the first necessary step towards completing the task. However, it did not perform any of the specific actions required to find the special timetable for the Far Rockaway Branch of the Long Island Railroad. The accuracy score is low because Stagehand did not match any of the expected actions beyond navigating to the website. The similarity score is somewhat higher to acknowledge the correct initial step towards the goal, but it still falls short as no further steps were taken. The intent was correct, but execution was incomplete.",
+      "total_time_seconds": 29.85165500640869,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:13:06.769975"
+    },
+    {
+      "task_id": 78,
+      "website": "seatgeek",
+      "task": "Show me the page with information about the NBA Finals schedule.",
+      "ground_truth_actions": [
+        "[div]  Sports -> HOVER",
+        "[link]  NBA -> HOVER",
+        "[link]  NBA Finals -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00142478942871,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:13:11.758786"
+    },
+    {
+      "task_id": 79,
+      "website": "seatgeek",
+      "task": "Search for concerts taking place in Los Angeles, CA in the next month.",
+      "ground_truth_actions": [
+        "[button]  Change Location -> CLICK",
+        "[searchbox]  Search by city... -> TYPE: Los Angeles",
+        "[option]  Los Angeles, CA -> CLICK",
+        "[span]  Filter by -> CLICK",
+        "[div]  16 -> CLICK",
+        "[div]  16 -> CLICK",
+        "[button]  Apply -> CLICK",
+        "[img]  Concerts -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://seatgeek.com/"
+      ],
+      "extract_content": [],
+      "accuracy_score": 10,
+      "similarity_score": 40,
+      "steps_percentage": 12.5,
+      "explanation": "The Stagehand AI system only performed one action, which was navigating to the SeatGeek website. This is technically a correct initial step towards completing the task of searching for concerts in Los Angeles, CA in the next month. However, it did not execute any of the specific actions listed in the ground truth, such as changing the location to Los Angeles or filtering by date. Given the very lenient scoring guidance, the initial navigation is rewarded for being a correct first step (albeit the only step taken). The accuracy score is very low due to no exact match in actions, while the similarity score is somewhat higher because the step taken is semantically related to the initial stage of completing the task.",
+      "total_time_seconds": 90.00111794471741,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:13:52.411840"
+    },
+    {
+      "task_id": 81,
+      "website": "new.mta.info",
+      "task": "Find the motorcycle toll fee for the Queens midtown tunnel.",
+      "ground_truth_actions": [
+        "[link]  Fares & Tolls -> CLICK",
+        "[div]  Bridges and Tunnels tolls -> CLICK",
+        "[span]  Toll Rates -> CLICK",
+        "[span]  Motorcycles -> CLICK",
+        "[heading]  Bronx-Whitestone, Throgs Neck,\u00a0Robert F. Kennedy, ... -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://new.mta.info",
+        "[ACT] Click on \"Fares & Tolls\""
+      ],
+      "extract_content": [],
+      "accuracy_score": 70,
+      "similarity_score": 75,
+      "steps_percentage": 40.0,
+      "explanation": "The Stagehand AI system followed the correct initial steps by navigating to the MTA website and clicking on 'Fares & Tolls', which matches the first expected step of the ground truth actions. Although it did not complete all the steps, such as clicking through to the 'Bridges and Tunnels tolls', selecting 'Toll Rates', and specifically finding the 'Motorcycles' toll rate information, its initial actions were on the right track. Given the guidance to be lenient due to time limits and reward partial progress, the scores reflect the system's correct direction and intent despite not completing the task fully.",
+      "total_time_seconds": 67.88942909240723,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:14:07.531216"
+    },
+    {
+      "task_id": 83,
+      "website": "rei",
+      "task": "Browse climbing courses within 50 miles of 90028.",
+      "ground_truth_actions": [
+        "[link]  Classes & Events -> CLICK",
+        "[combobox]  Activity -> SELECT: Climbing",
+        "[textbox]  Location -> TYPE: 90028",
+        "[combobox]  Distance -> SELECT: Within 50 miles",
+        "[button]  Search -> CLICK"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.rei.com"
+      ],
+      "extract_content": [],
+      "accuracy_score": 20,
+      "similarity_score": 40,
+      "steps_percentage": 20.0,
+      "explanation": "The Stagehand AI system only completed the initial step of navigating to the REI website, which is partially correct as it is a necessary first step to performing the task. However, it did not perform any of the subsequent steps required to browse climbing courses within 50 miles of 90028, such as selecting climbing activities, entering a location, selecting a distance, and clicking the search button. The accuracy score is low because it only fulfilled the initial navigation step. The similarity score is somewhat higher as navigating to the website shows an understanding of the task's context but lacks specific actions to complete the task. Given the leniency guidelines, the initial step of navigating to the correct website indicates a correct direction, even though the action was not fully executed.",
+      "total_time_seconds": 40.902199029922485,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:14:26.641298"
+    },
+    {
+      "task_id": 82,
+      "website": "new.mta.info",
+      "task": "Plan a trip from Brooklyn, NY to Staten Island, NY on March 25th mainly using bus and subway terminal. The trip should arive at 9:45 AM.",
+      "ground_truth_actions": [
+        "[searchbox]  From -> TYPE: brooklyn",
+        "[listitem]  Brooklyn, NY, USA -> CLICK",
+        "[searchbox]  To -> TYPE: staten island",
+        "[listitem]  Staten Island, NY, USA -> CLICK",
+        "[button]  Leave now Change Time -> CLICK",
+        "[textbox]  Select date (format month/day/year) -> CLICK",
+        "[button]  03/18/2023 -> CLICK",
+        "[link]  25, Saturday March 2023 -> CLICK",
+        "[radio]  Arrive by -> CLICK",
+        "[select]  1 -> SELECT: 9",
+        "[select]  00 -> SELECT: 45",
+        "[select]  AM -> SELECT: AM",
+        "[button]  3/25/2023 -> CLICK",
+        "[link]  25, Saturday March 2023 -> CLICK",
+        "[button]  Open Travel Preferences modal. -> CLICK",
+        "[label]  Rail -> CLICK",
+        "[label]  Express Bus -> CLICK",
+        "[button]  Done button - Press enter key to submit travel pre... -> CLICK",
+        "[link]  Plan my Trip - Press enter key to submit the form ... -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00153803825378,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:14:47.252136"
+    },
+    {
+      "task_id": 86,
+      "website": "eventbrite",
+      "task": "Contact Yeah You Right Events who are the organisers of the Food Fight 2023 event being held in New Orleans on May 25th to ask a question about the event",
+      "ground_truth_actions": [
+        "[combobox]  autocomplete -> TYPE: New Orleans",
+        "[div]  LA, USA -> CLICK",
+        "[button]  Food & Drink -> CLICK",
+        "[div]   -> CLICK",
+        "[button]  Contact -> CLICK",
+        "[button]  Contact the organizer -> CLICK",
+        "[listbox]  Contact reason * (required) -> SELECT: Question about the event"
+      ],
+      "stagehand_actions": [
+        "[NAVIGATE] https://www.eventbrite.com",
+        "[OBSERVE] find the search bar",
+        "[ACT] Click the search bar"
+      ],
+      "extract_content": [],
+      "accuracy_score": 20,
+      "similarity_score": 40,
+      "steps_percentage": 42.857142857142854,
+      "explanation": "The Stagehand AI system began the task by navigating to the Eventbrite website and attempting to use the search bar, which aligns with the initial step necessary to find a specific event or organizer. However, it did not progress beyond this initial action to more accurately reflect the detailed steps listed in the ground truth actions, such as selecting the location, event category, contacting the organizer, and specifying the reason for contact. Given the AI's correct intent to start the search process for the event or organizer, a lenient approach is taken in scoring, acknowledging partial progress and the correct initiation of the task.",
+      "total_time_seconds": 37.81414198875427,
+      "status": "rate_limit_error",
+      "timestamp": "2025-03-26T19:15:31.334863"
+    },
+    {
+      "task_id": 84,
+      "website": "redbox",
+      "task": "Find $1 movie night film and rent blockers",
+      "ground_truth_actions": [
+        "[link]  Navigate to deals -> CLICK",
+        "[link]  Navigate to 1-Night Kiosk Rentals See More -> CLICK",
+        "[img]  Blockers, MOVIE on , , Comedy, Romance, Special In... -> CLICK",
+        "[button]  select to rent on demand movie -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00117087364197,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:15:32.246208"
+    },
+    {
+      "task_id": 85,
+      "website": "redbox",
+      "task": "Play the Wakanda Forever trailer",
+      "ground_truth_actions": [
+        "[link]  Navigate to on-demand -> HOVER",
+        "[link]  select to navigate to Genres -> CLICK",
+        "[img]  Black Panther: Wakanda Forever, MOVIE on , , , Act... -> CLICK",
+        "[path]   -> CLICK"
+      ],
+      "stagehand_actions": [],
+      "extract_content": [],
+      "accuracy_score": 0,
+      "similarity_score": 0,
+      "steps_percentage": 0,
+      "explanation": "No stagehand actions were found to evaluate.",
+      "total_time_seconds": 90.00138998031616,
+      "status": "timeout",
+      "timestamp": "2025-03-26T19:15:56.685151"
+    }
+  ]

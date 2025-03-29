@@ -10,36 +10,57 @@ import readline from "readline";
 /**
  * Helper function to count tokens using Anthropic's API
  */
+let useAlternateKey = false; // Track which key to use
+
 async function countTokensFromMessage(message: string, role: "user" | "assistant" = "user"): Promise<number> {
-  try {
-    const response = await fetch("https://api.anthropic.com/v1/messages/count_tokens", {
+  const primaryKey = process.env.ANTHROPIC_API_KEY || "";
+  const fallbackKey = process.env.FALLBACK_ANTHROPIC_API_KEY || "";
+  
+  // If we have both keys, alternate between them
+  const currentKey = (fallbackKey && useAlternateKey) ? fallbackKey : primaryKey;
+  
+  async function makeRequest(apiKey: string) {
+    return await fetch("https://api.anthropic.com/v1/messages/count_tokens", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": process.env.ANTHROPIC_API_KEY || "",
+        "x-api-key": apiKey,
         "anthropic-version": "2023-06-01"
       },
       body: JSON.stringify({
         model: "claude-3-sonnet-20240229",
         messages: [
-          {
-            role: role,
-            content: message
-          }
+          { role, content: message }
         ]
-      }),
+      })
     });
+  }
 
+  try {
+    // Try with the current key
+    let response = await makeRequest(currentKey);
+    
+    // If rate-limited and we have a fallback key, try with the other key
+    if (response.status === 429 && fallbackKey) {
+      console.error(`Rate limit encountered for ${useAlternateKey ? 'fallback' : 'primary'} Anthropic API key. Trying other key.`);
+      response = await makeRequest(useAlternateKey ? primaryKey : fallbackKey);
+    }
+    
     if (!response.ok) {
       const errorText = await response.text();
       console.error(`Token counting failed (${response.status}): ${errorText}`);
       throw new Error(`Token counting failed: ${response.statusText}`);
     }
-
+    
     const data = await response.json();
-    // Debug log to standard error to avoid Python script parsing it
     console.error(`Token count response details: ${JSON.stringify(data, null, 2)}`);
-    return data.input_tokens; // Return just the input_tokens because that's what we sent
+    
+    // Toggle the key for next time if we have both keys
+    if (primaryKey && fallbackKey) {
+      useAlternateKey = !useAlternateKey;
+    }
+    
+    return data.input_tokens;
   } catch (error) {
     console.error("Error counting tokens:", error);
     return 0;
@@ -166,6 +187,13 @@ export async function main(
     },
     onFinish: async (result) => {
       console.log("\n\n\n---FINISHED---");
+
+      // Exit after 5 seconds to allow for any final operations to complete
+      setTimeout(() => {
+        console.log("Task Completed");
+        stagehand.close();
+        process.exit(0);
+      }, 5000).unref();
       
       // Use fixed values for token counts just to validate parsing
       const fixedTokenCount = 300;

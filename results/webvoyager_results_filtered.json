@@ -1041,23 +1041,6 @@
     "timestamp": "2025-03-28T00:30:56.049025"
   },
   {
-    "task_id": "708b99c5-e4a7-49cb-a5cf-933c8d46470d",
-    "website": "https://www.google.com/",
-    "task": "On the DeepFruits fruit detection graph on Connected Papers from 2016, what feature caused the largest bubble to be the size it is?",
-    "ground_truth_actions": [
-      "Citations"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00161790847778,
-    "status": "timeout",
-    "timestamp": "2025-03-28T00:31:05.980329"
-  },
-  {
     "task_id": "1dcc160f-c187-48c2-b68e-319bd4354f3d",
     "website": "https://www.google.com/",
     "task": "According to Openreview.net, at the NeurIPS 2022 Conference, how many papers by an author named Yuri were accepted with a \"certain\" recommendation?",
@@ -1608,23 +1591,6 @@
     "timestamp": "2025-03-28T00:45:03.201922"
   },
   {
-    "task_id": "5188369a-3bbe-43d8-8b94-11558f909a08",
-    "website": "https://www.google.com/",
-    "task": "What writer is quoted by Merriam-Webster for the Word of the Day from June 27, 2022?",
-    "ground_truth_actions": [
-      "Annie Levin"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00190782546997,
-    "status": "timeout",
-    "timestamp": "2025-03-28T00:45:14.469083"
-  },
-  {
     "task_id": "3f57289b-8c60-48be-bd80-01f8099ca449",
     "website": "https://www.google.com/",
     "task": "How many at bats did the Yankee with the most walks in the 1977 regular season have that same season?",
@@ -1985,23 +1951,6 @@
     "timestamp": "2025-03-28T00:55:48.103367"
   },
   {
-    "task_id": "8e867cd7-cff9-4e6c-867a-ff5ddc2550be",
-    "website": "https://www.google.com/",
-    "task": "How many studio albums were published by Mercedes Sosa between 2000 and 2009 (included)? You can use the latest 2022 version of english wikipedia.",
-    "ground_truth_actions": [
-      "3"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 94.98908591270447,
-    "status": "timeout",
-    "timestamp": "2025-03-28T00:55:48.107791"
-  },
-  {
     "task_id": "7b5377b0-3f38-4103-8ad2-90fe89864c04",
     "website": "https://www.google.com/",
     "task": "Find the value of x to the nearest tenth: Lx = (d/dx * (A * x-squared)) + 4-thousand'n'ninety-7 minus C\nWhere L is the last two digits of the year of the Venezuelan Declaration of Independence,\nA is the number of colors in the TikTok logo as of July 2023, excluding black and white,\nand C is the height of the average woman in the Philippines according to a July 2023 Business Insider article, rounded to the nearest whole centimeter",
@@ -2210,23 +2159,6 @@
     "total_time_seconds": 32.9743869304657,
     "status": "completed",
     "timestamp": "2025-03-28T01:09:26.917143"
-  },
-  {
-    "task_id": "d0633230-7067-47a9-9dbf-ee11e0a2cdd6",
-    "website": "https://www.google.com/",
-    "task": "In the Scikit-Learn July 2017 changelog, what other predictor base command received a bug fix? Just give the name, not a path.",
-    "ground_truth_actions": [
-      "BaseLabelPropagation"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00112104415894,
-    "status": "timeout",
-    "timestamp": "2025-03-28T01:09:47.034011"
   },
   {
     "task_id": "e4e91f1c-1dcd-439e-9fdd-cb976f5293fd",

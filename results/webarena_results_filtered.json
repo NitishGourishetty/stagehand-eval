@@ -97,172 +97,6 @@
     "timestamp": "2025-03-27T04:26:19.312642"
   },
   {
-    "task_id": 413,
-    "website": "gitlab",
-    "task": "Make the LICENSE of byteblaze/a11y-syntax-highlighting to one that mandates all copies and derivative works to be under the same license",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.00117111206055,
-    "status": "timeout",
-    "timestamp": "2025-03-27T04:35:49.556741"
-  },
-  {
-    "task_id": 749,
-    "website": "gitlab",
-    "task": "Start a private project project_site with NodeJS template and add primer, convexegg, vinta as members",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.00018000602722,
-    "status": "timeout",
-    "timestamp": "2025-03-27T04:36:49.563148"
-  },
-  {
-    "task_id": 433,
-    "website": "shopping",
-    "task": "Add the product with the lowest per unit price from my open tabs to the shopping cart",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.00019407272339,
-    "status": "timeout",
-    "timestamp": "2025-03-27T04:37:49.553283"
-  },
-  {
-    "task_id": 104,
-    "website": "gitlab",
-    "task": "Display the list of issues in the keycloak/keycloak repository that have labels related to flaky-test",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.00052523612976,
-    "status": "timeout",
-    "timestamp": "2025-03-27T04:38:49.560583"
-  },
-  {
-    "task_id": 467,
-    "website": "shopping",
-    "task": "Add HONGJ Hawaiian Beach Outfits Set for Mens, Summer Tropical Tree Printed Relaxed-fit Hawaii Shirts Shorts 2 Piece Suits to my wish list",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.00059199333191,
-    "status": "timeout",
-    "timestamp": "2025-03-27T04:39:49.556548"
-  },
-  {
-    "task_id": 21,
-    "website": "shopping",
-    "task": "List out reviewers, if exist, who mention about ear cups being small",
-    "ground_truth_actions": [
-      "Joseph Brzezinski",
-      "Catso",
-      "Dibbins",
-      "Anglebert Dinkherhump",
-      "Michelle Davis"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.0009400844574,
-    "status": "timeout",
-    "timestamp": "2025-03-27T04:41:57.709746"
-  },
-  {
-    "task_id": 91,
-    "website": "map",
-    "task": "Which US states border Massachusetts?",
-    "ground_truth_actions": [
-      "Rhode Island",
-      "Connecticut",
-      "New York",
-      "New Hampshire",
-      "Vermont"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00163793563843,
-    "status": "timeout",
-    "timestamp": "2025-03-27T04:42:20.214608"
-  },
-  {
-    "task_id": 411,
-    "website": "gitlab",
-    "task": "Make the LICENSE of byteblaze/cloud-to-butt to MIT license.",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00147294998169,
-    "status": "timeout",
-    "timestamp": "2025-03-27T04:46:41.725207"
-  },
-  {
-    "task_id": 693,
-    "website": "shopping",
-    "task": "Draft an email to the shop owner via their contact us function for a coupon as my refund is suppoed to be replaced by a coupon",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.0011248588562,
-    "status": "timeout",
-    "timestamp": "2025-03-27T04:47:04.223324"
-  },
-  {
-    "task_id": 204,
-    "website": "shopping_admin",
-    "task": "Get the product name and discounted price (low to high) of the most recent completed order",
-    "ground_truth_actions": [
-      "Rapha Sports Short: $35",
-      "Thorpe Track Pant: $54.4",
-      "Mach Street Sweatshirt: $62"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 89.99611330032349,
-    "status": "timeout",
-    "timestamp": "2025-03-27T04:47:26.723007"
-  },
-  {
     "task_id": 431,
     "website": "shopping",
     "task": "Add the product with the lowest per unit price from my open tabs to the shopping cart",
@@ -351,39 +185,6 @@
     "total_time_seconds": 80.04179000854492,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T04:55:16.023841"
-  },
-  {
-    "task_id": 580,
-    "website": "reddit",
-    "task": "Create a new forum named sci_fi, with a description of A wild place for sci-fi enthusiasts, and include ['New', 'Classic', 'Movies', 'Post my novel', 'Random'] in the sidebar?",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.0009982585907,
-    "status": "timeout",
-    "timestamp": "2025-03-27T04:55:41.559124"
-  },
-  {
-    "task_id": 10,
-    "website": "map",
-    "task": "Tell me the full address of all US international airports that are within a driving distance of 60 km to Niagara Falls",
-    "ground_truth_actions": [
-      "Niagara Falls International Airport, 2035, Niagara Falls Boulevard, City of Niagara Falls, Town of Wheatfield, Niagara County, New York, 14304, United States",
-      "Buffalo-Niagara International Airport, Holtz Drive, Town of Cheektowaga, Erie County, New York, 14225, United States"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00085520744324,
-    "status": "timeout",
-    "timestamp": "2025-03-27T04:56:04.057283"
   },
   {
     "task_id": 339,
@@ -533,23 +334,6 @@
     "timestamp": "2025-03-27T04:58:24.218197"
   },
   {
-    "task_id": 304,
-    "website": "gitlab",
-    "task": "How many commits did Eric make between Feb 2023 and May 2023?",
-    "ground_truth_actions": [
-      "14"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00034689903259,
-    "status": "timeout",
-    "timestamp": "2025-03-27T04:58:42.722979"
-  },
-  {
     "task_id": 13,
     "website": "shopping_admin",
     "task": "Tell me the the number of reviews that our store received by far that mention term \"decent\"",
@@ -671,21 +455,6 @@
     "timestamp": "2025-03-27T05:01:31.092818"
   },
   {
-    "task_id": 463,
-    "website": "shopping_admin",
-    "task": "Increase the price of this product by 15%",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00085687637329,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:01:33.211331"
-  },
-  {
     "task_id": 143,
     "website": "shopping",
     "task": "How much I spent on home decoration shopping during 1/29/2023",
@@ -730,21 +499,6 @@
     "timestamp": "2025-03-27T05:02:12.851452"
   },
   {
-    "task_id": 349,
-    "website": "gitlab",
-    "task": "Who else have access to my repo gimmiethat.space, show me their usernames",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00051403045654,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:02:18.215088"
-  },
-  {
     "task_id": 499,
     "website": "shopping_admin",
     "task": "Update order #304 with the USPS tracking number 13849373987",
@@ -767,25 +521,6 @@
     "total_time_seconds": 42.20778799057007,
     "status": "completed",
     "timestamp": "2025-03-27T05:02:43.521837"
-  },
-  {
-    "task_id": 166,
-    "website": "shopping",
-    "task": "What are the main criticisms of this product? Please extract the relevant sentences.",
-    "ground_truth_actions": [
-      "N",
-      "/",
-      "A"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 24.726622104644775,
-    "status": "completed",
-    "timestamp": "2025-03-27T05:03:08.254882"
   },
   {
     "task_id": 744,
@@ -829,21 +564,6 @@
     "total_time_seconds": 48.2247531414032,
     "status": "completed",
     "timestamp": "2025-03-27T05:04:00.927269"
-  },
-  {
-    "task_id": 690,
-    "website": "shopping",
-    "task": "Draft an email to the shop owner via their contact us function for a coupon as they promised me a coupon last time",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 26.458874940872192,
-    "status": "completed",
-    "timestamp": "2025-03-27T05:04:27.395104"
   },
   {
     "task_id": 31,
@@ -939,40 +659,6 @@
     "timestamp": "2025-03-27T05:06:45.995432"
   },
   {
-    "task_id": 352,
-    "website": "shopping",
-    "task": "List products from nutrition bars and drinks category by ascending price",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 93.88280916213989,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:06:46.010248"
-  },
-  {
-    "task_id": 92,
-    "website": "map",
-    "task": "Which US states border Vermont?",
-    "ground_truth_actions": [
-      "New York",
-      "New Hampshire",
-      "Massachusetts"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.01287794113159,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:07:04.667644"
-  },
-  {
     "task_id": 590,
     "website": "gitlab",
     "task": "Create a milestone for the upcoming event of product launch starting on 1/16/2023 and ending on 1/30/2023",
@@ -1047,24 +733,6 @@
     "timestamp": "2025-03-27T05:08:24.583855"
   },
   {
-    "task_id": 25,
-    "website": "shopping",
-    "task": "List out reviewers, if exist, who mention about average print quality",
-    "ground_truth_actions": [
-      "Goldfish",
-      "Roxanne Brandon Coffey"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00158882141113,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:09:23.523977"
-  },
-  {
     "task_id": 811,
     "website": "gitlab",
     "task": "Assign the issue regarding 404 in a11yproject to myself.",
@@ -1084,23 +752,6 @@
     "total_time_seconds": 88.82136821746826,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T05:09:53.945151"
-  },
-  {
-    "task_id": 322,
-    "website": "shopping",
-    "task": "How much refund I should expect from my order canlled in May 2023 if I cannot get the shipping fee refunded?",
-    "ground_truth_actions": [
-      "350.42"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00202488899231,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:10:10.842777"
   },
   {
     "task_id": 786,
@@ -1166,21 +817,6 @@
     "total_time_seconds": 34.639195919036865,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T05:10:57.663250"
-  },
-  {
-    "task_id": 576,
-    "website": "gitlab",
-    "task": "Add the following users to repo a11y-webring.club as developer: ['abisubramanya27', 'lahwaacz']",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 91.83728981018066,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:10:57.677574"
   },
   {
     "task_id": 705,
@@ -1304,21 +940,6 @@
     "timestamp": "2025-03-27T05:13:33.192605"
   },
   {
-    "task_id": 422,
-    "website": "gitlab",
-    "task": "Set my gitlab status as Out of Office.",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00160002708435,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:14:04.029048"
-  },
-  {
     "task_id": 280,
     "website": "shopping",
     "task": "Provide me with the full names of chargers from Anker, and also share the price range for the available models",
@@ -1374,23 +995,6 @@
     "total_time_seconds": 27.122752904891968,
     "status": "completed",
     "timestamp": "2025-03-27T05:14:58.512549"
-  },
-  {
-    "task_id": 96,
-    "website": "shopping",
-    "task": "Tell me the status of my latest order and when will it arrive",
-    "ground_truth_actions": [
-      "The last order was canceled. It will never arrive."
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00198101997375,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:15:25.715343"
   },
   {
     "task_id": 20,
@@ -1532,21 +1136,6 @@
     "timestamp": "2025-03-27T05:18:09.701920"
   },
   {
-    "task_id": 634,
-    "website": "reddit",
-    "task": "Ask for product recommendations for used iphone within a budget of $1000 in r/iphone",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00157475471497,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:19:11.858093"
-  },
-  {
     "task_id": 558,
     "website": "gitlab",
     "task": "Create a repo named nolan_young_fans with movies directed by Christopher Nolan after 2010 in a README file",
@@ -1622,21 +1211,6 @@
     "timestamp": "2025-03-27T05:20:30.022271"
   },
   {
-    "task_id": 709,
-    "website": "shopping_admin",
-    "task": "Create an orders report from beginning of May 2021 to end of March 2022",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00143384933472,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:20:51.336741"
-  },
-  {
     "task_id": 695,
     "website": "shopping_admin",
     "task": "Add a simple product named Energy-Bulk Man Yoga Pant with 50 in stock, available in size 38 and color yellow, priced at $69.99",
@@ -1659,25 +1233,6 @@
     "total_time_seconds": 42.18650984764099,
     "status": "completed",
     "timestamp": "2025-03-27T05:21:17.419483"
-  },
-  {
-    "task_id": 789,
-    "website": "gitlab",
-    "task": "Create an issue asking about do they have any plan on supporting Webagent in the next quater in huggingface dataset.",
-    "ground_truth_actions": [
-      "N",
-      "/",
-      "A"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.001540184021,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:21:36.344035"
   },
   {
     "task_id": 132,
@@ -1813,24 +1368,6 @@
     "timestamp": "2025-03-27T05:24:07.894188"
   },
   {
-    "task_id": 66,
-    "website": "reddit",
-    "task": "Among the top 10 post in \"books\" forum, show me the post URLs that recommand a single book",
-    "ground_truth_actions": [
-      "http://www.reddit.com/f/books/59396/apple-books-has-a-free-audiobook-of-a-christmas-carol",
-      "http://www.reddit.com/f/books/17445/i-just-finished-reading-the-hobbit-to-my-6-year-old-daughter"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 89.97940802574158,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:24:39.916847"
-  },
-  {
     "task_id": 120,
     "website": "shopping_admin",
     "task": "Tell me the reasons why customers like Ana Running Short",
@@ -1925,39 +1462,6 @@
     "timestamp": "2025-03-27T05:26:52.396344"
   },
   {
-    "task_id": 725,
-    "website": "reddit",
-    "task": "DisLike all submissions created by RickyDontLoseThat in subreddit massachusetts",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00063800811768,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:27:07.894045"
-  },
-  {
-    "task_id": 164,
-    "website": "shopping",
-    "task": "What are the main criticisms of this product? Please extract the relevant sentences.",
-    "ground_truth_actions": [
-      "Dry",
-      "Uneven color"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00081896781921,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:27:30.403696"
-  },
-  {
     "task_id": 595,
     "website": "reddit",
     "task": "Open the thread of a trending post on the forum \"space\" and subscribe.",
@@ -1991,21 +1495,6 @@
     "total_time_seconds": 29.795928716659546,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T05:27:51.133683"
-  },
-  {
-    "task_id": 779,
-    "website": "shopping_admin",
-    "task": "Reduce the price of yellow shirts from Gwyn Endurance in all size below L by 15%",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00041007995605,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:27:52.898123"
   },
   {
     "task_id": 246,
@@ -2106,21 +1595,6 @@
     "total_time_seconds": 40.80433702468872,
     "status": "completed",
     "timestamp": "2025-03-27T05:29:40.351287"
-  },
-  {
-    "task_id": 622,
-    "website": "reddit",
-    "task": "Ask for advice about sexual harassment in a subreddit for relations",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 21.45610475540161,
-    "status": "completed",
-    "timestamp": "2025-03-27T05:30:01.821118"
   },
   {
     "task_id": 720,
@@ -2531,21 +2005,6 @@
     "timestamp": "2025-03-27T05:38:46.385848"
   },
   {
-    "task_id": 487,
-    "website": "shopping_admin",
-    "task": "Change the page title of \"Enable Cookies\" page on my site to \"Cookie monster coming to your place\".",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 21.445712089538574,
-    "status": "completed",
-    "timestamp": "2025-03-27T05:39:07.837534"
-  },
-  {
     "task_id": 263,
     "website": "shopping",
     "task": "I want to browse the products in the Woman clothing category",
@@ -2600,21 +2059,6 @@
     "timestamp": "2025-03-27T05:40:36.344770"
   },
   {
-    "task_id": 769,
-    "website": "shopping_admin",
-    "task": "We've received 378 brown Aero daily fitness tee in every size, please update the inventory.",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.02250123023987,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:41:26.315018"
-  },
-  {
     "task_id": 248,
     "website": "map",
     "task": "Tell me the coordinates of Carnegie Mellon Caf\u00e9 in DD format",
@@ -2635,21 +2079,6 @@
     "total_time_seconds": 42.36024498939514,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T05:41:57.850005"
-  },
-  {
-    "task_id": 802,
-    "website": "gitlab",
-    "task": "create a new group \"coding_friends\" with members qhduan, Agnes-U",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 93.92774605751038,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:41:57.865781"
   },
   {
     "task_id": 755,
@@ -2705,21 +2134,6 @@
     "timestamp": "2025-03-27T05:43:03.633432"
   },
   {
-    "task_id": 739,
-    "website": "wikipedia",
-    "task": "Show me the way from Carnegie Mellon University to the home stadium of Yankees in the 80th",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 92.17924308776855,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:43:03.644162"
-  },
-  {
     "task_id": 443,
     "website": "gitlab",
     "task": "Update the project site's title to \"Not an interesting site\"",
@@ -2773,23 +2187,6 @@
     "total_time_seconds": 62.28768587112427,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T05:44:39.515632"
-  },
-  {
-    "task_id": 344,
-    "website": "shopping_admin",
-    "task": "How many reviews our shop received by far?",
-    "ground_truth_actions": [
-      "351"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.83723902702332,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:44:39.520727"
   },
   {
     "task_id": 350,
@@ -2868,36 +2265,6 @@
     "total_time_seconds": 30.03652310371399,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T05:46:29.720421"
-  },
-  {
-    "task_id": 493,
-    "website": "shopping_admin",
-    "task": "Notify Grace Nguyen in their most recent pending order with message \"sorry we are bankrupt, please contact our customer service for refund\"",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00194001197815,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:47:00.657185"
-  },
-  {
-    "task_id": 586,
-    "website": "shopping",
-    "task": "Rate my recent purchase of Jiffy Corn Muffin Cornbread Mix with 4 stars, using my nickname ShoppingEmma?",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.0024528503418,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:47:53.059249"
   },
   {
     "task_id": 260,
@@ -2998,23 +2365,6 @@
     "timestamp": "2025-03-27T05:49:34.542025"
   },
   {
-    "task_id": 135,
-    "website": "gitlab",
-    "task": "How many commits did Eric and Kilian make to a11yproject on 1/3/2023?",
-    "ground_truth_actions": [
-      "1"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00199294090271,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:49:45.579830"
-  },
-  {
     "task_id": 251,
     "website": "map",
     "task": "Tell me the coordinates of bus stop on the Carnegie art museum side of the street near CMU in DD format",
@@ -3076,23 +2426,6 @@
     "total_time_seconds": 68.28321886062622,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T05:50:41.122038"
-  },
-  {
-    "task_id": 359,
-    "website": "shopping",
-    "task": "Show me the order date for order number 148.",
-    "ground_truth_actions": [
-      "1/29/2023"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00236701965332,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:51:39.808104"
   },
   {
     "task_id": 803,
@@ -3269,21 +2602,6 @@
     "timestamp": "2025-03-27T05:54:17.111494"
   },
   {
-    "task_id": 761,
-    "website": "map",
-    "task": "Get directions from Carnegie Science Museum to Hunt library CMU using walk options.",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.0023512840271,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:54:44.419040"
-  },
-  {
     "task_id": 501,
     "website": "shopping_admin",
     "task": "Make all Taurus Elements Shell as out of stock",
@@ -3325,33 +2643,6 @@
     "timestamp": "2025-03-27T05:55:39.194885"
   },
   {
-    "task_id": 282,
-    "website": "shopping",
-    "task": "List the full product names of slide slippers from Nike and tell me the price range of the available products",
-    "ground_truth_actions": [
-      "Nike Men's Air Max Camden Slide Sandal",
-      "Nike Men's Benassi JDI Fanny Pack Slides",
-      "Nike Victori One Mens Comfort Slide Cn9675-003 (Midnight Navy/Midnight Navy/White, Numeric_10)",
-      "Nike Offcourt Slide Mens Bq4639-002 Size 12",
-      "Nike Jordan Men's Break Slide Red AR6374-602",
-      "Nike Victori One Slide Mens Style : Dd9559-300",
-      "Nike Men's Benassi Solarsoft Slide Athletic Sandal (Black/White, numeric_14)",
-      "Nike Men's Benassi Solarsoft Slide Athletic Sandal (Midnight Navy/Blue, numeric_8)",
-      "Nike womens Benassi Just Do It",
-      "27.6",
-      "90.65"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00341820716858,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:56:22.143335"
-  },
-  {
     "task_id": 160,
     "website": "shopping",
     "task": "I have a lot of Nintendo Switch game cards now, help me find the best storage option to fit all 6 cards",
@@ -3391,21 +2682,6 @@
     "timestamp": "2025-03-27T05:56:52.253355"
   },
   {
-    "task_id": 459,
-    "website": "shopping_admin",
-    "task": "Reduce the price of this product by 10%",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 28.05909299850464,
-    "status": "completed",
-    "timestamp": "2025-03-27T05:56:52.264852"
-  },
-  {
     "task_id": 732,
     "website": "reddit",
     "task": "Edit my post on The Night Agent by adding a line to the body that says \"Done watching, pretty cool!\"",
@@ -3421,21 +2697,6 @@
     "total_time_seconds": 26.61335301399231,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T05:57:24.622182"
-  },
-  {
-    "task_id": 529,
-    "website": "shopping",
-    "task": "Draft a refund message via their \"contact us\" form for the bluetooth speaker I bought Feb 2023. It broke after three days of use. The shop requires the order id, the reason and the amount to refund in the message. Don't submit yet",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00249671936035,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:57:31.715435"
   },
   {
     "task_id": 504,
@@ -3510,21 +2771,6 @@
     "total_time_seconds": 54.776346921920776,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T05:59:46.093861"
-  },
-  {
-    "task_id": 72,
-    "website": "map",
-    "task": "What is the zip code of Yale University?",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 89.97867393493652,
-    "status": "timeout",
-    "timestamp": "2025-03-27T05:59:52.254014"
   },
   {
     "task_id": 315,
@@ -3651,25 +2897,6 @@
     "timestamp": "2025-03-27T06:01:37.612403"
   },
   {
-    "task_id": 24,
-    "website": "shopping",
-    "task": "List out reviewers, if exist, who mention about price being unfair",
-    "ground_truth_actions": [
-      "N",
-      "/",
-      "A"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00244808197021,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:01:44.774807"
-  },
-  {
     "task_id": 244,
     "website": "shopping_admin",
     "task": "Show me the email address of the customer who is the most unhappy with Olivia zip jacket",
@@ -3774,24 +3001,6 @@
     "timestamp": "2025-03-27T06:04:17.350939"
   },
   {
-    "task_id": 18,
-    "website": "map",
-    "task": "Compare the time for walking and driving route from AMC Waterfront to Univ of Pittsburgh",
-    "ground_truth_actions": [
-      "driving: 15min",
-      "walking: 1h 47min"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00225305557251,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:04:30.544639"
-  },
-  {
     "task_id": 792,
     "website": "shopping",
     "task": "Buy the highest rated product from the Beauty & Personal Care category within a budget under 20.",
@@ -3881,23 +3090,6 @@
     "total_time_seconds": 90.00189089775085,
     "status": "timeout",
     "timestamp": "2025-03-27T06:06:08.232504"
-  },
-  {
-    "task_id": 79,
-    "website": "shopping_admin",
-    "task": "What is the total count of Not Approved reviews amongst all the reviews?",
-    "ground_truth_actions": [
-      "0"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00039911270142,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:06:53.315908"
   },
   {
     "task_id": 200,
@@ -4001,21 +3193,6 @@
     "total_time_seconds": 25.76369881629944,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T06:08:17.184497"
-  },
-  {
-    "task_id": 708,
-    "website": "shopping_admin",
-    "task": "Today is 3/15/2023, generate a tax report for this year",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00164079666138,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:08:23.333707"
   },
   {
     "task_id": 284,
@@ -4186,23 +3363,6 @@
     "timestamp": "2025-03-27T06:12:10.782011"
   },
   {
-    "task_id": 65,
-    "website": "shopping_admin",
-    "task": "Which customer has completed the fifth most number of orders in the entire history?",
-    "ground_truth_actions": [
-      "Jane Doe"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00234198570251,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:12:20.737431"
-  },
-  {
     "task_id": 776,
     "website": "shopping_admin",
     "task": "Delete all reviews from the scammer Carlo",
@@ -4336,23 +3496,6 @@
     "timestamp": "2025-03-27T06:14:50.016187"
   },
   {
-    "task_id": 338,
-    "website": "shopping",
-    "task": "Tell me when I last ordered my toothpaste?",
-    "ground_truth_actions": [
-      "December 4th 2022"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.29686307907104,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:14:50.033380"
-  },
-  {
     "task_id": 100,
     "website": "map",
     "task": "Where is the nearest Starbucks to Carnegie Mellon, and what is the walking distance to it?",
@@ -4379,21 +3522,6 @@
     "total_time_seconds": 64.07553720474243,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T06:15:42.959694"
-  },
-  {
-    "task_id": 460,
-    "website": "shopping_admin",
-    "task": "Reduce the price of this product by 15%",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 28.051805019378662,
-    "status": "completed",
-    "timestamp": "2025-03-27T06:15:42.974250"
   },
   {
     "task_id": 524,
@@ -4556,28 +3684,6 @@
     "timestamp": "2025-03-27T06:19:17.119094"
   },
   {
-    "task_id": 163,
-    "website": "shopping",
-    "task": "What are the main criticisms of this product? Please extract the relevant sentences.",
-    "ground_truth_actions": [
-      "I ordered the 16gb but I only got 14 gigs even though I formatted the card",
-      "The memory card is kind of slow on games and downloads",
-      "No original packaging It's used and the previous owners data has not been erased",
-      "The product is a legit sony hardware that have been owned by someone else before",
-      "The media could not be loaded",
-      "I could not format the card so I wasn\u2019t able to use it for my VITA"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 25.323477029800415,
-    "status": "completed",
-    "timestamp": "2025-03-27T06:19:33.260666"
-  },
-  {
     "task_id": 494,
     "website": "shopping_admin",
     "task": "Notify Alex Thomas in their most recent pending order with message \"Yo, your order will be shipped soon!\"",
@@ -4600,25 +3706,6 @@
     "total_time_seconds": 44.47798490524292,
     "status": "completed",
     "timestamp": "2025-03-27T06:20:23.857164"
-  },
-  {
-    "task_id": 218,
-    "website": "map",
-    "task": "Show me the walking distance from nearby hotels to CMU, Pittsburgh that take at most 5 minutes?",
-    "ground_truth_actions": [
-      "N",
-      "/",
-      "A"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 98.43853688240051,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:20:23.874589"
   },
   {
     "task_id": 161,
@@ -4772,38 +3859,6 @@
     "timestamp": "2025-03-27T06:23:00.501321"
   },
   {
-    "task_id": 331,
-    "website": "shopping",
-    "task": "How much I spend in July 2022 on shopping at One Stop Market?",
-    "ground_truth_actions": [
-      "40.16"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 27.61004900932312,
-    "status": "completed",
-    "timestamp": "2025-03-27T06:23:20.835685"
-  },
-  {
-    "task_id": 278,
-    "website": "shopping",
-    "task": "Search for \"green tea bag for weight loss\"",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.002858877182,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:24:00.383558"
-  },
-  {
     "task_id": 689,
     "website": "shopping",
     "task": "Draft an email to the shop owner via their contact us function for a coupon as I am a loyal customer",
@@ -4904,36 +3959,6 @@
     "timestamp": "2025-03-27T06:25:30.937639"
   },
   {
-    "task_id": 611,
-    "website": "reddit",
-    "task": "Post a review of my recent reading \"Harry Potter\" in the r/books with my comment \"Wonderful journey\".",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00285983085632,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:26:45.398018"
-  },
-  {
-    "task_id": 570,
-    "website": "gitlab",
-    "task": "Invite Jakub K, Alex Dills, Alex Hutnik and Beno\u00eet Blanchon as collaborator to my time tracking tool project repo",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00269484519958,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:27:07.897002"
-  },
-  {
     "task_id": 711,
     "website": "shopping_admin",
     "task": "Create a product view report from 07/05/2021 to 05/31/2023",
@@ -5010,21 +4035,6 @@
     "timestamp": "2025-03-27T06:28:26.738990"
   },
   {
-    "task_id": 102,
-    "website": "gitlab",
-    "task": "Display the list of issues in the a11yproject/a11yproject.com repository that have labels related to help needed",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00090980529785,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:28:37.913611"
-  },
-  {
     "task_id": 554,
     "website": "gitlab",
     "task": "Create a folder named moive_space in gimmiethat.space repo. Within it, create a file named urls.txt that contains the URLs of the 5 most recent posts from the movies?",
@@ -5044,51 +4054,6 @@
     "total_time_seconds": 90.00188112258911,
     "status": "timeout",
     "timestamp": "2025-03-27T06:29:12.000997"
-  },
-  {
-    "task_id": 697,
-    "website": "shopping_admin",
-    "task": "Add a simple product named Swaatch Smart Watch with 42 in stock, available in size uni-size and color Blue, priced at $769.99",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00270199775696,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:29:56.756543"
-  },
-  {
-    "task_id": 642,
-    "website": "reddit",
-    "task": "Post a notice on a virtual meetup for Big little lies enthusiasts on Sep 10th in the books subreddit",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00291204452515,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:30:19.261378"
-  },
-  {
-    "task_id": 286,
-    "website": "shopping",
-    "task": "Show the least expensive ssd hard drive with a minimum storage capacity of 1TB.",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00289011001587,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:30:42.021978"
   },
   {
     "task_id": 95,
@@ -5269,21 +4234,6 @@
     "timestamp": "2025-03-27T06:34:01.888453"
   },
   {
-    "task_id": 530,
-    "website": "shopping",
-    "task": "Draft a refund message via their \"contact us\" form for the kitchen organizer I bought around Feb 2023. It broke after three days of use. The shop requires the order id, the reason and the amount to refund in the message. Don't submit yet",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00267386436462,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:34:14.511165"
-  },
-  {
     "task_id": 51,
     "website": "shopping",
     "task": "Today is 6/12/2023. Tell me how many fulfilled orders I have over the past six month, and the total amount of money I spent.",
@@ -5400,21 +4350,6 @@
     "timestamp": "2025-03-27T06:36:36.090290"
   },
   {
-    "task_id": 245,
-    "website": "shopping_admin",
-    "task": "Show me the name of the customer who is the most unhappy with Antonia racer tank",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00254797935486,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:37:02.788107"
-  },
-  {
     "task_id": 67,
     "website": "reddit",
     "task": "Among the top 10 post in \"books\" forum, show me the book names from posts that recommand a single book",
@@ -5433,21 +4368,6 @@
     "total_time_seconds": 39.79363560676575,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T06:37:27.910853"
-  },
-  {
-    "task_id": 638,
-    "website": "reddit",
-    "task": "Post in the most appropriate subreddit and ask for recommendations for must-have product in my life products within a budget of $30",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00206899642944,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:37:47.795181"
   },
   {
     "task_id": 133,
@@ -5586,21 +4506,6 @@
     "timestamp": "2025-03-27T06:40:21.149796"
   },
   {
-    "task_id": 482,
-    "website": "gitlab",
-    "task": "yjlou wants to check my dotfile configurations. Please invite him to the repo as a guest.",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00285911560059,
-    "status": "timeout",
-    "timestamp": "2025-03-27T06:40:37.184685"
-  },
-  {
     "task_id": 540,
     "website": "shopping_admin",
     "task": "Modify the address of order #301 to 321 Birch Boulevard, Suite 200, Dallas, TX, 75201",
@@ -5693,23 +4598,6 @@
     "total_time_seconds": 32.783425092697144,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T06:42:13.306097"
-  },
-  {
-    "task_id": 347,
-    "website": "shopping_admin",
-    "task": "How many reviews our shop received from the beginning of the shop?",
-    "ground_truth_actions": [
-      "351"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 19.904367923736572,
-    "status": "completed",
-    "timestamp": "2025-03-27T06:42:21.197773"
   },
   {
     "task_id": 361,
@@ -6259,28 +5147,6 @@
     "timestamp": "2025-03-27T07:30:26.650745"
   },
   {
-    "task_id": 165,
-    "website": "shopping",
-    "task": "What are the main criticisms of this product? Please extract the relevant sentences.",
-    "ground_truth_actions": [
-      "The 39 was too small. I am afraid the 40 will be too big",
-      "I was very sad when the shoe rubbed up against my baby toe",
-      "I had to return them because I knew in time it would tear up my feet",
-      "The problem is that the strap is made of some really stiff leather and is painful to my heel",
-      "The front is also uncomfortably tight",
-      "The Dansko's were similar (not as bad) and loosened up over time"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 19.125596284866333,
-    "status": "completed",
-    "timestamp": "2025-03-27T07:32:17.979828"
-  },
-  {
     "task_id": 484,
     "website": "gitlab",
     "task": "Jakub Klinkovsk\u00fd wants to check my dotfile configurations. Please invite him to the repo as a guest.",
@@ -6567,25 +5433,6 @@
     "timestamp": "2025-03-27T08:39:10.330059"
   },
   {
-    "task_id": 22,
-    "website": "shopping",
-    "task": "List out reviewers, if exist, who mention about under water photo",
-    "ground_truth_actions": [
-      "N",
-      "/",
-      "A"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 89.98836493492126,
-    "status": "timeout",
-    "timestamp": "2025-03-27T08:41:31.151522"
-  },
-  {
     "task_id": 569,
     "website": "gitlab",
     "task": "Invite Beno\u00eet and Abishek as collaborator to my HTML5 markup extention repo",
@@ -6791,21 +5638,6 @@
     "timestamp": "2025-03-27T09:03:23.154818"
   },
   {
-    "task_id": 650,
-    "website": "reddit",
-    "task": "Reply to the post with my comment \"I am a big fan of the bookorg\"",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 20.769711017608643,
-    "status": "completed",
-    "timestamp": "2025-03-27T09:05:21.944348"
-  },
-  {
     "task_id": 790,
     "website": "shopping_admin",
     "task": "Delete all negative reviews for Sybil running short",
@@ -6919,21 +5751,6 @@
     "timestamp": "2025-03-27T09:19:09.076788"
   },
   {
-    "task_id": 618,
-    "website": "reddit",
-    "task": "Re-post the image of Wife's costume in this page to funny subreddit and note \"from /f/pics\"",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 22.06182622909546,
-    "status": "completed",
-    "timestamp": "2025-03-27T09:20:23.227368"
-  },
-  {
     "task_id": 266,
     "website": "wikipedia",
     "task": "What's the closest national park to the largest city in Maine?",
@@ -7043,21 +5860,6 @@
     "total_time_seconds": 19.741673946380615,
     "status": "completed",
     "timestamp": "2025-03-27T09:32:55.929778"
-  },
-  {
-    "task_id": 353,
-    "website": "shopping",
-    "task": "List products from competitive swimwear category by ascending price",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 931.5612998008728,
-    "status": "0",
-    "timestamp": "2025-03-27T09:50:32.755087"
   },
   {
     "task_id": 319,
@@ -7526,23 +6328,6 @@
     "timestamp": "2025-03-27T11:03:14.444661"
   },
   {
-    "task_id": 330,
-    "website": "shopping",
-    "task": "How much I spend in March 2023 on shopping at One Stop Market?",
-    "ground_truth_actions": [
-      "81.31"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 21.240634202957153,
-    "status": "completed",
-    "timestamp": "2025-03-27T11:04:28.064723"
-  },
-  {
     "task_id": 29,
     "website": "reddit",
     "task": "Tell me the count of comments that have received more downvotes than upvotes for the user who made the latest post on the DIY forum.",
@@ -7792,21 +6577,6 @@
     "total_time_seconds": 90.00224900245667,
     "status": "timeout",
     "timestamp": "2025-03-27T11:33:12.686415"
-  },
-  {
-    "task_id": 480,
-    "website": "gitlab",
-    "task": "Invite yjlou as collaborator to solarized-prism-theme",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 90.00224900245667,
-    "status": "timeout",
-    "timestamp": "2025-03-27T11:35:36.866700"
   },
   {
     "task_id": 735,
@@ -8239,36 +7009,6 @@
     "timestamp": "2025-03-27T12:19:07.447372"
   },
   {
-    "task_id": 742,
-    "website": "gitlab",
-    "task": "Create a new private project \"planner\" and add Abishek, Vinta as members",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 95.00368905067444,
-    "status": "timeout",
-    "timestamp": "2025-03-27T12:21:23.041287"
-  },
-  {
-    "task_id": 462,
-    "website": "shopping_admin",
-    "task": "Increase the price of this product by 10%",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 34.167465925216675,
-    "status": "completed",
-    "timestamp": "2025-03-27T12:23:02.002596"
-  },
-  {
     "task_id": 140,
     "website": "map",
     "task": "What is the estimated driving time between the city of Niagara Falls and the city of Yale University?",
@@ -8309,21 +7049,6 @@
     "timestamp": "2025-03-27T12:29:30.823439"
   },
   {
-    "task_id": 428,
-    "website": "wikipedia",
-    "task": "Find the page of the undergrad college of the person who developed the Nash equilibrium on the map.",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 94.02021098136902,
-    "status": "timeout",
-    "timestamp": "2025-03-27T12:31:57.566811"
-  },
-  {
     "task_id": 288,
     "website": "shopping_admin",
     "task": "Tell me the name of the customer who has the most cancellations in the history",
@@ -8339,23 +7064,6 @@
     "total_time_seconds": 52.52339291572571,
     "status": "completed",
     "timestamp": "2025-03-27T12:34:17.708743"
-  },
-  {
-    "task_id": 34,
-    "website": "map",
-    "task": "I will arrive Pittsburgh Airport soon. Provide the name of a Hyatt hotel in the vicinity, if available. Then, tell me the the shortest walking time to a supermarket from the hotel.",
-    "ground_truth_actions": [
-      "Time: 3h 30min"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 95.8121600151062,
-    "status": "timeout",
-    "timestamp": "2025-03-27T12:37:15.732798"
   },
   {
     "task_id": 348,
@@ -8501,23 +7209,6 @@
     "timestamp": "2025-03-27T12:55:41.818690"
   },
   {
-    "task_id": 56,
-    "website": "map",
-    "task": "How long does it take to walk from Carnegie Museum of Art to a library at CMU?",
-    "ground_truth_actions": [
-      "11 min"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 91.73859596252441,
-    "status": "timeout",
-    "timestamp": "2025-03-27T12:58:04.960186"
-  },
-  {
     "task_id": 90,
     "website": "map",
     "task": "Which US states border Pennsylvania?",
@@ -8540,21 +7231,6 @@
     "total_time_seconds": 97.52428889274597,
     "status": "timeout",
     "timestamp": "2025-03-27T13:01:04.579843"
-  },
-  {
-    "task_id": 712,
-    "website": "shopping_admin",
-    "task": "Create a coupons report from 05/01/2021 to 05/15/2023",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 93.33131814002991,
-    "status": "timeout",
-    "timestamp": "2025-03-27T13:03:24.065721"
   },
   {
     "task_id": 208,
@@ -9674,21 +8350,6 @@
     "timestamp": "2025-03-27T15:38:32.948020"
   },
   {
-    "task_id": 381,
-    "website": "map",
-    "task": "Find the hotel around Carnegie Music Hall",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.00157594680786,
-    "status": "timeout",
-    "timestamp": "2025-03-27T15:39:05.640836"
-  },
-  {
     "task_id": 679,
     "website": "shopping_admin",
     "task": "Lookup orders that are completed",
@@ -9713,21 +8374,6 @@
     "timestamp": "2025-03-27T15:39:43.729697"
   },
   {
-    "task_id": 808,
-    "website": "gitlab",
-    "task": "Create an issue in cloud-to-butt repo with title \"Let's keep the project alive\". Assign the issue to myself. Set due date to be the end of Q1 2033",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 70.7810480594635,
-    "status": "timeout",
-    "timestamp": "2025-03-27T15:39:43.748305"
-  },
-  {
     "task_id": 733,
     "website": "reddit",
     "task": "Edit my post on Star Trek Starfleet Academy series by adding a line to the body that says \"Every watch makes me feel like a kid again\"",
@@ -9743,21 +8389,6 @@
     "total_time_seconds": 32.133795976638794,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T15:39:55.176725"
-  },
-  {
-    "task_id": 255,
-    "website": "map",
-    "task": "Who is the operator of PIT airport",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.00143480300903,
-    "status": "timeout",
-    "timestamp": "2025-03-27T15:40:43.765522"
   },
   {
     "task_id": 388,
@@ -10076,21 +8707,6 @@
     "timestamp": "2025-03-27T15:46:45.620598"
   },
   {
-    "task_id": 597,
-    "website": "reddit",
-    "task": "Open the thread of a trending post on the forum \"consoles\" and subscribe.",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.00104093551636,
-    "status": "timeout",
-    "timestamp": "2025-03-27T15:47:25.897799"
-  },
-  {
     "task_id": 336,
     "website": "shopping",
     "task": "Tell me when I last ordered my conditioner?",
@@ -10132,21 +8748,6 @@
     "total_time_seconds": 44.60899090766907,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T15:48:02.255621"
-  },
-  {
-    "task_id": 438,
-    "website": "shopping",
-    "task": "I previously ordered some a TV stand sometime around sep 2022 and later cancelled. Can you reorder it for me?",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.00068116188049,
-    "status": "timeout",
-    "timestamp": "2025-03-27T15:48:33.396084"
   },
   {
     "task_id": 423,
@@ -10205,24 +8806,6 @@
     "total_time_seconds": 59.99737811088562,
     "status": "timeout",
     "timestamp": "2025-03-27T15:49:52.791056"
-  },
-  {
-    "task_id": 228,
-    "website": "shopping",
-    "task": "What is the price range for products from sephora?",
-    "ground_truth_actions": [
-      "18.18",
-      "94.99"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 59.99389910697937,
-    "status": "timeout",
-    "timestamp": "2025-03-27T15:50:10.429746"
   },
   {
     "task_id": 623,
@@ -10332,26 +8915,6 @@
     "total_time_seconds": 67.05294394493103,
     "status": "timeout",
     "timestamp": "2025-03-27T15:51:52.949405"
-  },
-  {
-    "task_id": 290,
-    "website": "shopping_admin",
-    "task": "Tell me the product SKUs in the most recent cancelled orders of the customer who has the most cancellations in the history",
-    "ground_truth_actions": [
-      "WSH09-29-White",
-      "WSH09-28-Green",
-      "MSH11-34-Blue",
-      "WP09-29-Purple"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.001364946365356,
-    "status": "timeout",
-    "timestamp": "2025-03-27T15:52:25.433500"
   },
   {
     "task_id": 681,
@@ -10621,21 +9184,6 @@
     "timestamp": "2025-03-27T15:57:22.083103"
   },
   {
-    "task_id": 675,
-    "website": "shopping",
-    "task": "Gather the titles of HORI 3D Surround Gaming Neckset reviews with 2 stars and less rating from OneStopShop, and post them in the games subreddit under the title \"real user feedback on HORI 3D Surround Gaming Neckset\"",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.00121283531189,
-    "status": "timeout",
-    "timestamp": "2025-03-27T15:57:53.042072"
-  },
-  {
     "task_id": 497,
     "website": "shopping_admin",
     "task": "Update order #307 with the DHL tracking number 24353446464",
@@ -10652,24 +9200,6 @@
     "total_time_seconds": 35.62385106086731,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T15:58:20.918722"
-  },
-  {
-    "task_id": 250,
-    "website": "map",
-    "task": "Tell me the coordinates of Apple Store near Pitt in DD format",
-    "ground_truth_actions": [
-      "40.451",
-      "-79.933"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 65.39157295227051,
-    "status": "timeout",
-    "timestamp": "2025-03-27T15:58:20.933304"
   },
   {
     "task_id": 378,
@@ -10775,23 +9305,6 @@
     "timestamp": "2025-03-27T16:00:39.612986"
   },
   {
-    "task_id": 86,
-    "website": "map",
-    "task": "From my stay at La Quinta Inn near the airport, what's the estimated driving time to reach Upitt?",
-    "ground_truth_actions": [
-      "29 minutes"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.00039196014404,
-    "status": "timeout",
-    "timestamp": "2025-03-27T16:00:53.053060"
-  },
-  {
     "task_id": 514,
     "website": "shopping",
     "task": "Add a white desk to my wish list.",
@@ -10812,24 +9325,6 @@
     "timestamp": "2025-03-27T16:01:24.334162"
   },
   {
-    "task_id": 23,
-    "website": "shopping",
-    "task": "List out reviewers, if exist, who mention about good fingerprint resistant",
-    "ground_truth_actions": [
-      "Rachel",
-      "T. Gannon"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.00128197669983,
-    "status": "timeout",
-    "timestamp": "2025-03-27T16:01:39.633509"
-  },
-  {
     "task_id": 636,
     "website": "reddit",
     "task": "Post in the most appropriate subreddit and ask for recommendations for DIY toolkit products within a budget of $100",
@@ -10846,21 +9341,6 @@
     "total_time_seconds": 44.697920083999634,
     "status": "rate_limit_error",
     "timestamp": "2025-03-27T16:01:55.589349"
-  },
-  {
-    "task_id": 389,
-    "website": "gitlab",
-    "task": "Post \"Thanks, working on reviews\" for the merge request related to octovisuals page in primer/design project",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 60.962822914123535,
-    "status": "timeout",
-    "timestamp": "2025-03-27T16:02:25.594504"
   },
   {
     "task_id": 52,
@@ -11022,25 +9502,6 @@
     "timestamp": "2025-03-27T16:06:33.553308"
   },
   {
-    "task_id": 332,
-    "website": "shopping",
-    "task": "How much I spend each month from Jan to the end of March 2023 on shopping at One Stop Market?",
-    "ground_truth_actions": [
-      "Jan: 572.8",
-      "Feb: 762.18",
-      "Mar: 83.31"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 30.19217586517334,
-    "status": "completed",
-    "timestamp": "2025-03-27T16:06:37.251854"
-  },
-  {
     "task_id": 719,
     "website": "reddit",
     "task": "Like all submissions created by ThetaGang_wsb in subreddit wallstreetbets",
@@ -11184,28 +9645,6 @@
     "timestamp": "2025-03-27T16:10:19.920110"
   },
   {
-    "task_id": 167,
-    "website": "shopping",
-    "task": "What are the main criticisms of this product? Please extract the relevant sentences.",
-    "ground_truth_actions": [
-      "The wireless connection works on a whim (about 40% of the time I've owned it)",
-      "It seems to constantly run out of ink",
-      "Cartridge prices are less than some printers I've had",
-      "This printer seems to have more reasons NOT to work (none that are findable or correctable) Ex: error boxes saying that it's out of paper when it automatically switches to photo printing for some reason",
-      "Scanner is as slow as my first scanner I ever owned in the mid-90's",
-      "For the $176 I paid, there isn't even a fax component on it. I guess the \"PLUS\" part of it's name is in reference to the migraines it causes when you can't figure out the new reason why it's not working for the 10th time in the past 2 months."
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 49.86117124557495,
-    "status": "completed",
-    "timestamp": "2025-03-27T16:10:19.944176"
-  },
-  {
     "task_id": 242,
     "website": "shopping",
     "task": "I am doing a market survey for one stop market, show me the most expensive product from Household Supplies category",
@@ -11292,38 +9731,6 @@
     "total_time_seconds": 37.26223111152649,
     "status": "completed",
     "timestamp": "2025-03-27T16:12:52.041991"
-  },
-  {
-    "task_id": 80,
-    "website": "map",
-    "task": "What is the duration required to first walk from Carnegie Mellon University to Starbucks on Craig Street, and then drive to Pittsburgh International Airport?",
-    "ground_truth_actions": [
-      "38 min"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 68.98805832862854,
-    "status": "timeout",
-    "timestamp": "2025-03-27T16:12:52.058552"
-  },
-  {
-    "task_id": 610,
-    "website": "reddit",
-    "task": "Post a review of my recent reading \"To Kill a Mockingbird by Harper Lee\" in the r/books with my comment \"good book!\".",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 65.4032871723175,
-    "status": "timeout",
-    "timestamp": "2025-03-27T16:13:35.801547"
   },
   {
     "task_id": 674,
@@ -11468,21 +9875,6 @@
     "timestamp": "2025-03-27T16:17:11.742781"
   },
   {
-    "task_id": 781,
-    "website": "shopping_admin",
-    "task": "Increase the price of black fitness tshirts from Desiree with size XS by 37%",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 27.64874792098999,
-    "status": "completed",
-    "timestamp": "2025-03-27T16:17:11.752818"
-  },
-  {
     "task_id": 226,
     "website": "shopping",
     "task": "What is the price range for products from Amazon basic?",
@@ -11585,21 +9977,6 @@
     "timestamp": "2025-03-27T16:20:22.516609"
   },
   {
-    "task_id": 730,
-    "website": "reddit",
-    "task": "DisLike all submissions created by Hrekires in subreddit news",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 70.02274823188782,
-    "status": "timeout",
-    "timestamp": "2025-03-27T16:20:22.528223"
-  },
-  {
     "task_id": 44,
     "website": "gitlab",
     "task": "Check out my todos",
@@ -11615,40 +9992,6 @@
     "total_time_seconds": 46.19065618515015,
     "status": "completed",
     "timestamp": "2025-03-27T16:20:41.661685"
-  },
-  {
-    "task_id": 227,
-    "website": "shopping",
-    "task": "What is the price range for products from EYZUTAK?",
-    "ground_truth_actions": [
-      "9.99"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 62.77150368690491,
-    "status": "timeout",
-    "timestamp": "2025-03-27T16:21:44.446620"
-  },
-  {
-    "task_id": 292,
-    "website": "shopping_admin",
-    "task": "Tell me the total number of cancellations of the customer who has the most cancellations in the history",
-    "ground_truth_actions": [
-      "9"
-    ],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 61.2371289730072,
-    "status": "timeout",
-    "timestamp": "2025-03-27T16:21:47.941965"
   },
   {
     "task_id": 47,
@@ -11786,21 +10129,6 @@
     "total_time_seconds": 60.893763065338135,
     "status": "timeout",
     "timestamp": "2025-03-27T16:24:44.517911"
-  },
-  {
-    "task_id": 515,
-    "website": "shopping",
-    "task": "Add a white computer desk to my wish list.",
-    "ground_truth_actions": [],
-    "stagehand_actions": [],
-    "extract_content": [],
-    "accuracy_score": 0,
-    "similarity_score": 0,
-    "steps_percentage": 0,
-    "explanation": "No stagehand actions were found to evaluate.",
-    "total_time_seconds": 62.030247926712036,
-    "status": "timeout",
-    "timestamp": "2025-03-27T16:25:21.369427"
   },
   {
     "task_id": 235,

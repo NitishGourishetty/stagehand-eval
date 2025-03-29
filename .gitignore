@@ -1,3 +1,4 @@
+__pycache__
 .env
 node_modules
 tmp
@@ -5,3 +6,5 @@ downloads
 .DS_Store
 dist
 cache.json
+webarena.json
+webvoyager.jsonl
